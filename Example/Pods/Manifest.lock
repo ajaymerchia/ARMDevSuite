@@ -1,0 +1,16 @@
+PODS:
+  - ARMDevSuite (0.1.0)
+
+DEPENDENCIES:
+  - ARMDevSuite (from `../`)
+
+EXTERNAL SOURCES:
+  ARMDevSuite:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ARMDevSuite: df5cc285d338dcc6650f64cad55726da4c1b585e
+
+PODFILE CHECKSUM: a8f1abb939f767acb99c2b7d7be87fe66eb6123a
+
+COCOAPODS: 1.6.0.beta.2

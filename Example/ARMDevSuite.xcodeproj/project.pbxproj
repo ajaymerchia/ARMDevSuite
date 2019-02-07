@@ -29,10 +29,10 @@
 
 /* Begin PBXFileReference section */
 		150E5700D118BAB272BE2B02 /* Pods_ARMDevSuite_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARMDevSuite_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		20E28FD3E44F13FA21B69D21 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		20E28FD3E44F13FA21B69D21 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		33421E7FB71550246ACC4794 /* Pods-ARMDevSuite_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARMDevSuite_Tests.release.xcconfig"; path = "Target Support Files/Pods-ARMDevSuite_Tests/Pods-ARMDevSuite_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		371F5C6BB6E74F4DFE916837 /* Pods-ARMDevSuite_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARMDevSuite_Tests.debug.xcconfig"; path = "Target Support Files/Pods-ARMDevSuite_Tests/Pods-ARMDevSuite_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		543BEB771FDC536644C0693E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		543BEB771FDC536644C0693E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* ARMDevSuite_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARMDevSuite_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7E009426502ABB553D6ED912 /* Pods_ARMDevSuite_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARMDevSuite_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C975D7F5105775786B3D6D5D /* ARMDevSuite.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = ARMDevSuite.podspec; path = ../ARMDevSuite.podspec; sourceTree = "<group>"; };
+		C975D7F5105775786B3D6D5D /* ARMDevSuite.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ARMDevSuite.podspec; path = ../ARMDevSuite.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E5CAEB462B9E8032A0941245 /* Pods-ARMDevSuite_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARMDevSuite_Example.release.xcconfig"; path = "Target Support Files/Pods-ARMDevSuite_Example/Pods-ARMDevSuite_Example.release.xcconfig"; sourceTree = "<group>"; };
 		FEFB2B1DD9FC469D0ECB8B73 /* Pods-ARMDevSuite_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARMDevSuite_Example.debug.xcconfig"; path = "Target Support Files/Pods-ARMDevSuite_Example/Pods-ARMDevSuite_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,7 +147,6 @@
 				371F5C6BB6E74F4DFE916837 /* Pods-ARMDevSuite_Tests.debug.xcconfig */,
 				33421E7FB71550246ACC4794 /* Pods-ARMDevSuite_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
