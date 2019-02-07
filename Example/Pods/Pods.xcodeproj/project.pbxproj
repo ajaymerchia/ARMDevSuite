@@ -160,7 +160,8 @@
 			children = (
 				C09200BC995247C01FB1804629160474 /* LayoutManager.swift */,
 			);
-			path = LayoutManager;
+			name = LayoutManager;
+			path = ARMDevSuite/Classes/LayoutManager;
 			sourceTree = "<group>";
 		};
 		B7AE128C220CF34400AF5605 /* LocalData */ = {
@@ -168,7 +169,8 @@
 			children = (
 				B7AE1289220CF08000AF5605 /* LocalDataManager.swift */,
 			);
-			path = LocalData;
+			name = LocalData;
+			path = ARMDevSuite/Classes/LocalData;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
