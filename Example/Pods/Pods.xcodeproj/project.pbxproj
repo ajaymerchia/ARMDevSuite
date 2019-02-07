@@ -57,8 +57,8 @@
 		A31F7FFEF7B5706528BE1E0180D9E080 /* ARMDevSuite-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ARMDevSuite-Info.plist"; sourceTree = "<group>"; };
 		B36AB396275697EEE1A5B13BA8A38FE3 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B7ABE08B1BF87F3F9F75AC05E74936A6 /* ARMDevSuite-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ARMDevSuite-dummy.m"; sourceTree = "<group>"; };
-		B7AE1289220CF08000AF5605 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalDataManager.swift; path = ARMDevSuite/Classes/LocalDataManager.swift; sourceTree = "<group>"; };
-		C09200BC995247C01FB1804629160474 /* LayoutManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutManager.swift; path = ARMDevSuite/Classes/LayoutManager.swift; sourceTree = "<group>"; };
+		B7AE1289220CF08000AF5605 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
+		C09200BC995247C01FB1804629160474 /* LayoutManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutManager.swift; sourceTree = "<group>"; };
 		CB1D79D131BA6E9F598A0B288B673F3C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		CCE57DF32BEF2EF995C1E6A49674750A /* ARMDevSuite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ARMDevSuite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD36710FFBEACE6B50E1F675F4242512 /* Pods-ARMDevSuite_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ARMDevSuite_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -104,8 +104,8 @@
 		39D1119F24245BABBD2101B2869FA814 /* ARMDevSuite */ = {
 			isa = PBXGroup;
 			children = (
-				C09200BC995247C01FB1804629160474 /* LayoutManager.swift */,
-				B7AE1289220CF08000AF5605 /* LocalDataManager.swift */,
+				B7AE128B220CF33B00AF5605 /* LayoutManager */,
+				B7AE128C220CF34400AF5605 /* LocalData */,
 				D484F64AE5DFD0F6A038E749BA34A50D /* Pod */,
 				4569801AD8123D0612BD220F0039C5B7 /* Support Files */,
 			);
@@ -153,6 +153,22 @@
 				BF529A00510BFCDB56D2241676F4EF4C /* Products */,
 				6FE374E84A7C55308DFD4F8B275E9DE9 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		B7AE128B220CF33B00AF5605 /* LayoutManager */ = {
+			isa = PBXGroup;
+			children = (
+				C09200BC995247C01FB1804629160474 /* LayoutManager.swift */,
+			);
+			path = LayoutManager;
+			sourceTree = "<group>";
+		};
+		B7AE128C220CF34400AF5605 /* LocalData */ = {
+			isa = PBXGroup;
+			children = (
+				B7AE1289220CF08000AF5605 /* LocalDataManager.swift */,
+			);
+			path = LocalData;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {

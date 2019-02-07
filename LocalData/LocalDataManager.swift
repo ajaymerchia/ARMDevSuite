@@ -11,6 +11,11 @@ public class LocalData {
     
     public var key_name: String!
     
+    
+    /// Declare additional keys in a LocalData extension in your project.
+    /// Use notation: "static let myCustomKey = LocalData("[uniqueIdentifier]").
+    ///
+    /// - Parameter key: key used by UserDefaults to manage a alue
     public init(_ key: String) {
         key_name = key
     }
