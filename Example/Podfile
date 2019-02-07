@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ARMDevSuite_Example' do
+  pod 'ARMDevSuite', :path => '../'
+
+  target 'ARMDevSuite_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
