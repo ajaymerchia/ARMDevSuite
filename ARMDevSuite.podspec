@@ -30,8 +30,8 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
   
   s.ios.deployment_target = '12.1'
 
-  s.source_files = 'ARMDevSuite/Classes/LayoutManager/LayoutManager.swift', 'ARMDevSuite/Classes/LocalData/LocalDataManager.swift'
-  
+#  s.source_files = 'ARMDevSuite/Classes/LayoutManager/LayoutManager.swift', 'ARMDevSuite/Classes/LocalData/LocalDataManager.swift'
+
   # s.resource_bundles = {
   #   'ARMDevSuite' => ['ARMDevSuite/Assets/*.png']
   # }
