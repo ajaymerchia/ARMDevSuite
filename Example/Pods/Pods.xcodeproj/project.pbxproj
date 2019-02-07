@@ -15,6 +15,7 @@
 		96547E77F13E698D5A5B78F8F0D69A42 /* Pods-ARMDevSuite_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F39C9981F7FFA7CC25944381999E98D /* Pods-ARMDevSuite_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		991D24B169638C6E167C8590457A8BEA /* ARMDevSuite-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B7ABE08B1BF87F3F9F75AC05E74936A6 /* ARMDevSuite-dummy.m */; };
 		B25F62E4FCEB970F3EF3078230E3A363 /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09200BC995247C01FB1804629160474 /* LayoutManager.swift */; };
+		B7AE128A220CF08000AF5605 /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AE1289220CF08000AF5605 /* LocalDataManager.swift */; };
 		CA1F297A849D64CDFB1FDAB3377B4EBE /* Pods-ARMDevSuite_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A88B8291776C29BC73BD424E53E5A2 /* Pods-ARMDevSuite_Tests-dummy.m */; };
 		CF48705997473F42D8D0349E79FA76AA /* ARMDevSuite-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DC7B328AF096E5F51C16399BFE14E19E /* ARMDevSuite-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -56,6 +57,7 @@
 		A31F7FFEF7B5706528BE1E0180D9E080 /* ARMDevSuite-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ARMDevSuite-Info.plist"; sourceTree = "<group>"; };
 		B36AB396275697EEE1A5B13BA8A38FE3 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B7ABE08B1BF87F3F9F75AC05E74936A6 /* ARMDevSuite-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ARMDevSuite-dummy.m"; sourceTree = "<group>"; };
+		B7AE1289220CF08000AF5605 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalDataManager.swift; path = ARMDevSuite/Classes/LocalDataManager.swift; sourceTree = "<group>"; };
 		C09200BC995247C01FB1804629160474 /* LayoutManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutManager.swift; path = ARMDevSuite/Classes/LayoutManager.swift; sourceTree = "<group>"; };
 		CB1D79D131BA6E9F598A0B288B673F3C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		CCE57DF32BEF2EF995C1E6A49674750A /* ARMDevSuite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ARMDevSuite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				C09200BC995247C01FB1804629160474 /* LayoutManager.swift */,
+				B7AE1289220CF08000AF5605 /* LocalDataManager.swift */,
 				D484F64AE5DFD0F6A038E749BA34A50D /* Pod */,
 				4569801AD8123D0612BD220F0039C5B7 /* Support Files */,
 			);
@@ -374,6 +377,7 @@
 			files = (
 				991D24B169638C6E167C8590457A8BEA /* ARMDevSuite-dummy.m in Sources */,
 				B25F62E4FCEB970F3EF3078230E3A363 /* LayoutManager.swift in Sources */,
+				B7AE128A220CF08000AF5605 /* LocalDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

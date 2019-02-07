@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ARMDevSuite'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'UI & Logic Pod containing many useful helpers and UI elements.'
 
 # This description is used to generate tags and improve search results.
@@ -43,6 +43,12 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
   s.subspec 'LayoutManager' do |layout|
     layout.source_files = 'ARMDevSuite/Classes/LayoutManager.swift'
   end
+  
+  s.subspec 'LocalData' do |localdata|
+    localdata.source_files = 'ARMDevSuite/Classes/LocalDataManager.swift'
+  end
+  
+  
   
   
 end
