@@ -46,7 +46,7 @@ public class AlertManager {
     ///   - question: Question to be asked
     ///   - helpText: Any help text in a smaller font
     ///   - onAnswer: Returns whether if the affirmative response was selected
-    public func askYesOrNo(question: String, helpText: String, onAnswer: @escaping (Bool) -> ()) {
+    public func askYesOrNo(question: String, helpText: String?, onAnswer: @escaping (Bool) -> ()) {
         
         let alert = UIAlertController(title: question, message: helpText, preferredStyle: .alert)
         
@@ -121,14 +121,21 @@ public class AlertManager {
         vc.present(alert, animated: true)
     }
     
-    public func showActionSheet(withTitle: String?, andDetail: String?, configs: [(String?, UIAlertAction.Style, (() -> ())?)]) {
+    public struct ActionConfig {
+        var title: String?
+        var style: UIAlertAction.Style
+        var callback: (()->())?
+    }
+    
+    
+    public func showActionSheet(withTitle: String?, andDetail: String?, configs: [ActionConfig]) {
         
         let actionSheet = UIAlertController(title: withTitle, message: andDetail, preferredStyle: .actionSheet)
         
         
         for config in configs {
-            actionSheet.addAction(UIAlertAction(title: config.0, style: config.1, handler: { (_) in
-                guard let callback = config.2 else {
+            actionSheet.addAction(UIAlertAction(title: config.title, style: config.style, handler: { (_) in
+                guard let callback = config.callback else {
                     return
                 }
                 callback()
