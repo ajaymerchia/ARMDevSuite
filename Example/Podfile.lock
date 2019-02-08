@@ -1,14 +1,21 @@
 PODS:
-  - ARMDevSuite (0.1.11):
-    - ARMDevSuite/Alerts (= 0.1.11)
-    - ARMDevSuite/Layouts (= 0.1.11)
-    - ARMDevSuite/LocalData (= 0.1.11)
+  - ARMDevSuite (0.1.12):
+    - ARMDevSuite/Alerts (= 0.1.12)
+    - ARMDevSuite/Layouts (= 0.1.12)
+    - ARMDevSuite/LocalData (= 0.1.12)
+    - ARMDevSuite/Logic (= 0.1.12)
+    - ARMDevSuite/UISuite (= 0.1.12)
     - JGProgressHUD
-  - ARMDevSuite/Alerts (0.1.11):
+  - ARMDevSuite/Alerts (0.1.12):
     - JGProgressHUD
-  - ARMDevSuite/Layouts (0.1.11):
+  - ARMDevSuite/Layouts (0.1.12):
     - JGProgressHUD
-  - ARMDevSuite/LocalData (0.1.11):
+  - ARMDevSuite/LocalData (0.1.12):
+    - JGProgressHUD
+  - ARMDevSuite/Logic (0.1.12):
+    - JGProgressHUD
+  - ARMDevSuite/UISuite (0.1.12):
+    - ARMDevSuite/Layouts
     - JGProgressHUD
   - JGProgressHUD (2.0.3)
 
@@ -25,7 +32,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ARMDevSuite: b7781fe884ec3d2fa2b145ece78c25bb2a5b47b2
+  ARMDevSuite: 3544c707a38321d3db9ba38e70e61b068d57c5f5
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
 
 PODFILE CHECKSUM: 0cc5a3cff44fabc27766675355711f90e8a0623a

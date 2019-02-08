@@ -20,6 +20,8 @@ class ViewController: UIViewController {
         alerts = AlertManager(vc: self)
         initUI()
         
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

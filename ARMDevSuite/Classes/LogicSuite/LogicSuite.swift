@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LogicSuite {
+public class LogicSuite {
     // Logic & Datastructures
     public static func uuid() -> String {
         return UUID().uuidString

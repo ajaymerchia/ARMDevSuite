@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-class UISuite {
+public class UISuite {
     public static func getImageFrom(url: String, defaultImg: UIImage, callback: @escaping ((UIImage) -> ())) {
         
         if let imageUrl:URL = URL(string: url) {
