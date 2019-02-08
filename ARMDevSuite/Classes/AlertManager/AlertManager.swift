@@ -75,12 +75,26 @@ public class AlertManager {
         hud?.indicatorView = JGProgressHUDErrorIndicatorView(contentView: vc.view)
         changeHUD(toTitle: withHeader, andDetail: andDetail)
         self.hud?.dismiss(afterDelay: hudResponseWait, animated: true)
+        if #available(iOS 10.0, *) {
+            Timer.scheduledTimer(withTimeInterval: hudResponseWait, repeats: false) { (t) in
+                onComplete()
+            }
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     public func triggerHudSuccess(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
         hud?.indicatorView = JGProgressHUDSuccessIndicatorView(contentView: vc.view)
         changeHUD(toTitle: withHeader, andDetail: andDetail)
         self.hud?.dismiss(afterDelay: hudResponseWait, animated: true)
+        if #available(iOS 10.0, *) {
+            Timer.scheduledTimer(withTimeInterval: hudResponseWait, repeats: false) { (t) in
+                onComplete()
+            }
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     public func changeHUD(toTitle: String?, andDetail: String?) {
@@ -122,9 +136,9 @@ public class AlertManager {
     }
     
     public struct ActionConfig {
-        var title: String?
-        var style: UIAlertAction.Style
-        var callback: (()->())?
+        public var title: String?
+        public var style: UIAlertAction.Style
+        public var callback: (()->())?
     }
     
     

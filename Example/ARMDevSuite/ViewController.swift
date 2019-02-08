@@ -63,9 +63,10 @@ class ViewController: UIViewController {
     
     @objc func displayAction() {
         
-        let configs = [(String?, UIAlertAction.Style, (()->())?)]()
+  
         
-        alerts.showActionSheet(withTitle: "Whaddya wanna do?", andDetail: nil, configs: <#T##[(String?, UIAlertAction.Style, (() -> ())?)]#>)
+        alerts.showActionSheet(withTitle: <#T##String?#>, andDetail: <#T##String?#>, configs: <#T##[AlertManager.ActionConfig]#>)
+        
     }
     
     @objc func askHud() {
