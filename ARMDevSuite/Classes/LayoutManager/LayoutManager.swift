@@ -61,6 +61,44 @@ public class LayoutManager {
         return CGRect(x: elementAbove.frame.midX - width/2, y: elementAbove.frame.maxY + topPadding, width: width, height: elementBelow.frame.minY - (elementAbove.frame.maxY + topPadding + bottomPadding))
     }
     
+    public enum InternalJustification {
+        case TopLeft
+        case TopCenter
+        case TopRight
+        case MidLeft
+        case MidCenter
+        case MidRight
+        case BottomLeft
+        case BottomCenter
+        case BottomRight
+    }
+    public static func inside(inside view: UIView, justified: InternalJustification, verticalPadding: CGFloat, horizontalPadding: CGFloat, width: CGFloat, height: CGFloat) -> CGRect {
+        
+        switch justified {
+        case .TopLeft:
+            return CGRect(x: view.frame.minX + horizontalPadding, y: view.frame.minY + verticalPadding, width: width, height: height)
+        case .TopCenter:
+            return CGRect(x: view.frame.midX - (width/2), y: view.frame.minY + verticalPadding, width: width, height: height)
+        case .TopRight:
+            return CGRect(x: view.frame.maxX - (width + horizontalPadding), y: view.frame.minY + verticalPadding, width: width, height: height)
+        case .MidLeft:
+            return CGRect(x: view.frame.minX + horizontalPadding, y: view.frame.midY - (height/2), width: width, height: height)
+        case .MidCenter:
+            return CGRect(x: view.frame.midX - (width/2), y: view.frame.midY - (height/2), width: width, height: height)
+        case .MidRight:
+            return CGRect(x: view.frame.maxX - (width + horizontalPadding), y: view.frame.midY - (height/2), width: width, height: height)
+        case .BottomLeft:
+            return CGRect(x: view.frame.minX + horizontalPadding, y: view.frame.maxY - (height + verticalPadding), width: width, height: height)
+        case .BottomCenter:
+            return CGRect(x: view.frame.midX - (width/2), y: view.frame.maxY - (height + verticalPadding), width: width, height: height)
+        case .BottomRight:
+            return CGRect(x: view.frame.maxX - (width + horizontalPadding), y: view.frame.maxY - (height + verticalPadding), width: width, height: height)
+        }
+        
+        
+        
+    }
+    
     
     
     

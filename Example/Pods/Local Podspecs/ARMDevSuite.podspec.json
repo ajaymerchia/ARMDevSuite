@@ -1,8 +1,8 @@
 {
   "name": "ARMDevSuite",
-  "version": "0.1.0",
-  "summary": "A short description of ARMDevSuite.",
-  "description": "TODO: Add long description of the pod here.",
+  "version": "0.1.6",
+  "summary": "UI & Logic Pod containing many useful helpers and UI elements.",
+  "description": "ARMDevSuite is a pod that contains many useful UIKit elements as well as useful logic libraries.",
   "homepage": "https://github.com/ajaymerchia/ARMDevSuite",
   "license": {
     "type": "MIT",
@@ -13,10 +13,34 @@
   },
   "source": {
     "git": "https://github.com/ajaymerchia/ARMDevSuite.git",
-    "tag": "0.1.0"
+    "tag": "0.1.6"
   },
+  "swift_version": "4.2",
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "ARMDevSuite/Classes/**/*"
+  "dependencies": {
+    "JGProgressHUD": [
+
+    ]
+  },
+  "subspecs": [
+    {
+      "name": "Layouts",
+      "source_files": "ARMDevSuite/Classes/LayoutManager/LayoutManager.swift"
+    },
+    {
+      "name": "LocalData",
+      "source_files": "ARMDevSuite/Classes/LocalData/LocalDataManager.swift"
+    },
+    {
+      "name": "Alerts",
+      "source_files": "ARMDevSuite/Classes/AlertManager/AlertManager.swift",
+      "dependencies": {
+        "JGProgressHUD": [
+
+        ]
+      }
+    }
+  ]
 }
