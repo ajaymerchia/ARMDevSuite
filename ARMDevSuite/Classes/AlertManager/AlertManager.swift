@@ -135,16 +135,13 @@ public class AlertManager {
         vc.present(alert, animated: true)
     }
     
-    public struct ActionConfig {
-        public var title: String?
-        public var style: UIAlertAction.Style
-        public var callback: (()->())?
-    }
-    
+   
     
     public func showActionSheet(withTitle: String?, andDetail: String?, configs: [ActionConfig]) {
         
         let actionSheet = UIAlertController(title: withTitle, message: andDetail, preferredStyle: .actionSheet)
+        
+        
         
         
         for config in configs {
@@ -171,3 +168,10 @@ public class AlertManager {
     
     
 }
+
+public struct ActionConfig {
+    public var title: String?
+    public var style: UIAlertAction.Style
+    public var callback: (()->())?
+}
+    

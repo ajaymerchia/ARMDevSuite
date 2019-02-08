@@ -63,7 +63,11 @@ class ViewController: UIViewController {
     
     @objc func displayAction() {
         
-  
+        var configs = [AlertManager.ActionConfig]()
+        var config = AlertManager.ActionConfig(title: "hello", style: .destructive) {
+            debugPrint("press F")
+        }
+        
         
         alerts.showActionSheet(withTitle: <#T##String?#>, andDetail: <#T##String?#>, configs: <#T##[AlertManager.ActionConfig]#>)
         
