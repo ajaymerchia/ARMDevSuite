@@ -173,5 +173,11 @@ public struct ActionConfig {
     public var title: String?
     public var style: UIAlertAction.Style
     public var callback: (()->())?
+    
+    public init(title: String?, style: UIAlertAction.Style, callback: (()->())?) {
+        self.title = title
+        self.style = style
+        self.callback = callback
+    }
 }
     
