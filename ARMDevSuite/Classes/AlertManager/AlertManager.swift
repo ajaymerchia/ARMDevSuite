@@ -71,30 +71,25 @@ public class AlertManager {
         self.hud?.show(in: self.vc.view)
     }
     
+    @available(iOS 10.0, *)
     public func triggerHudFailure(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
         hud?.indicatorView = JGProgressHUDErrorIndicatorView(contentView: vc.view)
         changeHUD(toTitle: withHeader, andDetail: andDetail)
         self.hud?.dismiss(afterDelay: hudResponseWait, animated: true)
-        if #available(iOS 10.0, *) {
-            Timer.scheduledTimer(withTimeInterval: hudResponseWait, repeats: false) { (t) in
-                onComplete()
-            }
-        } else {
-            // Fallback on earlier versions
+        Timer.scheduledTimer(withTimeInterval: hudResponseWait, repeats: false) { (t) in
+            onComplete()
         }
     }
     
+    @available(iOS 10.0, *)
     public func triggerHudSuccess(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
         hud?.indicatorView = JGProgressHUDSuccessIndicatorView(contentView: vc.view)
         changeHUD(toTitle: withHeader, andDetail: andDetail)
         self.hud?.dismiss(afterDelay: hudResponseWait, animated: true)
-        if #available(iOS 10.0, *) {
-            Timer.scheduledTimer(withTimeInterval: hudResponseWait, repeats: false) { (t) in
-                onComplete()
-            }
-        } else {
-            // Fallback on earlier versions
+        Timer.scheduledTimer(withTimeInterval: hudResponseWait, repeats: false) { (t) in
+            onComplete()
         }
+
     }
     
     public func changeHUD(toTitle: String?, andDetail: String?) {
@@ -141,9 +136,6 @@ public class AlertManager {
         
         let actionSheet = UIAlertController(title: withTitle, message: andDetail, preferredStyle: .actionSheet)
         
-        
-        
-        
         for config in configs {
             actionSheet.addAction(UIAlertAction(title: config.title, style: config.style, handler: { (_) in
                 guard let callback = config.callback else {
@@ -170,11 +162,11 @@ public class AlertManager {
 }
 
 public struct ActionConfig {
-    public var title: String?
+    public var title: String
     public var style: UIAlertAction.Style
     public var callback: (()->())?
     
-    public init(title: String?, style: UIAlertAction.Style, callback: (()->())?) {
+    public init(title: String, style: UIAlertAction.Style, callback: (()->())?) {
         self.title = title
         self.style = style
         self.callback = callback

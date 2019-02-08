@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     
     func initUI() {
         
-        runTimerButton = UIButton(frame: LayoutManager.inside(inside: self.view, justified: .TopCenter, verticalPadding: 100, horizontalPadding: 0, width: view.frame.width/1.2, height: 70))
+        runTimerButton = UIButton(frame: LayoutManager.inside(inside: self.view, justified: .TopCenter, verticalPadding: 100, horizontalPadding: 0, width: view.frame.width/1.1, height: 70))
         runTimerButton.setTitle("Start a progress HUD", for: .normal)
         runTimerButton.backgroundColor = .blue
         runTimerButton.addTarget(self, action: #selector(askHud), for: .touchUpInside)
@@ -37,18 +37,18 @@ class ViewController: UIViewController {
         
         
         
-        let displayAlertButton = UIButton(frame: LayoutManager.belowLeft(elementAbove: runTimerButton, padding: 20, width: view.frame.width/2.2, height: 70))
+        let displayAlertButton = UIButton(frame: LayoutManager.belowLeft(elementAbove: runTimerButton, padding: 20, width: view.frame.width/3, height: 70))
         displayAlertButton.setTitle("Display Alert", for: .normal)
         displayAlertButton.backgroundColor = .gray
         displayAlertButton.addTarget(self, action: #selector(displayAlert), for: .touchUpInside)
         view.addSubview(displayAlertButton)
         
         
-        let actionSheetButton = UIButton(frame: LayoutManager.belowRight(elementAbove: runTimerButton, padding: 20, width: view.frame.width/2.2, height: 70))
+        let actionSheetButton = UIButton(frame: LayoutManager.belowRight(elementAbove: runTimerButton, padding: 20, width: view.frame.width/3, height: 70))
         actionSheetButton.setTitle("Display ActionSheet", for: .normal)
         actionSheetButton.backgroundColor = .gray
         actionSheetButton.addTarget(self, action: #selector(displayAction), for: .touchUpInside)
-        
+        view.addSubview(actionSheetButton)
     }
     
     @objc func displayAlert() {
@@ -65,9 +65,18 @@ class ViewController: UIViewController {
         
         
         var configs = [ActionConfig]()
-        var config = ActionConfig(title: <#T##String?#>, style: <#T##UIAlertAction.Style#>, callback: <#T##(() -> ())?##(() -> ())?##() -> ()#>)
+        configs.append(ActionConfig(title: "Show Alert", style: .default) {
+            self.displayAlert()
+        })
+        configs.append(ActionConfig(title: "redo", style: .default, callback: {
+            self.displayAction()
+        }))
+        configs.append(ActionConfig(title: "Remove Timer", style: .destructive, callback: {
+            self.runTimerButton.removeFromSuperview()
+        }))
+        configs.append(ActionConfig(title: "nada", style: .default, callback: nil))
         
-        alerts.showActionSheet(withTitle: "Are yaaaaa ready", andDetail: nil, configs: <#T##[ActionConfig]#>)
+        alerts.showActionSheet(withTitle: "Are yaaaaa ready", andDetail: nil, configs: configs)
         
     }
     

@@ -28,7 +28,7 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
   s.source           = { :git => 'https://github.com/ajaymerchia/ARMDevSuite.git', :tag => s.version.to_s }
   s.swift_version    = '4.2'
   
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '11.0'
   # s.resource_bundles = {
   #   'ARMDevSuite' => ['ARMDevSuite/Assets/*.png']
   # }
@@ -50,6 +50,14 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
     alerts.dependency 'JGProgressHUD'
   end
   
+  s.subspec 'Logic' do |logic|
+    logic.source_files = 'ARMDevSuite/Classes/LogicSuite/LogicSuite.swift'
+  end
+  
+  s.subspec 'UISuite' do |ui|
+    ui.source_files = 'ARMDevSuite/Classes/UISuite/*.swift'
+    ui.dependency 'ARMDevSuite/Layouts'
+  end
   
   
   
