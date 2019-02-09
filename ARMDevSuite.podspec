@@ -35,8 +35,10 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-   s.dependency 'JGProgressHUD'
-  
+#   s.dependency 'JGProgressHUD'
+
+
+
   s.subspec 'Layouts' do |layout|
     layout.source_files = 'ARMDevSuite/Classes/LayoutManager/LayoutManager.swift'
   end
@@ -59,6 +61,13 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
     ui.dependency 'ARMDevSuite/Layouts'
   end
   
+#  Begin UI Components
+  s.subspec 'SegControl' do |seg|
+    seg.source_files = 'ARMDevSuite/Classes/SegControl/*.swift'
+    seg.dependency 'ARMDevSuite/Layouts'
+    seg.dependency 'ARMDevSuite/UISuite'
+  end
+
   
   
 end
