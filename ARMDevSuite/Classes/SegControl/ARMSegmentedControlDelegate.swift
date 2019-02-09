@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol ARMSegmentedControlDelegate {
-    func segControlChanged(to: Int)
+    func segControlChanged(_ segmentedControl: ARMSegmentedControl, to: Int)
 }

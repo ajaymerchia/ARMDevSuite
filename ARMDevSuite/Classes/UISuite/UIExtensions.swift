@@ -123,6 +123,7 @@ public extension UIView {
         animation.fromValue = NSValue(cgPoint: CGPoint(x: CGFloat(-translation), y: self.center.y))
         animation.toValue = NSValue(cgPoint: CGPoint(x: CGFloat(translation), y: self.center.y))
         layer.add(animation, forKey: "shake")
+        
+        
     }
 }
-

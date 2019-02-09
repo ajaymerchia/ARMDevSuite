@@ -187,7 +187,7 @@ public class ARMSegmentedControl: UIControl, ARMSegmentedControlDelegate  {
             self.indicatorView.frame = LayoutManager.belowCentered(elementAbove: self.segSwitchButtons[sender.tag], padding: self.indicatorDistance, width: self.segSwitchButtons[sender.tag].frame.width, height: self.indicatorHeight)
         })
         
-        delegate.segControlChanged(to: self.activeIndex)
+        delegate.segControlChanged(self, to: self.activeIndex)
         
     }
     
@@ -225,7 +225,7 @@ public class ARMSegmentedControl: UIControl, ARMSegmentedControlDelegate  {
     }
     
     
-    public func segControlChanged(to: Int) {}
+    public func segControlChanged(_ segmentedControl: ARMSegmentedControl, to: Int) {}
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
