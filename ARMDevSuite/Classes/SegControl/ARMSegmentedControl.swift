@@ -21,8 +21,11 @@ private extension UIColor {
 
 public class ARMSegmentedControl: UIControl, ARMSegmentedControlDelegate  {
     
+    /// Delegate that receives a callback when the control switches states
     public var delegate: ARMSegmentedControlDelegate!
     
+    
+    /// Font of the titles
     public var font: UIFont = UIFont(name: "HelveticaNeue-Medium", size: 18)! {
         didSet {
             for button in segSwitchButtons {
@@ -31,25 +34,33 @@ public class ARMSegmentedControl: UIControl, ARMSegmentedControlDelegate  {
         }
     }
     
-    // Indicator Placement & Movement
+    /// Height of the indicator view
     public var indicatorHeight: CGFloat = 5 {
         didSet {
             relayout()
         }
     }
+    
+    /// Vertical distance between the titles and the indicator (can be negative)
     public var indicatorDistance: CGFloat = 0 {
         didSet {
             relayout()
         }
     }
+    
+    /// Duration of the indicator movement
     public var indicatorAnimationDuration: TimeInterval = 0.25
     
     // Coloring
+    
+    /// Color of the indicator view
     public var indicatorColor: UIColor = .accentBlue {
         didSet {
             self.indicatorView.backgroundColor = indicatorColor
         }
     }
+    
+    /// Color of the titles when selected
     public var selectedTitleColor: UIColor = .accentBlue {
         didSet {
             for button in segSwitchButtons {
@@ -57,6 +68,8 @@ public class ARMSegmentedControl: UIControl, ARMSegmentedControlDelegate  {
             }
         }
     }
+    
+    /// Color of the titles when not selected
     public var titleColor: UIColor = .lightGray {
         didSet {
             for button in segSwitchButtons {
@@ -86,25 +99,40 @@ public class ARMSegmentedControl: UIControl, ARMSegmentedControlDelegate  {
     }
     
     
+    /// Creates an ARMSegmentedControl with the given frame
+    ///
+    /// - Parameter frame: frame of the new UIControl element
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.delegate = self
         
     }
     
+    /// Creates an ARMSegmentedControl with the given frame and titles
+    ///
+    /// - Parameters:
+    ///   - frame: frame of the new UIControl element
+    ///   - titles: titles of the segments
     public init(frame: CGRect, titles: [String]) {
         super.init(frame: frame)
         self.delegate = self
         self.setTitles(to: titles)
     }
     
-    
-    
-    public func setTitles(to: [String]) {
-        self.segTitles = to
+    /// Sets the titles of the segments.
+    ///
+    /// - Parameter titles: segment names
+    public func setTitles(to titles: [String]) {
+        self.segTitles = titles
         self.relayout()
     }
     
+    
+    /// Enables a UISwipeGestureRecognizer in the given view
+    ///
+    /// - Parameters:
+    ///   - view: View in which to listen for swipes
+    ///   - bounds: Subarea within the view in which to listen. Assumes entire view if nil.
     public func respondToSwipe(in view: UIView, inside bounds: CGRect?) {
         swipeView?.removeGestureRecognizer(leftSwipe)
         swipeView?.removeGestureRecognizer(rightSwipe)
@@ -122,9 +150,8 @@ public class ARMSegmentedControl: UIControl, ARMSegmentedControlDelegate  {
         self.swipeView?.addGestureRecognizer(rightSwipe)
     }
     
-    func relayout() {
+    private func relayout() {
         clear()
-        
         for i in 0..<numSections {
             let buttonWidth: CGFloat = (self.frame.width - 2 * CGFloat.padding)/CGFloat(numSections)
             
@@ -161,15 +188,16 @@ public class ARMSegmentedControl: UIControl, ARMSegmentedControlDelegate  {
         
     }
     
-    func clear() {
+    private func clear() {
         for view in self.subviews {
             view.removeFromSuperview()
         }
         self.indicatorView = nil
         self.segSwitchButtons = []
+        self.activeIndex = 0
     }
     
-    @objc func segControlWasTapped(_ sender: UIButton) {
+    @objc private func segControlWasTapped(_ sender: UIButton) {
         guard initialized else { return }
         
         if sender.tag == activeIndex {
@@ -187,11 +215,11 @@ public class ARMSegmentedControl: UIControl, ARMSegmentedControlDelegate  {
             self.indicatorView.frame = LayoutManager.belowCentered(elementAbove: self.segSwitchButtons[sender.tag], padding: self.indicatorDistance, width: self.segSwitchButtons[sender.tag].frame.width, height: self.indicatorHeight)
         })
         
-        delegate.segControlChanged(self, to: self.activeIndex)
+        delegate.armSegmentedControl(self, changedTo: self.activeIndex)
         
     }
     
-    @objc func didSwipeLeft() {
+    @objc private func didSwipeLeft() {
         guard initialized else { return }
         
         guard let area = self.swipeView else {
@@ -208,7 +236,7 @@ public class ARMSegmentedControl: UIControl, ARMSegmentedControlDelegate  {
         
     }
     
-    @objc func didSwipeRight() {
+    @objc private func didSwipeRight() {
         guard initialized else { return }
         
         guard let area = self.swipeView else {
@@ -225,7 +253,7 @@ public class ARMSegmentedControl: UIControl, ARMSegmentedControlDelegate  {
     }
     
     
-    public func segControlChanged(_ segmentedControl: ARMSegmentedControl, to: Int) {}
+    public func armSegmentedControl(_ segmentedControl: ARMSegmentedControl, changedTo index: Int) {}
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

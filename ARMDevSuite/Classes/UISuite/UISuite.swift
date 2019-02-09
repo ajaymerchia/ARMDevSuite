@@ -10,8 +10,9 @@ import UIKit
 
 
 public class UISuite {
+    
+    /// Fetches an image from the URL and provides defaultImg if not available
     public static func getImageFrom(url: String, defaultImg: UIImage, callback: @escaping ((UIImage) -> ())) {
-        
         if let imageUrl:URL = URL(string: url) {
             DispatchQueue.global().async {
                 let data = try? Data(contentsOf: imageUrl)
@@ -37,6 +38,15 @@ public class UISuite {
         case Left
     }
     
+    
+    /// Provides a border for one edge of a UIView.
+    ///
+    /// - Parameters:
+    ///   - forView: view to which we add a border
+    ///   - thickness: thickness of the border
+    ///   - color: color of the border
+    ///   - side: side of the view on which to place the border
+    /// - Returns: border
     public static func getBorder(forView: UIView, thickness: CGFloat, color: UIColor, side: Side) -> UIView {
         
         let ret = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
@@ -71,6 +81,11 @@ public class UISuite {
         givenView.insertSubview(backgroundImage, at: 0)
     }
     
+    
+    /// Converts a hex string to its three RGB values on a scale of 0 to 255
+    ///
+    /// - Parameter hex: hex string
+    /// - Returns: RGB values scaled 0 to 255
     public static func hexStringToRGBValues(hex: String) -> [Int] {
         var values = [0,0,0]
         

@@ -8,5 +8,12 @@
 import Foundation
 
 public protocol ARMSegmentedControlDelegate {
-    func segControlChanged(_ segmentedControl: ARMSegmentedControl, to: Int)
+    
+    
+    /// When the segmentedControl changes segments, this function is called.
+    ///
+    /// - Parameters:
+    ///   - segmentedControl: ARMSegmentedControl for which this event was triggered
+    ///   - index: index to which the ARMSegmentedControl changed
+    func armSegmentedControl(_ segmentedControl: ARMSegmentedControl, changedTo index: Int)
 }

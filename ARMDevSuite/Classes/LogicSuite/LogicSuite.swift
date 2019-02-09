@@ -9,10 +9,22 @@ import Foundation
 
 public class LogicSuite {
     // Logic & Datastructures
+    
+    /// Returns a unique identifier as a string.
+    ///
+    /// - Returns: a unique identifier as a string
     public static func uuid() -> String {
         return UUID().uuidString
     }
     
+    
+    /// Returns a random number within the given range.
+    ///
+    /// - Parameters:
+    ///   - from: lower bound
+    ///   - upTo: upper bound
+    ///   - inclusive: include the upper bound in the set of possible numbeers
+    /// - Returns: Random number fitting specification
     public static func randomNum(from: Int = 0, upTo: Int, _ inclusive: Bool = false) -> Int {
         if !inclusive {
             return Int.random(in: from..<upTo)
@@ -21,6 +33,13 @@ public class LogicSuite {
         }
     }
     
+    
+    /// Merges two optional dictionaries, favoring the (key, value) pairs of d1
+    ///
+    /// - Parameters:
+    ///   - d1: Favored Dictionary
+    ///   - d2: Other Dictionary
+    /// - Returns: Combined Dictionary
     public static func mergeDictionaries(d1: [String: String]?, d2: [String: String]?) -> [String: String] {
         let d1Unwrap: [String: String]! = d1 ?? [:]
         let d2Unwrap: [String: String]! = d2 ?? [:]
@@ -35,10 +54,19 @@ public class LogicSuite {
     
     
     // URL Stuff
+    
+    /// Makes a string URL safe by adding percent encoding
+    ///
+    /// - Parameter url: URL to encode
+    /// - Returns: URL-safe URL
     public static func makeURLSafe(_ url: String) -> String{
         return url.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
     }
     
+    
+    /// Causes the application to open a URL by switching to the browser.
+    ///
+    /// - Parameter urlString: url to open
     public static func openURL(_ urlString: String) {
         if let url = URL(string: urlString) {
             print("Opening URL: \(urlString)")
@@ -51,6 +79,8 @@ public class LogicSuite {
     }
     
     // Time Management Stuff
+    
+    /// Returns a string of date in YYYY-MM-dd format.
     public static func getYYYYMMDDRepr(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -58,6 +88,7 @@ public class LogicSuite {
         return dateFormatter.string(from: date)
     }
     
+    /// Returns a string of date in M/dd/yy format.
     public static func getMDDYYRepr(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M/dd/yy"
@@ -65,6 +96,7 @@ public class LogicSuite {
         return dateFormatter.string(from: date)
     }
     
+    /// Returns a URL-safe string of a date in M-dd-yy format.
     public static func getURLSafeDateFormat(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M-dd-yy"
@@ -72,43 +104,63 @@ public class LogicSuite {
         return dateFormatter.string(from: date)
     }
     
+    /// Returns the time as typically shown on digital clocks (h:mm am/pm)
     public static func getTimeWithAMPM(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a"
         dateFormatter.locale = Locale(identifier: "en_US")
         return dateFormatter.string(from: date)
     }
-    
+
+    /// Returns the date as MM/DD/YY H:MM AM/PM
     public static func getFormattedDateAndTime(date: Date) -> String {
         return getMDDYYRepr(date: date) + ", " + getTimeWithAMPM(date: date)
     }
     
+    
+    /// Converts seconds to days
+    ///
+    /// - Parameter s: seconds
+    /// - Returns: days
     public static func days(s: Double) -> Double {
         return s/(24.0*60*60)
     }
     
+    
+    /// Converts days to seconds
+    ///
+    /// - Parameter d: days
+    /// - Returns: seconds
     public static func seconds(d: Double) -> Double {
         return d * 24.0 * 60 * 60
     }
     
+    
+    /// Converts hours to seconds
+    ///
+    /// - Parameter hr: hours
+    /// - Returns: seconds
     public static func seconds(hr: Double) -> Double {
         return hr * seconds(min: 60)
     }
     
+    
+    /// Converts minutes to seconds
+    ///
+    /// - Parameter min: minutes
+    /// - Returns: seconds
     public static func seconds(min: Double) -> Double {
         return min * 60
     }
     
-    
-    // JSON Read Stuff
-    public static func jsonSwitchBlank(potential blank: String, with substitute: String) -> String {
-        if blank == "" {
-            return substitute
-        }
-        return blank
-    }
-    
     // Math
+    
+    /// Raises a base to the power of an exponent
+    ///
+    /// - Parameters:
+    ///   - b: base
+    ///   - e: exponent
+    /// - Returns: result
     public static func pow(b: Int, e: Int) -> Int {
         var ret = 1
         for _ in 1...e {
