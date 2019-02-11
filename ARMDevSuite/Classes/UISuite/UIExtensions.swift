@@ -173,3 +173,8 @@ public extension UIView {
         
     }
 }
+
+extension CGFloat {
+    static let padding: CGFloat = 20
+    static let marginalPadding: CGFloat = 5
+}

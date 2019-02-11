@@ -8,11 +8,6 @@
 import Foundation
 import UIKit
 
-private extension CGFloat {
-    static let padding: CGFloat = 20
-    static let marginalPadding: CGFloat = 5
-}
-
 private extension UIColor {
     static let accentBlue = UIColor.colorWithRGB(rgbValue: 0x40c8e1)
     static let lightGray = UIColor.colorWithRGB(rgbValue: 0xa8a8a8)

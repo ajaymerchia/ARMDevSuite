@@ -1,23 +1,28 @@
 PODS:
-  - ARMDevSuite (0.1.13):
-    - ARMDevSuite/Alerts (= 0.1.13)
-    - ARMDevSuite/Layouts (= 0.1.13)
-    - ARMDevSuite/LocalData (= 0.1.13)
-    - ARMDevSuite/Logic (= 0.1.13)
-    - ARMDevSuite/UISuite (= 0.1.13)
+  - ARMDevSuite (0.1.16):
+    - ARMDevSuite/Alerts (= 0.1.16)
+    - ARMDevSuite/Layouts (= 0.1.16)
+    - ARMDevSuite/LocalData (= 0.1.16)
+    - ARMDevSuite/Logic (= 0.1.16)
+    - ARMDevSuite/Onboarding (= 0.1.16)
+    - ARMDevSuite/SegControl (= 0.1.16)
+    - ARMDevSuite/TextField (= 0.1.16)
+    - ARMDevSuite/UISuite (= 0.1.16)
+  - ARMDevSuite/Alerts (0.1.16):
     - JGProgressHUD
-  - ARMDevSuite/Alerts (0.1.13):
-    - JGProgressHUD
-  - ARMDevSuite/Layouts (0.1.13):
-    - JGProgressHUD
-  - ARMDevSuite/LocalData (0.1.13):
-    - JGProgressHUD
-  - ARMDevSuite/Logic (0.1.13):
-    - JGProgressHUD
-  - ARMDevSuite/UISuite (0.1.13):
+  - ARMDevSuite/Layouts (0.1.16)
+  - ARMDevSuite/LocalData (0.1.16)
+  - ARMDevSuite/Logic (0.1.16)
+  - ARMDevSuite/Onboarding (0.1.16)
+  - ARMDevSuite/SegControl (0.1.16):
     - ARMDevSuite/Layouts
-    - JGProgressHUD
+    - ARMDevSuite/UISuite
+  - ARMDevSuite/TextField (0.1.16):
+    - SkyFloatingLabelTextField (~> 3.0)
+  - ARMDevSuite/UISuite (0.1.16):
+    - ARMDevSuite/Layouts
   - JGProgressHUD (2.0.3)
+  - SkyFloatingLabelTextField (3.6.0)
 
 DEPENDENCIES:
   - ARMDevSuite (from `../`)
@@ -26,14 +31,16 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - JGProgressHUD
+    - SkyFloatingLabelTextField
 
 EXTERNAL SOURCES:
   ARMDevSuite:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ARMDevSuite: a6258d60504b340fa3b6a91c4d33f1f184a9401d
+  ARMDevSuite: ad7a8d98538dc6bb407a2f6d719a6d17fe9f6cde
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
+  SkyFloatingLabelTextField: 38164979b79512f9ff9288ad8acfc4bbf5d843e3
 
 PODFILE CHECKSUM: 0cc5a3cff44fabc27766675355711f90e8a0623a
 

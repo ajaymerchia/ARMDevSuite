@@ -61,11 +61,23 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
     ui.dependency 'ARMDevSuite/Layouts'
   end
   
-#  Begin UI Components
+  #  Begin UI Components
   s.subspec 'SegControl' do |seg|
     seg.source_files = 'ARMDevSuite/Classes/SegControl/*.swift'
     seg.dependency 'ARMDevSuite/Layouts'
     seg.dependency 'ARMDevSuite/UISuite'
+  end
+  
+  s.subspec 'Onboarding' do |onboarding|
+    onboarding.source_files = 'ARMDevSuite/Classes/Onboarding/*.swift'
+    onboarding.dependency 'ARMDevSuite/Layouts'
+    onboarding.dependency 'ARMDevSuite/UISuite'
+  end
+  
+  s.subspec 'TextField' do |textfield|
+    textfield.source_files = 'ARMDevSuite/Classes/Textfield/*.swift'
+    textfield.dependency 'SkyFloatingLabelTextField', '~> 3.0'
+    textfield.dependency 'ARMDevSuite/UISuite'
   end
 
   
