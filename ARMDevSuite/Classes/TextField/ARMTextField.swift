@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 import SkyFloatingLabelTextField
 
-class LabeledTextField: SkyFloatingLabelTextField {
+class ARMTextField: SkyFloatingLabelTextField {
     
     var additionalDistance: CGFloat = 5
     
