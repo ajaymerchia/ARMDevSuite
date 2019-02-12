@@ -22,10 +22,10 @@ public class LogicSuite {
     /// Produces a SHA256 Hash for the given string
     ///
     /// - Parameter string: value to hash
-    /// - Returns: Hashed value
+    /// - Returns: Hashed value as hex string
     public static func hash(_ string: String) -> String {
         let bytes = Data(bytes: Array(string.utf8)).sha256()
-        return bytes.base64EncodedString()
+        return bytes.toHexString()
     }
     
     
