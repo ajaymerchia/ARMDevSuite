@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 
+
 public class UISuite {
     
     /// Fetches an image from the URL and provides defaultImg if not available

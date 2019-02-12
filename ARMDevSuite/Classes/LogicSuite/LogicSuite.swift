@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CryptoSwift
 
 public class LogicSuite {
     // Logic & Datastructures
@@ -15,6 +16,16 @@ public class LogicSuite {
     /// - Returns: a unique identifier as a string
     public static func uuid() -> String {
         return UUID().uuidString
+    }
+    
+    
+    /// Produces a SHA256 Hash for the given string
+    ///
+    /// - Parameter string: value to hash
+    /// - Returns: Hashed value
+    public static func hash(_ string: String) -> String {
+        let bytes = Data(bytes: Array(string.utf8)).sha256()
+        return bytes.base64EncodedString()
     }
     
     

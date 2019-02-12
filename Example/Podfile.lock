@@ -1,26 +1,31 @@
 PODS:
-  - ARMDevSuite (0.1.16):
-    - ARMDevSuite/Alerts (= 0.1.16)
-    - ARMDevSuite/Layouts (= 0.1.16)
-    - ARMDevSuite/LocalData (= 0.1.16)
-    - ARMDevSuite/Logic (= 0.1.16)
-    - ARMDevSuite/Onboarding (= 0.1.16)
-    - ARMDevSuite/SegControl (= 0.1.16)
-    - ARMDevSuite/TextField (= 0.1.16)
-    - ARMDevSuite/UISuite (= 0.1.16)
-  - ARMDevSuite/Alerts (0.1.16):
+  - ARMDevSuite (0.1.19):
+    - ARMDevSuite/Alerts (= 0.1.19)
+    - ARMDevSuite/Layouts (= 0.1.19)
+    - ARMDevSuite/LocalData (= 0.1.19)
+    - ARMDevSuite/Logic (= 0.1.19)
+    - ARMDevSuite/Onboarding (= 0.1.19)
+    - ARMDevSuite/SegControl (= 0.1.19)
+    - ARMDevSuite/TextField (= 0.1.19)
+    - ARMDevSuite/UISuite (= 0.1.19)
+  - ARMDevSuite/Alerts (0.1.19):
     - JGProgressHUD
-  - ARMDevSuite/Layouts (0.1.16)
-  - ARMDevSuite/LocalData (0.1.16)
-  - ARMDevSuite/Logic (0.1.16)
-  - ARMDevSuite/Onboarding (0.1.16)
-  - ARMDevSuite/SegControl (0.1.16):
+  - ARMDevSuite/Layouts (0.1.19)
+  - ARMDevSuite/LocalData (0.1.19)
+  - ARMDevSuite/Logic (0.1.19):
+    - CryptoSwift
+  - ARMDevSuite/Onboarding (0.1.19):
     - ARMDevSuite/Layouts
     - ARMDevSuite/UISuite
-  - ARMDevSuite/TextField (0.1.16):
-    - SkyFloatingLabelTextField (~> 3.0)
-  - ARMDevSuite/UISuite (0.1.16):
+  - ARMDevSuite/SegControl (0.1.19):
     - ARMDevSuite/Layouts
+    - ARMDevSuite/UISuite
+  - ARMDevSuite/TextField (0.1.19):
+    - ARMDevSuite/UISuite
+    - SkyFloatingLabelTextField (~> 3.0)
+  - ARMDevSuite/UISuite (0.1.19):
+    - ARMDevSuite/Layouts
+  - CryptoSwift (0.14.0)
   - JGProgressHUD (2.0.3)
   - SkyFloatingLabelTextField (3.6.0)
 
@@ -30,6 +35,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - CryptoSwift
     - JGProgressHUD
     - SkyFloatingLabelTextField
 
@@ -38,7 +44,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ARMDevSuite: ad7a8d98538dc6bb407a2f6d719a6d17fe9f6cde
+  ARMDevSuite: c75cf5f5ad209e824b0759a97dcf89354a189f40
+  CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   SkyFloatingLabelTextField: 38164979b79512f9ff9288ad8acfc4bbf5d843e3
 

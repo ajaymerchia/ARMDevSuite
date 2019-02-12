@@ -1,6 +1,6 @@
 {
   "name": "ARMDevSuite",
-  "version": "0.1.16",
+  "version": "0.1.19",
   "summary": "UI & Logic Pod containing many useful helpers and UI elements.",
   "description": "ARMDevSuite is a pod that contains many useful UIKit elements as well as useful logic libraries.",
   "homepage": "https://github.com/ajaymerchia/ARMDevSuite",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/ajaymerchia/ARMDevSuite.git",
-    "tag": "0.1.16"
+    "tag": "0.1.19"
   },
   "swift_version": "4.2",
   "platforms": {
@@ -39,7 +39,12 @@
     },
     {
       "name": "Logic",
-      "source_files": "ARMDevSuite/Classes/LogicSuite/LogicSuite.swift"
+      "source_files": "ARMDevSuite/Classes/LogicSuite/LogicSuite.swift",
+      "dependencies": {
+        "CryptoSwift": [
+
+        ]
+      }
     },
     {
       "name": "UISuite",
@@ -64,7 +69,15 @@
     },
     {
       "name": "Onboarding",
-      "source_files": "ARMDevSuite/Classes/Onboarding/*.swift"
+      "source_files": "ARMDevSuite/Classes/Onboarding/*.swift",
+      "dependencies": {
+        "ARMDevSuite/Layouts": [
+
+        ],
+        "ARMDevSuite/UISuite": [
+
+        ]
+      }
     },
     {
       "name": "TextField",
@@ -72,6 +85,9 @@
       "dependencies": {
         "SkyFloatingLabelTextField": [
           "~> 3.0"
+        ],
+        "ARMDevSuite/UISuite": [
+
         ]
       }
     }
