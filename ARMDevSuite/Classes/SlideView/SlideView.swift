@@ -167,7 +167,7 @@ public class ARMSlideView: UIScrollView {
     
     
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         self.isPagingEnabled = true
         self.showsHorizontalScrollIndicator = false
@@ -176,7 +176,7 @@ public class ARMSlideView: UIScrollView {
         
     }
     
-    convenience init(frame: CGRect, data: [SlideData]) {
+    public convenience init(frame: CGRect, data: [SlideData]) {
         self.init(frame: frame)
         self.slideData = data
         self.createSlides(from: slideData)
