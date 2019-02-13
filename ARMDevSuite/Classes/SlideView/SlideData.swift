@@ -19,4 +19,9 @@ public struct SlideData {
         self.detail = detail
         self.image = image
     }
+    
+    public init(header: String, detail: String) {
+        self.header = header
+        self.detail = detail
+    }
 }
