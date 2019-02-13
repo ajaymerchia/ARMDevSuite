@@ -1,6 +1,6 @@
 //
 //  SlideData.swift
-//  HidesNight
+//  ARMDevSuite
 //
 //  Created by Ajay Merchia on 12/24/18.
 //  Copyright © 2018 Ajay Merchia. All rights reserved.
@@ -12,7 +12,7 @@ import UIKit
 struct SlideData {
     var header: String
     var detail: String
-    var image: UIImage
+    var image: UIImage?
     
     init(header: String, detail: String, image: UIImage) {
         self.header = header

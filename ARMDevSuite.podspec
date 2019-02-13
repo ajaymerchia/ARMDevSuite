@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ARMDevSuite'
-  s.version          = '0.1.21'
+  s.version          = '0.1.22'
   s.summary          = 'UI & Logic Pod containing many useful helpers and UI elements.'
 
 # This description is used to generate tags and improve search results.
@@ -69,10 +69,10 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
     seg.dependency 'ARMDevSuite/UISuite'
   end
   
-  s.subspec 'Onboarding' do |onboarding|
-    onboarding.source_files = 'ARMDevSuite/Classes/Onboarding/*.swift'
-    onboarding.dependency 'ARMDevSuite/Layouts'
-    onboarding.dependency 'ARMDevSuite/UISuite'
+  s.subspec 'SlideView' do |slideview|
+    slideview.source_files = 'ARMDevSuite/Classes/SlideView/*.swift'
+    slideview.dependency 'ARMDevSuite/Layouts'
+    slideview.dependency 'ARMDevSuite/UISuite'
   end
   
   s.subspec 'TextField' do |textfield|

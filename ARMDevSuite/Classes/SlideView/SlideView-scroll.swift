@@ -1,5 +1,5 @@
 //
-//  Onboarding-scroll.swift
+//  SlideView-scroll.swift
 //  ARMDevSuite
 //
 //  Created by Ajay Merchia on 2/9/19.
@@ -8,10 +8,12 @@
 import Foundation
 import UIKit
 
-extension ARMOnboarding: UIScrollViewDelegate {
+extension ARMSlideScrollView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(self.contentOffset.x/self.frame.width)
         pageControl.currentPage = Int(pageIndex)
+        pageControl.frame.origin = CGPoint(x: (self.frame.midX - pageControl.frame.width/2) + contentOffset.x, y: pageControl.frame.minY)
+        
         
         let maximumHorizontalOffset: CGFloat = scrollView.contentSize.width - scrollView.frame.width
         let currentHorizontalOffset: CGFloat = scrollView.contentOffset.x
@@ -36,13 +38,17 @@ extension ARMOnboarding: UIScrollViewDelegate {
         
         let upperBoundPercent: CGFloat = increments * CGFloat(newPageIndex) // This is the .25/.5
         
-        let previousScaleFactor: CGFloat = (upperBoundPercent - percentOffset.x)/increments
+        var previousScaleFactor: CGFloat = (upperBoundPercent - percentOffset.x)/increments
         let newScaleFactor: CGFloat = percentOffset.x/upperBoundPercent
         
         
-        slides[prevPageIndex].imageView.transform = CGAffineTransform(scaleX: previousScaleFactor, y: previousScaleFactor)
+        if self.contentOffset.x < 0 {
+            previousScaleFactor = 2 - previousScaleFactor
+        }
+        
+        slides[prevPageIndex].transform = CGAffineTransform(scaleX: previousScaleFactor, y: previousScaleFactor)
         guard newPageIndex < slides.count else {return}
-        slides[newPageIndex].imageView.transform = CGAffineTransform(scaleX: newScaleFactor, y: newScaleFactor)
+        slides[newPageIndex].transform = CGAffineTransform(scaleX: newScaleFactor, y: newScaleFactor)
     }
-
+    
 }
