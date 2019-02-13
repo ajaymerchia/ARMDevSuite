@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-struct SlideData {
-    var header: String
-    var detail: String
-    var image: UIImage?
+public struct SlideData {
+    public var header: String
+    public var detail: String
+    public var image: UIImage?
     
-    init(header: String, detail: String, image: UIImage) {
+    public init(header: String, detail: String, image: UIImage) {
         self.header = header
         self.detail = detail
         self.image = image

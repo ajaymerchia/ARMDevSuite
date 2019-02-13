@@ -8,10 +8,15 @@
 import Foundation
 import UIKit
 
-extension ARMSlideScrollView: UIScrollViewDelegate {
+extension ARMSlideView: UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let pageIndex = round(self.contentOffset.x/self.frame.width)
-        pageControl.currentPage = Int(pageIndex)
+        let pageIndex = Int(round(self.contentOffset.x/self.frame.width))
+        if pageIndex != self.currentPage {
+            self.slideDelegate?.slideView(self, changedTo: pageIndex)
+            pageControl.currentPage = pageIndex
+        }
+        
+        
         pageControl.frame.origin = CGPoint(x: (self.frame.midX - pageControl.frame.width/2) + contentOffset.x, y: pageControl.frame.minY)
         
         
@@ -50,5 +55,7 @@ extension ARMSlideScrollView: UIScrollViewDelegate {
         guard newPageIndex < slides.count else {return}
         slides[newPageIndex].transform = CGAffineTransform(scaleX: newScaleFactor, y: newScaleFactor)
     }
+    
+    
     
 }

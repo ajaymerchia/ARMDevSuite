@@ -15,5 +15,5 @@ public protocol ARMSegmentedControlDelegate {
     /// - Parameters:
     ///   - segmentedControl: ARMSegmentedControl for which this event was triggered
     ///   - index: index to which the ARMSegmentedControl changed
-    func armSegmentedControl(_ segmentedControl: ARMSegmentedControl, changedTo index: Int)
+    func segmentedControl(_ segmentedControl: ARMSegmentedControl, changedTo index: Int)
 }

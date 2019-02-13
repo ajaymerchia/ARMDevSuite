@@ -9,11 +9,13 @@ import Foundation
 import UIKit
 
 
-class ARMSlideScrollView: UIScrollView {
+public class ARMSlideView: UIScrollView {
     
     var slideData = [SlideData]()
     var slides = [Slide]()
     var pageControl: UIPageControl!
+    
+    public var slideDelegate: ARMSlideViewDelegate?
     
     var slideSize: CGSize {
         return CGSize(width: self.frame.width, height: self.frame.height - pageControlSafeZone)
@@ -41,14 +43,14 @@ class ARMSlideScrollView: UIScrollView {
     
     
     /// Color of the PageControl Indicator when selected
-    public var currentPageIndicatorTintColor: UIColor = ARMSlideScrollView.skyBlue {
+    public var currentPageIndicatorTintColor: UIColor = ARMSlideView.skyBlue {
         didSet {
             self.pageControl.currentPageIndicatorTintColor = self.currentPageIndicatorTintColor
         }
     }
     
     /// Color of the PageControl Indicator
-    public var pageIndicatorTintColor: UIColor = ARMSlideScrollView.placeholder {
+    public var pageIndicatorTintColor: UIColor = ARMSlideView.placeholder {
         didSet {
             self.pageControl.pageIndicatorTintColor = self.pageIndicatorTintColor
         }
@@ -72,7 +74,7 @@ class ARMSlideScrollView: UIScrollView {
     }
     
     /// Color of a slide's image border
-    public var imageBorderColor: UIColor = ARMSlideScrollView.placeholder {
+    public var imageBorderColor: UIColor = ARMSlideView.placeholder {
         didSet {
             for slide in self.slides {
                 guard let imageView = slide.imageView else { continue }
@@ -132,7 +134,7 @@ class ARMSlideScrollView: UIScrollView {
     }
     
     /// Color of the title label
-    public var titleColor = ARMSlideScrollView.skyBlue {
+    public var titleColor = ARMSlideView.skyBlue {
         didSet {
             for slide in self.slides {
                 slide.labelTitle.textColor = self.titleColor
@@ -149,13 +151,21 @@ class ARMSlideScrollView: UIScrollView {
     }
     
     /// Color of the description label
-    public var descriptionColor = ARMSlideScrollView.placeholder {
+    public var descriptionColor = ARMSlideView.placeholder {
         didSet {
             for slide in self.slides {
                 slide.labelDesc.textColor = self.descriptionColor
             }
         }
     }
+    
+    
+    /// Returns the currently selected page
+    public var currentPage: Int {
+        return pageControl.currentPage
+    }
+    
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)

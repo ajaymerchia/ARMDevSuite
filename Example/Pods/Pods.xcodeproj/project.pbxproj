@@ -110,6 +110,7 @@
 		B71AB1EB2213A79400BF9FC5 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AB1E72213A79400BF9FC5 /* Slide.swift */; };
 		B71AB1EC2213A79400BF9FC5 /* SlideView-scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AB1E82213A79400BF9FC5 /* SlideView-scroll.swift */; };
 		B71AB1ED2213A79400BF9FC5 /* SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AB1E92213A79400BF9FC5 /* SlideView.swift */; };
+		B71AB1EF2213AD3700BF9FC5 /* SlideViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71AB1EE2213AD3700BF9FC5 /* SlideViewDelegate.swift */; };
 		B9CE94A39BD5704190A6110D611FC666 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF96B3FFB048BE5CAA3D135089E8F4B0 /* String+Extension.swift */; };
 		BA99D8F278CE6FBE52C17EEF0E51A059 /* Blowfish+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F46FC83935B17BA5108F67662D04949 /* Blowfish+Foundation.swift */; };
 		BB7A0CF35E7778AD93078BBD147D4083 /* SkyFloatingLabelTextField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F94094109A61B43934ACBBA17560363E /* SkyFloatingLabelTextField.framework */; };
@@ -346,6 +347,7 @@
 		B71AB1E72213A79400BF9FC5 /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		B71AB1E82213A79400BF9FC5 /* SlideView-scroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SlideView-scroll.swift"; sourceTree = "<group>"; };
 		B71AB1E92213A79400BF9FC5 /* SlideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
+		B71AB1EE2213AD3700BF9FC5 /* SlideViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideViewDelegate.swift; sourceTree = "<group>"; };
 		B85F0C8F9A8EC3338013C3C593E92125 /* JGProgressHUDIndicatorView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JGProgressHUDIndicatorView.h; path = JGProgressHUD/JGProgressHUD/JGProgressHUDIndicatorView.h; sourceTree = "<group>"; };
 		B9266AFB3B3DD8EC6B44B994F529B1AC /* UInt16+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UInt16+Extension.swift"; path = "Sources/CryptoSwift/UInt16+Extension.swift"; sourceTree = "<group>"; };
 		B97A3972C10BCC142D4626C32B2D89DD /* jg_hud_error.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = jg_hud_error.png; path = JGProgressHUD/Resources/jg_hud_error.png; sourceTree = "<group>"; };
@@ -843,6 +845,7 @@
 		CDAD4386B44CC6E16B7A3D306C4C90E9 /* SlideView */ = {
 			isa = PBXGroup;
 			children = (
+				B71AB1EE2213AD3700BF9FC5 /* SlideViewDelegate.swift */,
 				B71AB1E92213A79400BF9FC5 /* SlideView.swift */,
 				B71AB1E82213A79400BF9FC5 /* SlideView-scroll.swift */,
 				B71AB1E72213A79400BF9FC5 /* Slide.swift */,
@@ -1302,6 +1305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B71AB1EF2213AD3700BF9FC5 /* SlideViewDelegate.swift in Sources */,
 				B71AB1ED2213A79400BF9FC5 /* SlideView.swift in Sources */,
 				62ABCCFA95C56E7537503AFFCAFBC443 /* AlertManager.swift in Sources */,
 				2A8892EF24706773E98238B090A5A19F /* ARMDevSuite-dummy.m in Sources */,

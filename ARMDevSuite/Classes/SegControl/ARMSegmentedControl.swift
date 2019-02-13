@@ -14,10 +14,10 @@ private extension UIColor {
 }
 
 
-public class ARMSegmentedControl: UIControl, ARMSegmentedControlDelegate  {
+public class ARMSegmentedControl: UIControl  {
     
     /// Delegate that receives a callback when the control switches states
-    public var delegate: ARMSegmentedControlDelegate!
+    public var delegate: ARMSegmentedControlDelegate?
     
     
     /// Font of the titles
@@ -99,7 +99,6 @@ public class ARMSegmentedControl: UIControl, ARMSegmentedControlDelegate  {
     /// - Parameter frame: frame of the new UIControl element
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.delegate = self
         
     }
     
@@ -110,7 +109,6 @@ public class ARMSegmentedControl: UIControl, ARMSegmentedControlDelegate  {
     ///   - titles: titles of the segments
     public init(frame: CGRect, titles: [String]) {
         super.init(frame: frame)
-        self.delegate = self
         self.setTitles(to: titles)
     }
     
@@ -210,7 +208,7 @@ public class ARMSegmentedControl: UIControl, ARMSegmentedControlDelegate  {
             self.indicatorView.frame = LayoutManager.belowCentered(elementAbove: self.segSwitchButtons[sender.tag], padding: self.indicatorDistance, width: self.segSwitchButtons[sender.tag].frame.width, height: self.indicatorHeight)
         })
         
-        delegate.armSegmentedControl(self, changedTo: self.activeIndex)
+        delegate?.segmentedControl(self, changedTo: self.activeIndex)
         
     }
     
@@ -248,7 +246,6 @@ public class ARMSegmentedControl: UIControl, ARMSegmentedControlDelegate  {
     }
     
     
-    public func armSegmentedControl(_ segmentedControl: ARMSegmentedControl, changedTo index: Int) {}
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
