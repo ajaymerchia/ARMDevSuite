@@ -178,3 +178,64 @@ extension CGFloat {
     static let padding: CGFloat = 20
     static let marginalPadding: CGFloat = 5
 }
+
+
+
+// Gradients
+public typealias Gradient = (color1: UIColor, color2: UIColor)
+
+typealias GradientPoints = (startPoint: CGPoint, endPoint: CGPoint)
+public enum GradientOrientation {
+    case topRightBottomLeft
+    case topLeftBottomRight
+    case horizontal
+    case vertical
+    
+    var startPoint : CGPoint {
+        return points.startPoint
+    }
+    
+    var endPoint : CGPoint {
+        return points.endPoint
+    }
+    
+    var points : GradientPoints {
+        switch self {
+        case .topRightBottomLeft:
+            return (CGPoint(x: 0.0,y: 1.0), CGPoint(x: 1.0,y: 0.0))
+        case .topLeftBottomRight:
+            return (CGPoint(x: 0.0,y: 0.0), CGPoint(x: 1,y: 1))
+        case .horizontal:
+            return (CGPoint(x: 0.0,y: 0.5), CGPoint(x: 1.0,y: 0.5))
+        case .vertical:
+            return (CGPoint(x: 0.0,y: 0.0), CGPoint(x: 0.0,y: 1.0))
+        }
+    }
+}
+
+public extension UIView {
+    func applyGradient(with colors: [UIColor], locations: [NSNumber]? = nil) {
+        let gradient = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = colors.map { $0.cgColor }
+        gradient.locations = locations
+        self.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    func applyGradient(with colors: [UIColor], gradient orientation: GradientOrientation) {
+        let gradient = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = colors.map { $0.cgColor }
+        gradient.startPoint = orientation.startPoint
+        gradient.endPoint = orientation.endPoint
+        self.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    public func apply(gradient: Gradient, in direction: GradientOrientation, reverse: Bool = false) {
+        var colors = [gradient.color1, gradient.color2]
+        if reverse {
+            colors.reverse()
+        }
+        self.applyGradient(with: colors, gradient: direction)
+    }
+}

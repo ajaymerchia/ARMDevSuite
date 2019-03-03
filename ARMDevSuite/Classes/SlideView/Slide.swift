@@ -24,7 +24,7 @@ public class Slide: UIView {
     var centerView: UIView?
     var labelDesc: UITextView!
     
-    var descriptionToTitleSpacing: CGFloat = 10 {
+    var descriptionToTitleSpacing: CGFloat = 0 {
         didSet {
             buildFromScratch()
         }
