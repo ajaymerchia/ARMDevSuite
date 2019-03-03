@@ -190,6 +190,11 @@ public class Gradient {
         self.color1 = c1
         self.color2 = c2
     }
+    
+    var colors: [UIColor] {
+        return [color1, color2]
+    }
+    
 }
 
 typealias GradientPoints = (startPoint: CGPoint, endPoint: CGPoint)
@@ -239,12 +244,34 @@ public extension UIView {
         self.layer.insertSublayer(gradient, at: 0)
     }
     
-    public func apply(gradient: Gradient, in direction: GradientOrientation, reverse: Bool = false) {
+    public func addBorder(gradient: Gradient, in direction: GradientOrientation, thickness: CGFloat, reverse: Bool = false) {
+        let grad = CAGradientLayer()
+        grad.frame =  CGRect(origin: .zero, size: self.frame.size)
+        grad.colors = gradient.colors.map { $0.cgColor }
+        grad.startPoint = direction.startPoint
+        grad.endPoint = direction.endPoint
+        
+        let shape = CAShapeLayer()
+        shape.lineWidth = thickness
+        shape.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
+        shape.strokeColor = UIColor.black.cgColor
+        shape.fillColor = UIColor.clear.cgColor
+        grad.mask = shape
+        
+        self.layer.addSublayer(grad)
+    }
+    
+    public func addFill(gradient: Gradient, in direction: GradientOrientation, reverse: Bool = false) {
         var colors: [UIColor]! = [gradient.color1, gradient.color2]
         if reverse {
             colors.reverse()
         }
         self.applyGradient(with: colors, gradient: direction)
+    }
+    
+    public func addBorder(colored color: UIColor, thickness: CGFloat) {
+        self.layer.borderWidth = thickness
+        self.layer.borderColor = color.cgColor
     }
 }
 
