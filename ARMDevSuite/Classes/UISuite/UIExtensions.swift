@@ -182,7 +182,15 @@ extension CGFloat {
 
 
 // Gradients
-public typealias Gradient = (color1: UIColor, color2: UIColor)
+public class Gradient {
+    var color1: UIColor!
+    var color2: UIColor!
+    
+    public init(_ c1: UIColor, _ c2: UIColor) {
+        self.color1 = c1
+        self.color2 = c2
+    }
+}
 
 typealias GradientPoints = (startPoint: CGPoint, endPoint: CGPoint)
 public enum GradientOrientation {
@@ -232,10 +240,11 @@ public extension UIView {
     }
     
     public func apply(gradient: Gradient, in direction: GradientOrientation, reverse: Bool = false) {
-        var colors = [gradient.color1, gradient.color2]
+        var colors: [UIColor]! = [gradient.color1, gradient.color2]
         if reverse {
             colors.reverse()
         }
         self.applyGradient(with: colors, gradient: direction)
     }
 }
+
