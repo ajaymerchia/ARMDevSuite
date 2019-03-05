@@ -17,6 +17,7 @@ PODS:
     - CryptoSwift
   - ARMDevSuite/PhotoPicker (0.1.28):
     - ARMDevSuite/Alerts
+    - ARMDevSuite/Layouts
     - ARMDevSuite/UISuite
     - DKImagePickerController
   - ARMDevSuite/SegControl (0.1.28):
@@ -106,7 +107,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ARMDevSuite: 2f02f1434e38f91b3ccb8f3bc6404afd488e5c11
+  ARMDevSuite: 3a0311a9834e3ee133e1742d1667a0ab0581ad9d
   CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
   DKCamera: 61fa47629a39354e5111bca1fe96695de020dcb9
   DKImagePickerController: 7c8c788a17251dfbcf4920c5f042d55c3b900d68

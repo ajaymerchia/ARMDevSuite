@@ -93,7 +93,12 @@
     },
     {
       "name": "PhotoPicker",
-      "source_files": "ARMDevSuite/Classes/Photos/*.swift",
+      "source_files": "ARMDevSuite/Classes/PhotoPicker/*.swift",
+      "resource_bundles": {
+        "PhotoPickerBundle": [
+          "ARMDevSuite/Assets/PhotoPicker/*.png"
+        ]
+      },
       "dependencies": {
         "DKImagePickerController": [
 
@@ -102,6 +107,9 @@
 
         ],
         "ARMDevSuite/Alerts": [
+
+        ],
+        "ARMDevSuite/Layouts": [
 
         ]
       }

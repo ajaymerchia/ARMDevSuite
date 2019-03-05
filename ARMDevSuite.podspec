@@ -75,7 +75,7 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
   end
   
   s.subspec 'PhotoPicker' do |photopicker|
-    photopicker.source_files = 'ARMDevSuite/Classes/Photos/*.swift'
+    photopicker.source_files = 'ARMDevSuite/Classes/PhotoPicker/*.swift'
     photopicker.resource_bundles = {
       'PhotoPickerBundle' => ['ARMDevSuite/Assets/PhotoPicker/*.png']
     }

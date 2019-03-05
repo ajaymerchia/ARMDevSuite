@@ -18,7 +18,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         alerts = AlertManager(vc: self)
-        initUI()
+//        initUI()
+        
+        let button = ARMPhotoPickerButton(frame: LayoutManager.inside(inside: self.view, justified: .MidCenter, verticalPadding: 0, horizontalPadding: 0, width: view.frame.width/2, height: view.frame.width/2))
+        button.style = .profile
+        view.addSubview(button)
         
         
         

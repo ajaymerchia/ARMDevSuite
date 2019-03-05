@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 import DKImagePickerController
-import ARMDevSuite
 
 extension UIView {
     var parentViewController: UIViewController? {
@@ -26,7 +25,7 @@ extension UIView {
 
 
 public class ARMPhotoPickerButton: UIButton {
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         innerLabel = UILabel(frame: CGRect(x: 0, y: self.frame.height - 30, width: self.frame.width, height: 30))
         configureLabel()
@@ -41,7 +40,12 @@ public class ARMPhotoPickerButton: UIButton {
     // Coloring
     private static var skyBlue = UIColor.colorWithRGB(rgbValue: 0x40c8e1)
     private static var placeholder = UIColor.colorWithRGB(rgbValue: 0xa8a8a8)
-    private static var avatar = UIImage(named: "avatar")!.withRenderingMode(.alwaysTemplate)
+    
+    private static let frameworkBundle = Bundle(for: ARMPhotoPickerButton.self)
+    private static let bundleURL = frameworkBundle.resourceURL?.appendingPathComponent("PhotoPickerBundle.bundle")
+    private static let resourceBundle = Bundle(url: bundleURL!)
+    private static let image = UIImage(named: "avatar", in: resourceBundle, compatibleWith: nil)
+    private static let avatar = image!.withRenderingMode(.alwaysTemplate)
     
     // Styling
     /// Determines the appearance and behavior of ARMPhotoPicker
