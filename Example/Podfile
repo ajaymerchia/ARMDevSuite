@@ -3,6 +3,7 @@ use_frameworks!
 target 'ARMDevSuite_Example' do
   pod 'ARMDevSuite', :path => '../'
   pod 'JGProgressHUD', :inhibit_warnings => true
+  pod 'DKImagePickerController'
 
   target 'ARMDevSuite_Tests' do
     inherit! :search_paths

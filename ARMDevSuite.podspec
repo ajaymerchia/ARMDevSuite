@@ -29,15 +29,6 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
   s.swift_version    = '4.2'
   
   s.ios.deployment_target = '8.0'
-  # s.resource_bundles = {
-  #   'ARMDevSuite' => ['ARMDevSuite/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-#   s.dependency 'JGProgressHUD'
-
-
 
   s.subspec 'Layouts' do |layout|
     layout.source_files = 'ARMDevSuite/Classes/LayoutManager/LayoutManager.swift'
@@ -46,6 +37,7 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
   s.subspec 'LocalData' do |localdata|
     localdata.source_files = 'ARMDevSuite/Classes/LocalData/LocalDataManager.swift'
   end
+  
   
   s.subspec 'Alerts' do |alerts|
     alerts.source_files = 'ARMDevSuite/Classes/AlertManager/AlertManager.swift'
@@ -63,6 +55,7 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
   end
   
   #  Begin UI Components
+
   s.subspec 'SegControl' do |seg|
     seg.source_files = 'ARMDevSuite/Classes/SegControl/*.swift'
     seg.dependency 'ARMDevSuite/Layouts'
@@ -80,6 +73,20 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
     textfield.dependency 'SkyFloatingLabelTextField', '~> 3.0'
     textfield.dependency 'ARMDevSuite/UISuite'
   end
+  
+  s.subspec 'PhotoPicker' do |photopicker|
+    photopicker.source_files = 'ARMDevSuite/Classes/Photos/*.swift'
+    photopicker.resource_bundles = {
+      'PhotoPickerBundle' => ['ARMDevSuite/Assets/PhotoPicker/*.png']
+    }
+    photopicker.dependency 'DKImagePickerController'
+    photopicker.dependency 'ARMDevSuite/UISuite'
+    photopicker.dependency 'ARMDevSuite/Alerts'
+    photopicker.dependency 'ARMDevSuite/Layouts'
+  end
+
+
+  
 
   
   

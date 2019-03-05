@@ -1,6 +1,6 @@
 {
   "name": "ARMDevSuite",
-  "version": "0.1.19",
+  "version": "0.1.28",
   "summary": "UI & Logic Pod containing many useful helpers and UI elements.",
   "description": "ARMDevSuite is a pod that contains many useful UIKit elements as well as useful logic libraries.",
   "homepage": "https://github.com/ajaymerchia/ARMDevSuite",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/ajaymerchia/ARMDevSuite.git",
-    "tag": "0.1.19"
+    "tag": "0.1.28"
   },
   "swift_version": "4.2",
   "platforms": {
@@ -68,8 +68,8 @@
       }
     },
     {
-      "name": "Onboarding",
-      "source_files": "ARMDevSuite/Classes/Onboarding/*.swift",
+      "name": "SlideView",
+      "source_files": "ARMDevSuite/Classes/SlideView/*.swift",
       "dependencies": {
         "ARMDevSuite/Layouts": [
 
@@ -87,6 +87,21 @@
           "~> 3.0"
         ],
         "ARMDevSuite/UISuite": [
+
+        ]
+      }
+    },
+    {
+      "name": "PhotoPicker",
+      "source_files": "ARMDevSuite/Classes/Photos/*.swift",
+      "dependencies": {
+        "DKImagePickerController": [
+
+        ],
+        "ARMDevSuite/UISuite": [
+
+        ],
+        "ARMDevSuite/Alerts": [
 
         ]
       }
