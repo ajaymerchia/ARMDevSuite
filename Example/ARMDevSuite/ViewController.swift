@@ -34,12 +34,22 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @objc func createARMHUD() {
+        let hud = ARMBubbleProgressHud(for: self.view)
+        hud.animationStyle = .blinking
+        hud.bubbleStyle = .filled
+        hud.title = "Loading Your Preferences"
+        hud.detail = "This many take a while... Feel free to go check your email"
+        hud.show()
+    }
+    
     func initUI() {
         
         runTimerButton = UIButton(frame: LayoutManager.inside(inside: self.view, justified: .TopCenter, verticalPadding: 100, horizontalPadding: 0, width: view.frame.width/1.1, height: 70))
         runTimerButton.setTitle("Start a progress HUD", for: .normal)
         runTimerButton.backgroundColor = .blue
-        runTimerButton.addTarget(self, action: #selector(askHud), for: .touchUpInside)
+//        runTimerButton.addTarget(self, action: #selector(askHud), for: .touchUpInside)
+        runTimerButton.addTarget(self, action: #selector(createARMHUD), for: .touchUpInside)
         view.addSubview(runTimerButton)
         
         

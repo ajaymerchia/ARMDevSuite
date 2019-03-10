@@ -1,6 +1,6 @@
 {
   "name": "ARMDevSuite",
-  "version": "0.1.28",
+  "version": "0.1.29",
   "summary": "UI & Logic Pod containing many useful helpers and UI elements.",
   "description": "ARMDevSuite is a pod that contains many useful UIKit elements as well as useful logic libraries.",
   "homepage": "https://github.com/ajaymerchia/ARMDevSuite",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/ajaymerchia/ARMDevSuite.git",
-    "tag": "0.1.28"
+    "tag": "0.1.29"
   },
   "swift_version": "4.2",
   "platforms": {
@@ -107,6 +107,18 @@
 
         ],
         "ARMDevSuite/Alerts": [
+
+        ],
+        "ARMDevSuite/Layouts": [
+
+        ]
+      }
+    },
+    {
+      "name": "ProgressHud",
+      "source_files": "ARMDevSuite/Classes/Textfield/*.swift",
+      "dependencies": {
+        "ARMDevSuite/UISuite": [
 
         ],
         "ARMDevSuite/Layouts": [

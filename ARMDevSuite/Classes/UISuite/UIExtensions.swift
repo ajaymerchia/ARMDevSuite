@@ -41,6 +41,24 @@ public extension UIButton {
 }
 
 public extension UIColor {
+    /// Access the rgba values of this color
+    var rgba: [CGFloat] {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        
+        return [red, green, blue, alpha]
+    }
+    
+    
+    /// Initialize a color from an array of rgba
+    ///
+    /// - Parameter rgba: rgba values on scale of 0 to 1
+    public convenience init(_ rgba: [CGFloat]) {
+        self.init(red: rgba[0], green: rgba[1], blue: rgba[2], alpha: rgba[3])
+    }
     
     /// Gets a random color
     ///
