@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     }
     
     @objc func createARMHUD() {
-//        let hud = ARMBubbleProgressHud(for: self.view)
+        let hud = ARMBubbleProgressHud(for: self.view)
         hud.animationStyle = .blinking
         hud.bubbleStyle = .filled
         hud.title = "Loading Your Preferences"

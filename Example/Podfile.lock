@@ -1,39 +1,39 @@
 PODS:
-  - ARMDevSuite (0.1.29):
-    - ARMDevSuite/Alerts (= 0.1.29)
-    - ARMDevSuite/Layouts (= 0.1.29)
-    - ARMDevSuite/LocalData (= 0.1.29)
-    - ARMDevSuite/Logic (= 0.1.29)
-    - ARMDevSuite/PhotoPicker (= 0.1.29)
-    - ARMDevSuite/ProgressHud (= 0.1.29)
-    - ARMDevSuite/SegControl (= 0.1.29)
-    - ARMDevSuite/SlideView (= 0.1.29)
-    - ARMDevSuite/TextField (= 0.1.29)
-    - ARMDevSuite/UISuite (= 0.1.29)
-  - ARMDevSuite/Alerts (0.1.29):
+  - ARMDevSuite (0.1.31):
+    - ARMDevSuite/Alerts (= 0.1.31)
+    - ARMDevSuite/Layouts (= 0.1.31)
+    - ARMDevSuite/LocalData (= 0.1.31)
+    - ARMDevSuite/Logic (= 0.1.31)
+    - ARMDevSuite/PhotoPicker (= 0.1.31)
+    - ARMDevSuite/ProgressHud (= 0.1.31)
+    - ARMDevSuite/SegControl (= 0.1.31)
+    - ARMDevSuite/SlideView (= 0.1.31)
+    - ARMDevSuite/TextField (= 0.1.31)
+    - ARMDevSuite/UISuite (= 0.1.31)
+  - ARMDevSuite/Alerts (0.1.31):
     - JGProgressHUD
-  - ARMDevSuite/Layouts (0.1.29)
-  - ARMDevSuite/LocalData (0.1.29)
-  - ARMDevSuite/Logic (0.1.29):
+  - ARMDevSuite/Layouts (0.1.31)
+  - ARMDevSuite/LocalData (0.1.31)
+  - ARMDevSuite/Logic (0.1.31):
     - CryptoSwift
-  - ARMDevSuite/PhotoPicker (0.1.29):
+  - ARMDevSuite/PhotoPicker (0.1.31):
     - ARMDevSuite/Alerts
     - ARMDevSuite/Layouts
     - ARMDevSuite/UISuite
     - DKImagePickerController
-  - ARMDevSuite/ProgressHud (0.1.29):
+  - ARMDevSuite/ProgressHud (0.1.31):
     - ARMDevSuite/Layouts
     - ARMDevSuite/UISuite
-  - ARMDevSuite/SegControl (0.1.29):
+  - ARMDevSuite/SegControl (0.1.31):
     - ARMDevSuite/Layouts
     - ARMDevSuite/UISuite
-  - ARMDevSuite/SlideView (0.1.29):
+  - ARMDevSuite/SlideView (0.1.31):
     - ARMDevSuite/Layouts
     - ARMDevSuite/UISuite
-  - ARMDevSuite/TextField (0.1.29):
+  - ARMDevSuite/TextField (0.1.31):
     - ARMDevSuite/UISuite
     - SkyFloatingLabelTextField (~> 3.0)
-  - ARMDevSuite/UISuite (0.1.29):
+  - ARMDevSuite/UISuite (0.1.31):
     - ARMDevSuite/Layouts
   - CryptoSwift (0.14.0)
   - DKCamera (1.6.4)
@@ -111,7 +111,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ARMDevSuite: 2b6b99efb35bf6adb30e10165dee235e9c86df91
+  ARMDevSuite: 967e2266e82d9bbe06ae824bd02ae90426e3e0e1
   CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
   DKCamera: 61fa47629a39354e5111bca1fe96695de020dcb9
   DKImagePickerController: 7c8c788a17251dfbcf4920c5f042d55c3b900d68

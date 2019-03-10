@@ -33,7 +33,7 @@ public class ARMBubbleProgressHud: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(for view: UIView) {
+    public init(for view: UIView) {
         super.init(frame: view.frame)
         parentView = view
         titleLabel.textAlignment = .center
