@@ -153,7 +153,7 @@ public class ARMBubbleProgressHud: UIView {
             }
             
             
-            var colorVals = (0..<colors.count).map { (j) -> CGColor in
+            let colorVals = (0..<colors.count).map { (j) -> CGColor in
                 return colors[(i + j) % (colors.count)]
             }
             
