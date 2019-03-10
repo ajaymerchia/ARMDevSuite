@@ -286,6 +286,7 @@
 		B5E52F5068019BB627E8F0E80F655079 /* DKCameraResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1278CD04348005C62193D8446A3FDF /* DKCameraResource.swift */; };
 		B6B75E1BE61416D8CF87C76D014CC8D0 /* ar.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1F71D78DC14BD15A85806A9681E8AF33 /* ar.lproj */; };
 		B717FD572235B7C700307428 /* ARMBubbleProgressHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = B717FD562235B7C700307428 /* ARMBubbleProgressHud.swift */; };
+		B717FD592235BEAA00307428 /* ARMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B717FD582235BEAA00307428 /* ARMTextField.swift */; };
 		B7C2220ED1C01EB3C025CFCB215DAF89 /* JGProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EA1BFD6FFEB91E0F422383C28A59863C /* JGProgressHUD.bundle */; };
 		B81AD16EDE4FAB663552E0E291B90BE5 /* DKPhotoBasePreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF698D311761B2F32FF340DD42D6FCC /* DKPhotoBasePreviewVC.swift */; };
 		B8436F5C7444D9B218CA3942AD258BDA /* DKPhotoWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFDA6A576BDDE42FFDB22FA79839F91 /* DKPhotoWebVC.swift */; };
@@ -875,6 +876,7 @@
 		B6AA0A874E956455547B8152D89119DF /* SkyFloatingLabelTextField-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SkyFloatingLabelTextField-umbrella.h"; sourceTree = "<group>"; };
 		B6BAF77F53C27EC41B82F4E96DD7FCE0 /* SDWebImage.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SDWebImage.modulemap; sourceTree = "<group>"; };
 		B717FD562235B7C700307428 /* ARMBubbleProgressHud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARMBubbleProgressHud.swift; sourceTree = "<group>"; };
+		B717FD582235BEAA00307428 /* ARMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARMTextField.swift; path = ARMDevSuite/Classes/TextField/ARMTextField.swift; sourceTree = "<group>"; };
 		B744CEF35F2EBF6679E4D5C864A16C07 /* SDWebImageDownloaderOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDownloaderOperation.m; path = SDWebImage/SDWebImageDownloaderOperation.m; sourceTree = "<group>"; };
 		B7AD799A2D28ACF09C152B1D02474888 /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = fr.lproj; path = "Objective-C/TOCropViewController/Resources/fr.lproj"; sourceTree = "<group>"; };
 		B81EEAFE99DB4F7700549AE9278B97C0 /* JGProgressHUDAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JGProgressHUDAnimation.m; path = JGProgressHUD/JGProgressHUD/JGProgressHUDAnimation.m; sourceTree = "<group>"; };
@@ -1845,6 +1847,7 @@
 		BB88E01FD57A663B7ED496E6A8AC6C2E /* TextField */ = {
 			isa = PBXGroup;
 			children = (
+				B717FD582235BEAA00307428 /* ARMTextField.swift */,
 			);
 			name = TextField;
 			sourceTree = "<group>";
@@ -2991,6 +2994,7 @@
 				A1F35FBA3B80045820BBE824B1272840 /* ARMDevSuite-dummy.m in Sources */,
 				2EED7F751030A7020A10E4314253C957 /* ARMPhotoPicker-inputs.swift in Sources */,
 				4164C021AF8BA01537FCE27D2C48BEB4 /* ARMPhotoPicker.swift in Sources */,
+				B717FD592235BEAA00307428 /* ARMTextField.swift in Sources */,
 				217CDCAA210A7844B6EFFA585F625F1E /* ARMPhotoPickerDelegate.swift in Sources */,
 				B717FD572235B7C700307428 /* ARMBubbleProgressHud.swift in Sources */,
 				C386C54ECDD87244EAEDB1D21E07802D /* ARMSegmentedControl.swift in Sources */,
