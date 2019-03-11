@@ -6,6 +6,7 @@
 //
 
 import Foundation
+@available(iOS 9.0, *)
 public protocol ARMPhotoPickerDelegate {
     
     

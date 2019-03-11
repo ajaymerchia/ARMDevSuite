@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ARMDevSuite'
-  s.version          = '0.1.32'
+  s.version          = '0.1.33'
   s.summary          = 'UI & Logic Pod containing many useful helpers and UI elements.'
 
 # This description is used to generate tags and improve search results.
@@ -87,6 +87,9 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
   
   s.subspec 'ProgressHud' do |progresshud|
     progresshud.source_files = 'ARMDevSuite/Classes/ProgressHud/*.swift'
+    progresshud.resource_bundles = {
+      'ProgressHudBundle' => ['ARMDevSuite/Assets/ProgressHud/*.png']
+    }
     progresshud.dependency 'ARMDevSuite/UISuite'
     progresshud.dependency 'ARMDevSuite/Layouts'
   end

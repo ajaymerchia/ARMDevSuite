@@ -18,12 +18,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         alerts = AlertManager(vc: self)
-//        initUI()
+        initUI()
         
-        let button = ARMPhotoPickerButton(frame: LayoutManager.inside(inside: self.view, justified: .MidCenter, verticalPadding: 0, horizontalPadding: 0, width: view.frame.width/2, height: view.frame.width/2))
-        button.style = .profile
-        view.addSubview(button)
-        
+//        let button = ARMPhotoPickerButton(frame: LayoutManager.inside(inside: self.view, justified: .MidCenter, verticalPadding: 0, horizontalPadding: 0, width: view.frame.width/2, height: view.frame.width/2))
+//        button.style = .profile
+//        view.addSubview(button)
+//        
         
         
         
@@ -34,13 +34,20 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @available(iOS 10.0, *)
     @objc func createARMHUD() {
         let hud = ARMBubbleProgressHud(for: self.view)
-        hud.animationStyle = .blinking
+        hud.animationStyle = .rotateContinuous
         hud.bubbleStyle = .filled
-        hud.title = "Loading Your Preferences"
-        hud.detail = "This many take a while... Feel free to go check your email"
+        hud.bubbleGap = true
+        hud.numBubbles = 7
+        hud.setMessage(title: "Loading Your Preferences", detail: "This many take a while... Feel free to go check your email")
+        
         hud.show()
+        
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (t) in
+            hud.showResult(success: false, title: "All Done!", detail: nil)
+        }
     }
     
     func initUI() {
@@ -49,7 +56,11 @@ class ViewController: UIViewController {
         runTimerButton.setTitle("Start a progress HUD", for: .normal)
         runTimerButton.backgroundColor = .blue
 //        runTimerButton.addTarget(self, action: #selector(askHud), for: .touchUpInside)
-        runTimerButton.addTarget(self, action: #selector(createARMHUD), for: .touchUpInside)
+        if #available(iOS 10.0, *) {
+            runTimerButton.addTarget(self, action: #selector(createARMHUD), for: .touchUpInside)
+        } else {
+            // Fallback on earlier versions
+        }
         view.addSubview(runTimerButton)
         
         

@@ -9,10 +9,12 @@ import Foundation
 import UIKit
 import JGProgressHUD
 
+@available(iOS 9.0, *)
 public class AlertManager {
     private var vc: UIViewController!
     private(set) public var callback: (() -> ())?
-    public var hud: JGProgressHUD?
+    public var jghud: JGProgressHUD?
+    public var hud: ARMBubbleProgressHud!
     
     // Yes or No Question Variables
     
@@ -31,6 +33,7 @@ public class AlertManager {
     /// - Parameter vc: ViewController in which alerts will display
     public init(vc: UIViewController) {
         self.vc = vc
+        hud = ARMBubbleProgressHud(for: vc.view)
     }
     
     
@@ -92,11 +95,11 @@ public class AlertManager {
     ///   - withTitle: Title displayed on the HUD
     ///   - withDetail: Details displayed on the HUD
     ///   - style: Determines the coloring of the HUD
-    public func startProgressHud(withTitle:String, withDetail: String? = nil, style: JGProgressHUDStyle = .light) {
-        self.hud = JGProgressHUD(style: style)
-        self.hud?.textLabel.text = withTitle
-        self.hud?.detailTextLabel.text = withDetail
-        self.hud?.show(in: self.vc.view)
+    public func startJGProgressHud(withTitle:String, withDetail: String? = nil, style: JGProgressHUDStyle = .light) {
+        self.jghud = JGProgressHUD(style: style)
+        self.jghud?.textLabel.text = withTitle
+        self.jghud?.detailTextLabel.text = withDetail
+        self.jghud?.show(in: self.vc.view)
     }
     
     
@@ -104,10 +107,10 @@ public class AlertManager {
     /// Shows a failure message on the HUD and then fades away.
     ///
     /// - Returns: nil
-    public func triggerHudFailure(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
-        hud?.indicatorView = JGProgressHUDErrorIndicatorView(contentView: vc.view)
-        changeHUD(toTitle: withHeader, andDetail: andDetail)
-        self.hud?.dismiss(afterDelay: hudResponseWait, animated: true)
+    public func triggerJGHudFailure(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
+        jghud?.indicatorView = JGProgressHUDErrorIndicatorView(contentView: vc.view)
+        changeJGHUD(toTitle: withHeader, andDetail: andDetail)
+        self.jghud?.dismiss(afterDelay: hudResponseWait, animated: true)
         Timer.scheduledTimer(withTimeInterval: hudResponseWait, repeats: false) { (t) in
             onComplete()
         }
@@ -117,10 +120,10 @@ public class AlertManager {
     /// Shows a success message on the HUD and then fades away.
     ///
     /// - Returns: nil
-    public func triggerHudSuccess(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
-        hud?.indicatorView = JGProgressHUDSuccessIndicatorView(contentView: vc.view)
-        changeHUD(toTitle: withHeader, andDetail: andDetail)
-        self.hud?.dismiss(afterDelay: hudResponseWait, animated: true)
+    public func triggerJGHudSuccess(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
+        jghud?.indicatorView = JGProgressHUDSuccessIndicatorView(contentView: vc.view)
+        changeJGHUD(toTitle: withHeader, andDetail: andDetail)
+        self.jghud?.dismiss(afterDelay: hudResponseWait, animated: true)
         Timer.scheduledTimer(withTimeInterval: hudResponseWait, repeats: false) { (t) in
             onComplete()
         }
@@ -132,14 +135,70 @@ public class AlertManager {
     /// - Parameters:
     ///   - toTitle: Title displayed on the HUD
     ///   - andDetail: Details displayed on the HUD
-    public func changeHUD(toTitle: String?, andDetail: String?) {
+    public func changeJGHUD(toTitle: String?, andDetail: String?) {
         if let title = toTitle {
-            self.hud?.textLabel.text = title
+            self.jghud?.textLabel.text = title
         }
         if let detail = andDetail {
-            self.hud?.detailTextLabel.text = detail
+            self.jghud?.detailTextLabel.text = detail
         }
     }
+    
+    /// Starts a ARMBubbleProgressHud with the provided message
+    ///
+    /// - Parameters:
+    ///   - withTitle: Title displayed on the HUD
+    ///   - withDetail: Details displayed on the HUD
+    ///   - style: Determines the coloring of the HUD
+    public func startProgressHud(withTitle:String, withDetail: String? = nil) {
+        self.hud.setMessage(title: withTitle, detail: withDetail)
+        self.hud.show()
+    }
+    
+    /// Changes the message displayed on the ARMBubbleProgressHud
+    ///
+    /// - Parameters:
+    ///   - toTitle: Title displayed on the HUD
+    ///   - andDetail: Details displayed on the HUD
+    public func changeHUD(toTitle: String?, andDetail: String?) {
+        self.hud.setMessage(title: toTitle, detail: andDetail)
+    }
+    
+    /// Dismisses the ARMBubbleProgressHud
+    public func dismissHUD() {
+        hud.dismiss()
+    }
+    
+    @available(iOS 10.0, *)
+    /// Shows a failure message on the ARMBubbleProgressHud and then fades away.
+    ///
+    /// - Returns: nil
+    public func triggerHudFailure(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
+        jghud?.indicatorView = JGProgressHUDErrorIndicatorView(contentView: vc.view)
+        changeJGHUD(toTitle: withHeader, andDetail: andDetail)
+        self.jghud?.dismiss(afterDelay: hudResponseWait, animated: true)
+        Timer.scheduledTimer(withTimeInterval: hudResponseWait, repeats: false) { (t) in
+            onComplete()
+        }
+    }
+    
+    @available(iOS 10.0, *)
+    /// Shows a success message on the ARMBubbleProgressHud and then fades away.
+    ///
+    /// - Returns: nil
+    public func triggerHudSuccess(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
+        jghud?.indicatorView = JGProgressHUDSuccessIndicatorView(contentView: vc.view)
+        changeJGHUD(toTitle: withHeader, andDetail: andDetail)
+        self.jghud?.dismiss(afterDelay: hudResponseWait, animated: true)
+        Timer.scheduledTimer(withTimeInterval: hudResponseWait, repeats: false) { (t) in
+            onComplete()
+        }
+        
+    }
+    
+    
+    
+    
     
 
     

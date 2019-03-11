@@ -24,6 +24,7 @@ extension UIView {
 
 
 
+@available(iOS 9.0, *)
 public class ARMPhotoPickerButton: UIButton {
     override public init(frame: CGRect) {
         super.init(frame: frame)

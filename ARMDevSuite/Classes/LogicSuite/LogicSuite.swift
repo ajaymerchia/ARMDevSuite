@@ -7,6 +7,7 @@
 
 import Foundation
 import CryptoSwift
+import CoreLocation
 
 public class LogicSuite {
     // Logic & Datastructures
@@ -59,6 +60,29 @@ public class LogicSuite {
         }
         
         return result
+    }
+    
+    
+    /// Geocodes an address string into a CLLocation
+    ///
+    /// - Parameters:
+    ///   - address: Address to be encoded
+    ///   - complete: Closure accepting a location, or nil if not found
+    public static func geocode(_ address: String, complete: @escaping ((CLLocation?) -> ()) ) {
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(address) { (placemarks, error) in
+            guard
+                let placemarks = placemarks,
+                let location = placemarks.first?.location
+                else {
+                    // handle no location found
+                    complete(nil)
+                    return
+            }
+            
+            // Use your location
+            complete(location)
+        }
     }
     
     
