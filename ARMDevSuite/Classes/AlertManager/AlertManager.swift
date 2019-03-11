@@ -174,10 +174,10 @@ public class AlertManager {
     ///
     /// - Returns: nil
     public func triggerHudFailure(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
-        jghud?.indicatorView = JGProgressHUDErrorIndicatorView(contentView: vc.view)
-        changeJGHUD(toTitle: withHeader, andDetail: andDetail)
-        self.jghud?.dismiss(afterDelay: hudResponseWait, animated: true)
-        Timer.scheduledTimer(withTimeInterval: hudResponseWait, repeats: false) { (t) in
+        let transition: TimeInterval = 0.75
+        let fadeTime: TimeInterval = 1.5
+        hud.showResult(success: true, title: withHeader, detail: andDetail, duration: transition, fadeAfter: fadeTime)
+        Timer.scheduledTimer(withTimeInterval: transition + fadeTime, repeats: false) { (_) in
             onComplete()
         }
     }
@@ -187,13 +187,12 @@ public class AlertManager {
     ///
     /// - Returns: nil
     public func triggerHudSuccess(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
-        jghud?.indicatorView = JGProgressHUDSuccessIndicatorView(contentView: vc.view)
-        changeJGHUD(toTitle: withHeader, andDetail: andDetail)
-        self.jghud?.dismiss(afterDelay: hudResponseWait, animated: true)
-        Timer.scheduledTimer(withTimeInterval: hudResponseWait, repeats: false) { (t) in
+        let transition: TimeInterval = 0.75
+        let fadeTime: TimeInterval = 1.5
+        hud.showResult(success: false, title: withHeader, detail: andDetail, duration: transition, fadeAfter: fadeTime)
+        Timer.scheduledTimer(withTimeInterval: transition + fadeTime, repeats: false) { (_) in
             onComplete()
         }
-        
     }
     
     
