@@ -42,6 +42,7 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
   s.subspec 'Alerts' do |alerts|
     alerts.source_files = 'ARMDevSuite/Classes/AlertManager/AlertManager.swift'
     alerts.dependency 'JGProgressHUD'
+    alerts.dependency 'ARMDevSuite/ProgressHud'
   end
   
   s.subspec 'Logic' do |logic|
