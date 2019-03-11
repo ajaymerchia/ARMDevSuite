@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         hud.show()
         
         Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (t) in
-            hud.showResult(success: false, title: "All Done!", detail: nil)
+            hud.showResult(success: true, title: "All Done!", detail: nil)
         }
     }
     
