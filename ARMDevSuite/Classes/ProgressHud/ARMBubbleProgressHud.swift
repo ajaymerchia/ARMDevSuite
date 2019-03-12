@@ -25,6 +25,43 @@ public enum ARMBubbleProgressHudBubbleStyle {
     case border
 }
 
+public struct ARMBubbleProgressHudDefaultConfiguration {
+    // Overlay Appearance
+    public var backgroundAlpha: CGFloat = 0.5
+    public var overlayStyle: ARMBubbleProgressHudStyle = .light
+    
+    // Bubble Appearance
+    public var colorPrimary = UIColor.colorWithRGB(rgbValue: 0xEB592E)
+    public var colorSecondary = UIColor.colorWithRGB(rgbValue: 0xEA38A7)
+    public var colors: [UIColor] {
+        return [colorPrimary, colorSecondary]
+    }
+    
+    public var bubbleBorderWidth: CGFloat = 4
+    public var bubbleShadowRadius: CGFloat = 10
+    public var bubbleShadowOpacity: Float = 0.4
+    public var bubbleStyle: ARMBubbleProgressHudBubbleStyle = .filled
+    // Bubble Layout
+    public var bubbleGap = true
+    public var initialDegreeOffset: CGFloat = 100
+    public var numBubbles = 7
+    
+    
+    // Text Control
+    public var titleFont: UIFont = UIFont(name: "Avenir-Heavy", size: 18)!
+    public var detailFont: UIFont = UIFont(name: "Avenir-Book", size: 14)!
+    
+    // Animation Control
+    public var animationStyle: ARMBubbleProgressHudAnimation = .rotateContinuous
+    public var animationSpeed: Double = 1
+    public var fadeDuration: TimeInterval = 0.75
+    public var fadeDelay: TimeInterval = 1.5
+    
+    init() {
+        
+    }
+}
+
 @available(iOS 9.0, *)
 public class ARMBubbleProgressHud: UIView {
     
@@ -51,25 +88,29 @@ public class ARMBubbleProgressHud: UIView {
         self.addSubview(contentView)
     }
     
-    public var bubbleGap = true
-    public var degreeOffset: CGFloat = 100
-    public var numBubbles = 7 {
+    
+    /// Defines the way the ProgressHud will appear. Configure this in your AppDelegate.
+    public static var defaultStyle: ARMBubbleProgressHudDefaultConfiguration = ARMBubbleProgressHudDefaultConfiguration()
+    
+    public var bubbleGap: Bool = ARMBubbleProgressHud.defaultStyle.bubbleGap
+    public var initialDegreeOffset: CGFloat = ARMBubbleProgressHud.defaultStyle.initialDegreeOffset
+    public var numBubbles = ARMBubbleProgressHud.defaultStyle.numBubbles {
         didSet {
             createBubbleViews()
         }
     }
+    public var backgroundAlpha: CGFloat = ARMBubbleProgressHud.defaultStyle.backgroundAlpha
+    public var bubbleBorderWidth: CGFloat = ARMBubbleProgressHud.defaultStyle.bubbleBorderWidth
+    public var bubbleShadowRadius: CGFloat = ARMBubbleProgressHud.defaultStyle.bubbleShadowRadius
+    public var bubbleShadowOpacity: Float = ARMBubbleProgressHud.defaultStyle.bubbleShadowOpacity
     
+    public var overlayStyle: ARMBubbleProgressHudStyle = ARMBubbleProgressHud.defaultStyle.overlayStyle
+    public var animationStyle: ARMBubbleProgressHudAnimation = ARMBubbleProgressHud.defaultStyle.animationStyle
+    public var bubbleStyle: ARMBubbleProgressHudBubbleStyle = ARMBubbleProgressHud.defaultStyle.bubbleStyle
     
-    
-    public var backgroundAlpha: CGFloat = 0.5
-    public var bubbleBorderWidth: CGFloat = 4
-    public var bubbleShadowRadius: CGFloat = 10
-    public var bubbleShadowOpacity: Float = 0.4
-    
-    
-    public var overlayStyle: ARMBubbleProgressHudStyle = .light
-    public var animationStyle: ARMBubbleProgressHudAnimation = .blinking
-    public var bubbleStyle: ARMBubbleProgressHudBubbleStyle = .filled
+    public var fadeDuration: TimeInterval = ARMBubbleProgressHud.defaultStyle.fadeDuration
+    public var fadeDelay: TimeInterval = ARMBubbleProgressHud.defaultStyle.fadeDelay
+    public var animationSpeed: Double = ARMBubbleProgressHud.defaultStyle.animationSpeed
     
     private(set) public var title: String? {
         didSet {
@@ -81,29 +122,28 @@ public class ARMBubbleProgressHud: UIView {
             positionContentView()
         }
     }
-    public var titleFont: UIFont = UIFont(name: "Avenir-Heavy", size: 18)! {
+    public var titleFont: UIFont = ARMBubbleProgressHud.defaultStyle.titleFont {
         didSet {
             positionContentView()
         }
     }
-    public var detailFont: UIFont = UIFont(name: "Avenir-Book", size: 14)!{
+    public var detailFont: UIFont = ARMBubbleProgressHud.defaultStyle.detailFont {
         didSet {
             positionContentView()
         }
     }
-    public var titleColor: UIColor! {
+    public var titleColor: UIColor = ARMBubbleProgressHud.defaultStyle.colorPrimary {
         didSet {
             positionContentView()
         }
     }
-    public var detailColor: UIColor! {
+    public var detailColor: UIColor = ARMBubbleProgressHud.defaultStyle.colorSecondary {
         didSet {
             positionContentView()
         }
     }
     
-    private(set) public var colors = [UIColor.colorWithRGB(rgbValue: 0xEB592E), UIColor.colorWithRGB(rgbValue: 0xEA38A7)]
-    
+    private(set) public var colors: [UIColor] = ARMBubbleProgressHud.defaultStyle.colors
     
     private var parentView: UIView!
     private var indicatorView: UIView!
@@ -134,6 +174,8 @@ public class ARMBubbleProgressHud: UIView {
     private static let success = UIImage(named: "check", in: resourceBundle, compatibleWith: nil)!
     private static let failure = UIImage(named: "cancel", in: resourceBundle, compatibleWith: nil)!
     
+    
+    
     public func set(color: UIColor) {
         self.colors = [color]
     }
@@ -149,20 +191,20 @@ public class ARMBubbleProgressHud: UIView {
         case .rotating:
             self.rotateAnimation()
         case .rotateContinuous:
-            indicatorView.rotate(duration: 2)
+            indicatorView.rotate(duration: 2 * self.animationSpeed)
         }
         
         self.alpha = 0
         
         parentView.addSubview(self)
         
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: self.fadeDuration) {
             self.alpha = 1
         }
         self.showing = true
     }
     public func dismiss(_ complete: @escaping ()->() = {}) {
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: self.fadeDuration, animations: {
             self.alpha = 0
         }) { (b) in
             self.removeFromSuperview()
@@ -172,14 +214,14 @@ public class ARMBubbleProgressHud: UIView {
         
     }
     
-    public func setMessage(title: String?, detail: String?, animated: Bool = true, totalDuration: TimeInterval = 1, complete: @escaping (()->()) = {} ) {
+    public func setMessage(title: String?, detail: String?, animated: Bool = true, complete: @escaping (()->()) = {} ) {
         guard animated && showing else {
             self.title = title ?? ""
             self.detail = detail ?? ""
             return
         }
         
-        UIView.animate(withDuration: totalDuration/2, animations: {
+        UIView.animate(withDuration: self.fadeDuration/2, animations: {
             self.titleLabel.alpha = 0
             self.detailLabel.alpha = 0
         }) { (_) in
@@ -187,7 +229,7 @@ public class ARMBubbleProgressHud: UIView {
             self.title = title
             self.detail = detail
             self.interruptReposition = false
-            UIView.animate(withDuration: totalDuration/2, animations: {
+            UIView.animate(withDuration: self.fadeDuration/2, animations: {
                 self.titleLabel.alpha = 1
                 self.detailLabel.alpha = 1
             }, completion: { (_) in
@@ -202,14 +244,14 @@ public class ARMBubbleProgressHud: UIView {
     }
     
     @available(iOS 10.0, *)
-    public func showResult(success: Bool, title: String?, detail: String?, duration: TimeInterval = 0.75, fadeAfter: TimeInterval = 1.5 ) {
+    public func showResult(success: Bool, title: String?, detail: String?) {
         
         let targetColor = UIColor(zip(colors.first!.rgba, colors.last!.rgba).map(+).map({ (agg) -> CGFloat in
             return agg/2
         }))
         
-        self.stopAnimation(duration: duration)
-        self.setMessage(title: title, detail: detail, animated: true, totalDuration: duration, complete: {})
+        self.stopAnimation()
+        self.setMessage(title: title, detail: detail, animated: true, complete: {})
         
         let imageSize = self.indicatorDiameter * 0.5
         
@@ -233,11 +275,11 @@ public class ARMBubbleProgressHud: UIView {
         resultView.clipsToBounds = true
         resultView.alpha = 0
         
-        UIView.animate(withDuration: duration, animations: {
+        UIView.animate(withDuration: self.fadeDuration, animations: {
             resultView.alpha = 1
         }) { (_) in
             
-            Timer.scheduledTimer(withTimeInterval: fadeAfter, repeats: false, block: { (t) in
+            Timer.scheduledTimer(withTimeInterval: self.fadeDelay, repeats: false, block: { (t) in
                 self.dismiss {
                     resultView.removeFromSuperview()
                 }
@@ -251,7 +293,7 @@ public class ARMBubbleProgressHud: UIView {
         
         
     }
-    public func stopAnimation(duration: TimeInterval = 0.75) {
+    public func stopAnimation() {
         let targetFrame = LayoutManager.inside(inside: indicatorView, justified: .MidCenter, verticalPadding: 0, horizontalPadding: 0, width: indicatorDiameter, height: indicatorDiameter)
         
         let targetColor = UIColor(zip(colors.first!.rgba, colors.last!.rgba).map(+).map({ (agg) -> CGFloat in
@@ -266,7 +308,7 @@ public class ARMBubbleProgressHud: UIView {
                 let coloring: CABasicAnimation = CABasicAnimation(keyPath: "backgroundColor")
                 coloring.fromValue = bubble.layer.backgroundColor
                 coloring.toValue = targetColor.cgColor
-                coloring.duration = duration
+                coloring.duration = self.fadeDuration
                 coloring.fillMode = .forwards
                 coloring.isRemovedOnCompletion = false
                 bubble.layer.removeAnimation(forKey: ARMBubbleProgressHud.colorKey)
@@ -275,7 +317,7 @@ public class ARMBubbleProgressHud: UIView {
                 let coloring: CABasicAnimation = CABasicAnimation(keyPath: "borderColor")
                 coloring.fromValue = bubble.layer.borderColor
                 coloring.toValue = targetColor.cgColor
-                coloring.duration = duration
+                coloring.duration = self.fadeDuration
                 coloring.fillMode = .forwards
                 coloring.isRemovedOnCompletion = false
                 bubble.layer.removeAnimation(forKey: ARMBubbleProgressHud.colorKey)
@@ -284,7 +326,7 @@ public class ARMBubbleProgressHud: UIView {
                 let widthCorrection: CABasicAnimation = CABasicAnimation(keyPath: "borderWidth")
                 widthCorrection.fromValue = bubble.layer.borderWidth
                 widthCorrection.toValue = bubbleBorderWidth/CGFloat(numBubbles)
-                widthCorrection.duration = duration
+                widthCorrection.duration = self.fadeDuration
                 widthCorrection.fillMode = .forwards
                 widthCorrection.isRemovedOnCompletion = false
                 bubble.layer.removeAnimation(forKey: ARMBubbleProgressHud.borderScalingKey)
@@ -299,7 +341,7 @@ public class ARMBubbleProgressHud: UIView {
             let removeShadow: CABasicAnimation = CABasicAnimation(keyPath: "shadowColor")
             removeShadow.fromValue = bubble.layer.shadowColor
             removeShadow.toValue = UIColor.clear.cgColor
-            removeShadow.duration = duration
+            removeShadow.duration = self.fadeDuration
             removeShadow.fillMode = .forwards
             removeShadow.isRemovedOnCompletion = false
             bubble.layer.removeAnimation(forKey: ARMBubbleProgressHud.shadowKey)
@@ -312,7 +354,7 @@ public class ARMBubbleProgressHud: UIView {
                 let translate : CABasicAnimation = CABasicAnimation(keyPath: coord)
                 translate.fromValue = pos
                 translate.toValue = targetVal
-                translate.duration = duration
+                translate.duration = self.fadeDuration
                 translate.fillMode = .forwards;
                 translate.isRemovedOnCompletion = false;
                 
@@ -322,7 +364,7 @@ public class ARMBubbleProgressHud: UIView {
             let rescale: CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
             rescale.fromValue = 1
             rescale.toValue = targetFrame.width/bubble.frame.width
-            rescale.duration = duration
+            rescale.duration = self.fadeDuration
             rescale.fillMode = .forwards
             rescale.isRemovedOnCompletion = false
             bubble.layer.removeAnimation(forKey: ARMBubbleProgressHud.scalingKey)
@@ -366,9 +408,9 @@ public class ARMBubbleProgressHud: UIView {
             }
             
             xanimation.keyTimes = keytimes as [NSNumber]
-            xanimation.duration = 2
+            xanimation.duration = 2 * self.animationSpeed
             yanimation.keyTimes = keytimes as [NSNumber]
-            yanimation.duration = 2
+            yanimation.duration = 2 * self.animationSpeed
             
             
             xanimation.isAdditive = false
@@ -417,7 +459,7 @@ public class ARMBubbleProgressHud: UIView {
             size.keyPath = "transform.scale"
             size.values = sizeValues
             size.keyTimes = keytimes as [NSNumber]
-            size.duration = 1.5
+            size.duration = 1.5 * self.animationSpeed
             size.repeatCount = Float.infinity
             size.calculationMode = .paced
             size.timingFunction = CAMediaTimingFunction(name: .linear)
@@ -430,7 +472,7 @@ public class ARMBubbleProgressHud: UIView {
                     return 1/scale * self.bubbleBorderWidth
                 })
                 border.keyTimes = keytimes as [NSNumber]
-                border.duration = 1.5
+                border.duration = 1.5 * self.animationSpeed
                 border.repeatCount = Float.infinity
                 border.calculationMode = .paced
                 border.timingFunction = CAMediaTimingFunction(name: .linear)
@@ -448,7 +490,7 @@ public class ARMBubbleProgressHud: UIView {
             shadow.keyPath = "shadowColor"
             shadow.values = colorVals + colorVals.reversed()
             shadow.keyTimes = keytimes as [NSNumber]
-            shadow.duration = 1
+            shadow.duration = 1 * self.animationSpeed
             shadow.repeatCount = Float.infinity
             shadow.calculationMode = .paced
             shadow.timingFunction = CAMediaTimingFunction(name: .linear)
@@ -465,7 +507,7 @@ public class ARMBubbleProgressHud: UIView {
             
             color.values = colorVals + colorVals.reversed()
             color.keyTimes = keytimes as [NSNumber]
-            color.duration = 1.5
+            color.duration = 1.5 * self.animationSpeed
             color.repeatCount = Float.infinity
             color.calculationMode = .paced
             color.timingFunction = CAMediaTimingFunction(name: .linear)
@@ -525,7 +567,7 @@ public class ARMBubbleProgressHud: UIView {
         })
         
         let residualDegrees = 360 - onPathInscribedArcs.reduce(0, +)
-        let originalDegrees = degreeOffset
+        let originalDegrees = initialDegreeOffset
         
         self.bubbleCenters = []
         
@@ -533,8 +575,8 @@ public class ARMBubbleProgressHud: UIView {
             let bubble = i < numBubbles ? bubbles[i] : UIView()
             let bubbleDiameter = diameters[i]
             
-            let bubbleX = indicatorView.center.x + indicatorDiameter/2 * cos(degreeOffset * CGFloat.pi/180)
-            let bubbleY = indicatorView.center.y + indicatorDiameter/2 * sin(degreeOffset * CGFloat.pi/180)
+            let bubbleX = indicatorView.center.x + indicatorDiameter/2 * cos(initialDegreeOffset * CGFloat.pi/180)
+            let bubbleY = indicatorView.center.y + indicatorDiameter/2 * sin(initialDegreeOffset * CGFloat.pi/180)
             bubble.frame = CGRect(x: 0, y: 0, width: bubbleDiameter/2, height: bubbleDiameter/2)
             bubble.center = CGPoint(x: bubbleX, y: bubbleY)
             
@@ -543,17 +585,17 @@ public class ARMBubbleProgressHud: UIView {
             
             if i < numSlots {
                 indicatorView.addSubview(bubble)
-                degreeOffset += onPathInscribedArcs[i]
+                initialDegreeOffset += onPathInscribedArcs[i]
             }
             
-            degreeOffset += residualDegrees/CGFloat(numSlots)
+            initialDegreeOffset += residualDegrees/CGFloat(numSlots)
             
             
             
             self.bubbleCenters.append(bubble.center)
         }
         
-        degreeOffset = originalDegrees
+        initialDegreeOffset = originalDegrees
         
         
     }
