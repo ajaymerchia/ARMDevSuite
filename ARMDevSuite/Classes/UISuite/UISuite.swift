@@ -12,6 +12,18 @@ import UIKit
 
 public class UISuite {
     
+    /// Returns the amount of space occupied by 1 line of this font
+    ///
+    /// - Parameter font: font
+    /// - Returns: amount of space occupied
+    static func getLineHeight(for font: UIFont) -> CGFloat {
+        let label = UILabel()
+        label.font = font
+        label.text = "Big Letters are yummy For sIzeS"
+        label.sizeToFit()
+        return label.frame.height
+    }
+    
     /// Fetches an image from the URL and provides defaultImg if not available
     public static func getImageFrom(url: String, defaultImg: UIImage, callback: @escaping ((UIImage) -> ())) {
         if let imageUrl:URL = URL(string: url) {

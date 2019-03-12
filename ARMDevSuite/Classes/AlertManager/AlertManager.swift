@@ -176,7 +176,7 @@ public class AlertManager {
     public func triggerHudFailure(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
         let transition: TimeInterval = 0.75
         let fadeTime: TimeInterval = 1.5
-        hud.showResult(success: true, title: withHeader, detail: andDetail, duration: transition, fadeAfter: fadeTime)
+        hud.showResult(success: false, title: withHeader, detail: andDetail, duration: transition, fadeAfter: fadeTime)
         Timer.scheduledTimer(withTimeInterval: transition + fadeTime, repeats: false) { (_) in
             onComplete()
         }
@@ -189,7 +189,7 @@ public class AlertManager {
     public func triggerHudSuccess(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
         let transition: TimeInterval = 0.75
         let fadeTime: TimeInterval = 1.5
-        hud.showResult(success: false, title: withHeader, detail: andDetail, duration: transition, fadeAfter: fadeTime)
+        hud.showResult(success: true, title: withHeader, detail: andDetail, duration: transition, fadeAfter: fadeTime)
         Timer.scheduledTimer(withTimeInterval: transition + fadeTime, repeats: false) { (_) in
             onComplete()
         }
