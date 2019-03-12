@@ -57,7 +57,7 @@ public struct ARMBubbleProgressHudDefaultConfiguration {
     public var fadeDuration: TimeInterval = 0.75
     public var fadeDelay: TimeInterval = 1.5
     
-    init() {
+    public init() {
         
     }
 }
