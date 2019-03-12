@@ -77,15 +77,17 @@ public class ARMBubbleProgressHud: UIView {
         parentView = view
         titleLabel.textAlignment = .center
         detailLabel.textAlignment = .center
-        self.titleColor = colors.first ?? .black
-        self.detailColor = colors.last ?? .black
+        resetHUD()
         
+        self.addSubview(contentView)
+    }
+    
+    private func resetHUD() {
         createBubbleViews()
         addBubbles()
         formatBubbles()
         positionContentView()
         updateAppearance()
-        self.addSubview(contentView)
     }
     
     
@@ -209,6 +211,7 @@ public class ARMBubbleProgressHud: UIView {
         }) { (b) in
             self.removeFromSuperview()
             self.showing = false
+            self.resetHUD()
             complete()
         }
         
