@@ -16,7 +16,7 @@ public class UISuite {
     ///
     /// - Parameter font: font
     /// - Returns: amount of space occupied
-    static func getLineHeight(for font: UIFont) -> CGFloat {
+    public static func getLineHeight(for font: UIFont) -> CGFloat {
         let label = UILabel()
         label.font = font
         label.text = "Big Letters are yummy For sIzeS"
