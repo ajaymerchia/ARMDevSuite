@@ -661,12 +661,13 @@ public class ARMBubbleProgressHud: UIView {
         }
         
         titleLabel.sizeToFit()
+        titleLabel.frame.size = CGSize(width: self.frame.width, height: max(UISuite.getLineHeight(for: titleFont), titleLabel.frame.height))
         detailLabel.sizeToFit()
-        detailLabel.frame.size = CGSize(width: detailLabel.frame.width, height: max(UISuite.getLineHeight(for: detailFont), detailLabel.frame.height))
+        detailLabel.frame.size = CGSize(width: self.frame.width, height: max(UISuite.getLineHeight(for: detailFont), detailLabel.frame.height))
         
         contentView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: indicatorView.frame.height + titleLabel.frame.height + detailLabel.frame.height + 2 * .padding)
         
-        titleLabel.frame = LayoutManager.belowCentered(elementAbove: indicatorView, padding: 0, width: titleLabel.frame.width, height: titleLabel.frame.height)
+        titleLabel.frame = LayoutManager.belowCentered(elementAbove: indicatorView, padding: 0, width: self.frame.width - 6 * .padding, height: titleLabel.frame.height)
         detailLabel.frame = LayoutManager.belowCentered(elementAbove: titleLabel, padding: 0, width: self.frame.width - 6 * .padding, height: detailLabel.frame.height)
         
         contentView.center = self.center
