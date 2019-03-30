@@ -250,40 +250,35 @@ extension ARMCalendar: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-        case UICollectionView.elementKindSectionHeader:
-            let headerView = self.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as! ARMCalendarHeader
-            let monthRepr = monthConfigs[indexPath.section].firstOfMonth
-
-            
-            headerView.clearCell()
-            headerView.createViewHierarchy(withDayOfWeek: showsDaysOfWeek)
-            
-            if let newView = self.calendarDelegate.calendar(self, viewForHeaderFor: monthRepr, in: headerView.contentView) {
-                if newView.superview == nil {
-                    headerView.contentView.addSubview(newView)
-                }
-                return headerView
+        let headerView = self.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as! ARMCalendarHeader
+        
+        let monthRepr = monthConfigs[indexPath.section].firstOfMonth
+        
+        
+        headerView.clearCell()
+        headerView.createViewHierarchy(withDayOfWeek: showsDaysOfWeek)
+        
+        if let newView = self.calendarDelegate.calendar(self, viewForHeaderFor: monthRepr, in: headerView.contentView) {
+            if newView.superview == nil {
+                headerView.contentView.addSubview(newView)
             }
-            headerView.createLabel()
-            headerView.label.text = self.calendarDelegate.calendar(self, formatterFor: monthRepr).string(from: monthRepr)
-            
-            self.calendarDelegate.calendar(self, additionalStylingForMonth: headerView.label)
-            
-            if showsDaysOfWeek {
-                for i in 0..<headerView.dayOfWeekHeaders.count {
-                    let label = headerView.dayOfWeekHeaders[i]
-                    self.calendarDelegate.calendar(self, additionalStylingForDay: label)
-                    label.text = self.calendarDelegate.headersForDaysOfWeek[safe: i]
-                }
-                
-            }
-            
             return headerView
-            
-        default:
-            assert(false, "Unexpected element kind")
         }
+        headerView.createLabel()
+        headerView.label.text = self.calendarDelegate.calendar(self, formatterFor: monthRepr).string(from: monthRepr)
+        
+        self.calendarDelegate.calendar(self, additionalStylingForMonth: headerView.label)
+        
+        if showsDaysOfWeek {
+            for i in 0..<headerView.dayOfWeekHeaders.count {
+                let label = headerView.dayOfWeekHeaders[i]
+                self.calendarDelegate.calendar(self, additionalStylingForDay: label)
+                label.text = self.calendarDelegate.headersForDaysOfWeek[safe: i]
+            }
+            
+        }
+        
+        return headerView
     }
     
 }

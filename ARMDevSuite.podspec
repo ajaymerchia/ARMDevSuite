@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ARMDevSuite'
-  s.version          = '0.1.44'
+  s.version          = '0.1.45'
   s.summary          = 'UI & Logic Pod containing many useful helpers and UI elements.'
 
 # This description is used to generate tags and improve search results.
@@ -95,8 +95,8 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
     progresshud.dependency 'ARMDevSuite/Layouts'
   end
 
-  s.subspec 'Calendar' do |Calendar|
-    Calendar.source_files = 'ARMDevSuite/Classes/Calendar/*.swift'
+  s.subspec 'Calendar' do |calendar|
+    calendar.source_files = 'ARMDevSuite/Classes/Calendar/*.swift'
   end
   
 
