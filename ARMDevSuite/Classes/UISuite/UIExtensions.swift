@@ -204,6 +204,62 @@ public extension UIView {
         
     }
     
+    @available(iOS 9.0, *)
+    func border(with color: UIColor, thickness: CGFloat, on side: CGRectEdge, outside: Bool = true) {
+        let border = UIView()
+        
+        if outside {
+            guard let parent = self.superview else {
+                fatalError("Can't add a border outside a view if parent superview doesn't exist")
+            }
+            parent.addSubview(border)
+        } else {
+            self.addSubview(border)
+        }
+        
+        border.translatesAutoresizingMaskIntoConstraints = false
+        border.backgroundColor = color
+        
+        switch side {
+        case .minYEdge:
+            border.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+            if outside {
+                border.bottomAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            } else {
+                border.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            }
+            border.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+            border.heightAnchor.constraint(equalToConstant: thickness).isActive = true
+        case .minXEdge:
+            if outside {
+                border.trailingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+            } else {
+                border.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+            }
+            border.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            border.widthAnchor.constraint(equalToConstant: thickness).isActive = true
+            border.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        case .maxYEdge:
+            border.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+            if outside {
+                border.topAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+            } else {
+                border.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+            }
+            border.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+            border.heightAnchor.constraint(equalToConstant: thickness).isActive = true
+        case .maxXEdge:
+            if outside {
+                border.leadingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+            } else {
+                border.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+            }
+            border.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            border.widthAnchor.constraint(equalToConstant: thickness).isActive = true
+            border.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        }
+    }
+    
     private static let kRotationAnimationKey = "rotationanimationkey"
     
     func rotate(duration: Double = 1) {
@@ -227,6 +283,9 @@ public extension UIView {
     
     
 }
+
+
+
 
 extension CGFloat {
     static let padding: CGFloat = 20

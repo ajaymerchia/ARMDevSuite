@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ARMDevSuite'
-  s.version          = '0.1.43'
+  s.version          = '0.1.44'
   s.summary          = 'UI & Logic Pod containing many useful helpers and UI elements.'
 
 # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
   s.source           = { :git => 'https://github.com/ajaymerchia/ARMDevSuite.git', :tag => s.version.to_s }
   s.swift_version    = '4.2'
   
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '10.0'
 
   s.subspec 'Layouts' do |layout|
     layout.source_files = 'ARMDevSuite/Classes/LayoutManager/LayoutManager.swift'
@@ -95,7 +95,9 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
     progresshud.dependency 'ARMDevSuite/Layouts'
   end
 
-
+  s.subspec 'Calendar' do |Calendar|
+    Calendar.source_files = 'ARMDevSuite/Classes/Calendar/*.swift'
+  end
   
 
   

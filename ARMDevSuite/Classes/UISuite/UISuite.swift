@@ -52,7 +52,7 @@ public class UISuite {
     }
     
     
-    /// Provides a border for one edge of a UIView.
+    /// DEPRECATED. USE UIView.border() Provides a border for one edge of a UIView.
     ///
     /// - Parameters:
     ///   - forView: view to which we add a border
