@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CryptoSwift
 import CoreLocation
 
 public class LogicSuite {
@@ -19,14 +20,14 @@ public class LogicSuite {
     }
     
     
-//    /// Produces a SHA256 Hash for the given string
-//    ///
-//    /// - Parameter string: value to hash
-//    /// - Returns: Hashed value as hex string
-//    public static func hash(_ string: String) -> String {
-//        let bytes = Data(bytes: Array(string.utf8)).sha256()
-//        return bytes.toHexString()
-//    }
+    /// Produces a SHA256 Hash for the given string
+    ///
+    /// - Parameter string: value to hash
+    /// - Returns: Hashed value as hex string
+    public static func hash(_ string: String) -> String {
+        let bytes = Data(bytes: Array(string.utf8)).sha256()
+        return bytes.toHexString()
+    }
     
     
     /// Returns a random number within the given range.

@@ -1,42 +1,44 @@
 PODS:
-  - ARMDevSuite (0.1.48):
-    - ARMDevSuite/Alerts (= 0.1.48)
-    - ARMDevSuite/Calendar (= 0.1.48)
-    - ARMDevSuite/Layouts (= 0.1.48)
-    - ARMDevSuite/LocalData (= 0.1.48)
-    - ARMDevSuite/Logic (= 0.1.48)
-    - ARMDevSuite/PhotoPicker (= 0.1.48)
-    - ARMDevSuite/ProgressHud (= 0.1.48)
-    - ARMDevSuite/SegControl (= 0.1.48)
-    - ARMDevSuite/SlideView (= 0.1.48)
-    - ARMDevSuite/TextField (= 0.1.48)
-    - ARMDevSuite/UISuite (= 0.1.48)
-  - ARMDevSuite/Alerts (0.1.48):
+  - ARMDevSuite (0.1.49):
+    - ARMDevSuite/Alerts (= 0.1.49)
+    - ARMDevSuite/Calendar (= 0.1.49)
+    - ARMDevSuite/Layouts (= 0.1.49)
+    - ARMDevSuite/LocalData (= 0.1.49)
+    - ARMDevSuite/Logic (= 0.1.49)
+    - ARMDevSuite/PhotoPicker (= 0.1.49)
+    - ARMDevSuite/ProgressHud (= 0.1.49)
+    - ARMDevSuite/SegControl (= 0.1.49)
+    - ARMDevSuite/SlideView (= 0.1.49)
+    - ARMDevSuite/TextField (= 0.1.49)
+    - ARMDevSuite/UISuite (= 0.1.49)
+  - ARMDevSuite/Alerts (0.1.49):
     - ARMDevSuite/ProgressHud
     - JGProgressHUD
-  - ARMDevSuite/Calendar (0.1.48)
-  - ARMDevSuite/Layouts (0.1.48)
-  - ARMDevSuite/LocalData (0.1.48)
-  - ARMDevSuite/Logic (0.1.48)
-  - ARMDevSuite/PhotoPicker (0.1.48):
+  - ARMDevSuite/Calendar (0.1.49)
+  - ARMDevSuite/Layouts (0.1.49)
+  - ARMDevSuite/LocalData (0.1.49)
+  - ARMDevSuite/Logic (0.1.49):
+    - CryptoSwift
+  - ARMDevSuite/PhotoPicker (0.1.49):
     - ARMDevSuite/Alerts
     - ARMDevSuite/Layouts
     - ARMDevSuite/UISuite
     - DKImagePickerController
-  - ARMDevSuite/ProgressHud (0.1.48):
+  - ARMDevSuite/ProgressHud (0.1.49):
     - ARMDevSuite/Layouts
     - ARMDevSuite/UISuite
-  - ARMDevSuite/SegControl (0.1.48):
+  - ARMDevSuite/SegControl (0.1.49):
     - ARMDevSuite/Layouts
     - ARMDevSuite/UISuite
-  - ARMDevSuite/SlideView (0.1.48):
+  - ARMDevSuite/SlideView (0.1.49):
     - ARMDevSuite/Layouts
     - ARMDevSuite/UISuite
-  - ARMDevSuite/TextField (0.1.48):
+  - ARMDevSuite/TextField (0.1.49):
     - ARMDevSuite/UISuite
     - SkyFloatingLabelTextField (~> 3.0)
-  - ARMDevSuite/UISuite (0.1.48):
+  - ARMDevSuite/UISuite (0.1.49):
     - ARMDevSuite/Layouts
+  - CryptoSwift (1.0.0)
   - DKCamera (1.6.4)
   - DKImagePickerController (4.1.3):
     - DKImagePickerController/Camera (= 4.1.3)
@@ -97,6 +99,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - CryptoSwift
     - DKCamera
     - DKImagePickerController
     - DKPhotoGallery
@@ -111,7 +114,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ARMDevSuite: f648705d6511f7eb735aff765066f4cc462b4946
+  ARMDevSuite: ded863da151bd71ffe2f960e65f2a5638e4d73d5
+  CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
   DKCamera: 61fa47629a39354e5111bca1fe96695de020dcb9
   DKImagePickerController: 7c8c788a17251dfbcf4920c5f042d55c3b900d68
   DKPhotoGallery: e5fc53899345c26af4374503dd249caabac7d26a
