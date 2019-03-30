@@ -2,4 +2,4 @@ git add *
 git commit -m "$1"
 git tag $2
 git push origin master --tags
-pod trunk push ARMDevSuite.podspec
+pod trunk push ARMDevSuite.podspec --allow-warnings

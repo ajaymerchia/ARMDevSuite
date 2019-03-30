@@ -1,42 +1,42 @@
 PODS:
-  - ARMDevSuite (0.1.34):
-    - ARMDevSuite/Alerts (= 0.1.34)
-    - ARMDevSuite/Layouts (= 0.1.34)
-    - ARMDevSuite/LocalData (= 0.1.34)
-    - ARMDevSuite/Logic (= 0.1.34)
-    - ARMDevSuite/PhotoPicker (= 0.1.34)
-    - ARMDevSuite/ProgressHud (= 0.1.34)
-    - ARMDevSuite/SegControl (= 0.1.34)
-    - ARMDevSuite/SlideView (= 0.1.34)
-    - ARMDevSuite/TextField (= 0.1.34)
-    - ARMDevSuite/UISuite (= 0.1.34)
-  - ARMDevSuite/Alerts (0.1.34):
+  - ARMDevSuite (0.1.48):
+    - ARMDevSuite/Alerts (= 0.1.48)
+    - ARMDevSuite/Calendar (= 0.1.48)
+    - ARMDevSuite/Layouts (= 0.1.48)
+    - ARMDevSuite/LocalData (= 0.1.48)
+    - ARMDevSuite/Logic (= 0.1.48)
+    - ARMDevSuite/PhotoPicker (= 0.1.48)
+    - ARMDevSuite/ProgressHud (= 0.1.48)
+    - ARMDevSuite/SegControl (= 0.1.48)
+    - ARMDevSuite/SlideView (= 0.1.48)
+    - ARMDevSuite/TextField (= 0.1.48)
+    - ARMDevSuite/UISuite (= 0.1.48)
+  - ARMDevSuite/Alerts (0.1.48):
     - ARMDevSuite/ProgressHud
     - JGProgressHUD
-  - ARMDevSuite/Layouts (0.1.34)
-  - ARMDevSuite/LocalData (0.1.34)
-  - ARMDevSuite/Logic (0.1.34):
-    - CryptoSwift
-  - ARMDevSuite/PhotoPicker (0.1.34):
+  - ARMDevSuite/Calendar (0.1.48)
+  - ARMDevSuite/Layouts (0.1.48)
+  - ARMDevSuite/LocalData (0.1.48)
+  - ARMDevSuite/Logic (0.1.48)
+  - ARMDevSuite/PhotoPicker (0.1.48):
     - ARMDevSuite/Alerts
     - ARMDevSuite/Layouts
     - ARMDevSuite/UISuite
     - DKImagePickerController
-  - ARMDevSuite/ProgressHud (0.1.34):
+  - ARMDevSuite/ProgressHud (0.1.48):
     - ARMDevSuite/Layouts
     - ARMDevSuite/UISuite
-  - ARMDevSuite/SegControl (0.1.34):
+  - ARMDevSuite/SegControl (0.1.48):
     - ARMDevSuite/Layouts
     - ARMDevSuite/UISuite
-  - ARMDevSuite/SlideView (0.1.34):
+  - ARMDevSuite/SlideView (0.1.48):
     - ARMDevSuite/Layouts
     - ARMDevSuite/UISuite
-  - ARMDevSuite/TextField (0.1.34):
+  - ARMDevSuite/TextField (0.1.48):
     - ARMDevSuite/UISuite
     - SkyFloatingLabelTextField (~> 3.0)
-  - ARMDevSuite/UISuite (0.1.34):
+  - ARMDevSuite/UISuite (0.1.48):
     - ARMDevSuite/Layouts
-  - CryptoSwift (0.14.0)
   - DKCamera (1.6.4)
   - DKImagePickerController (4.1.3):
     - DKImagePickerController/Camera (= 4.1.3)
@@ -97,7 +97,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - CryptoSwift
     - DKCamera
     - DKImagePickerController
     - DKPhotoGallery
@@ -112,8 +111,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ARMDevSuite: 0c3c97113bbde7fdad48b48bf06031b4fcc3a16f
-  CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
+  ARMDevSuite: f648705d6511f7eb735aff765066f4cc462b4946
   DKCamera: 61fa47629a39354e5111bca1fe96695de020dcb9
   DKImagePickerController: 7c8c788a17251dfbcf4920c5f042d55c3b900d68
   DKPhotoGallery: e5fc53899345c26af4374503dd249caabac7d26a
@@ -125,4 +123,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: e5afdcdf1696c5dc7b22daabf6eb055babb82fdb
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.7.0.beta.3

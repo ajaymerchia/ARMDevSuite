@@ -1,6 +1,6 @@
 {
   "name": "ARMDevSuite",
-  "version": "0.1.34",
+  "version": "0.1.48",
   "summary": "UI & Logic Pod containing many useful helpers and UI elements.",
   "description": "ARMDevSuite is a pod that contains many useful UIKit elements as well as useful logic libraries.",
   "homepage": "https://github.com/ajaymerchia/ARMDevSuite",
@@ -13,11 +13,11 @@
   },
   "source": {
     "git": "https://github.com/ajaymerchia/ARMDevSuite.git",
-    "tag": "0.1.34"
+    "tag": "0.1.48"
   },
-  "swift_version": "4.2",
+  "swift_versions": "4.2",
   "platforms": {
-    "ios": "8.0"
+    "ios": "10.0"
   },
   "subspecs": [
     {
@@ -42,12 +42,7 @@
     },
     {
       "name": "Logic",
-      "source_files": "ARMDevSuite/Classes/LogicSuite/LogicSuite.swift",
-      "dependencies": {
-        "CryptoSwift": [
-
-        ]
-      }
+      "source_files": "ARMDevSuite/Classes/LogicSuite/LogicSuite.swift"
     },
     {
       "name": "UISuite",
@@ -133,6 +128,10 @@
 
         ]
       }
+    },
+    {
+      "name": "Calendar",
+      "source_files": "ARMDevSuite/Classes/Calendar/*.swift"
     }
   ]
 }
