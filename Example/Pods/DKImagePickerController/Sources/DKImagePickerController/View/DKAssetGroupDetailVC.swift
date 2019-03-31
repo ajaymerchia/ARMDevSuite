@@ -356,6 +356,8 @@ open class DKAssetGroupDetailVC: UIViewController,
             self.swipingIndexPathes.removeAll()
             self.fromIndexPath = nil
             self.endAutoScrolling()
+        @unknown default:
+            fatalError()
         }
     }
 
@@ -686,10 +688,10 @@ open class DKAssetGroupDetailVC: UIViewController,
 
         let addedAssets = addedRects
             .flatMap { rect in collectionView.indexPathsForElements(in: rect, self.hidesCamera) }
-            .flatMap { indexPath in imagePickerController.groupDataManager.fetchPHAsset(group, index: indexPath.item) }
+            .compactMap { indexPath in imagePickerController.groupDataManager.fetchPHAsset(group, index: indexPath.item) }
         let removedAssets = removedRects
             .flatMap { rect in collectionView.indexPathsForElements(in: rect, self.hidesCamera) }
-            .flatMap { indexPath in imagePickerController.groupDataManager.fetchPHAsset(group, index: indexPath.item) }
+            .compactMap { indexPath in imagePickerController.groupDataManager.fetchPHAsset(group, index: indexPath.item) }
 
         // Update the assets the PHCachingImageManager is caching.
         getImageDataManager().startCachingAssets(for: addedAssets,

@@ -25,7 +25,7 @@ public class LogicSuite {
     /// - Parameter string: value to hash
     /// - Returns: Hashed value as hex string
     public static func hash(_ string: String) -> String {
-        let bytes = Data(bytes: Array(string.utf8)).sha256()
+        let bytes = Data(Array(string.utf8)).sha256()
         return bytes.toHexString()
     }
     
@@ -216,7 +216,7 @@ public class LogicSuite {
 
 public extension String
 {
-    public func toDateTime() -> Date
+    func toDateTime() -> Date
     {
         //Create Date Formatter
         let dateFormatter = DateFormatter()

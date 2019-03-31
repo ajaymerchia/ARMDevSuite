@@ -178,7 +178,7 @@ open class DKImageGroupDataManager: DKImageBaseManager, PHPhotoLibraryChangeObse
     }
     
     open func makeDKAssetGroup(with collection: PHAssetCollection) -> DKAssetGroup {
-        let assetGroup = DKAssetGroup(groupId: collection.localIdentifier ?? "")
+        let assetGroup = DKAssetGroup(groupId: collection.localIdentifier)
 
         self.updateGroup(assetGroup, collection: collection)
 

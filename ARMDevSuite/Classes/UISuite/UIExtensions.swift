@@ -30,7 +30,7 @@ public extension UIButton {
     /// - Parameters:
     ///   - color: background color
     ///   - forState: state for which the color should show.s
-    public func setBackgroundColor(color: UIColor, forState: UIControl.State) {
+    func setBackgroundColor(color: UIColor, forState: UIControl.State) {
         UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
         UIGraphicsGetCurrentContext()!.setFillColor(color.cgColor)
         UIGraphicsGetCurrentContext()!.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
@@ -57,14 +57,14 @@ public extension UIColor {
     /// Initialize a color from an array of rgba
     ///
     /// - Parameter rgba: rgba values on scale of 0 to 1
-    public convenience init(_ rgba: [CGFloat]) {
+    convenience init(_ rgba: [CGFloat]) {
         self.init(red: rgba[0], green: rgba[1], blue: rgba[2], alpha: rgba[3])
     }
     
     /// Gets a random color
     ///
     /// - Returns: random color
-    public static func randomColor() -> UIColor {
+    static func randomColor() -> UIColor {
         let hue : CGFloat = CGFloat(arc4random() % 256) / 256 // use 256 to get full range from 0.0 to 1.0
         let saturation : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from white
         let brightness : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from black
@@ -78,7 +78,7 @@ public extension UIColor {
     ///   - rgbValue: color given as hexvalue
     ///   - alpha: alpha of the new color
     /// - Returns: new color
-    public class func colorWithRGB(rgbValue : UInt, alpha : CGFloat = 1.0) -> UIColor {
+    class func colorWithRGB(rgbValue : UInt, alpha : CGFloat = 1.0) -> UIColor {
         let red = CGFloat((rgbValue & 0xFF0000) >> 16) / 255
         let green = CGFloat((rgbValue & 0xFF00) >> 8) / 255
         let blue = CGFloat(rgbValue & 0xFF) / 255
@@ -94,7 +94,7 @@ public extension UIColor {
     ///   - additionalSaturation: additional saturation to provide
     ///   - additionalBrightness: additional brightness to provide
     /// - Returns: new Color
-    public func modified(withAdditionalHue hue: CGFloat, additionalSaturation: CGFloat, additionalBrightness: CGFloat) -> UIColor {
+    func modified(withAdditionalHue hue: CGFloat, additionalSaturation: CGFloat, additionalBrightness: CGFloat) -> UIColor {
         var currentHue: CGFloat = 0.0
         var currentSaturation: CGFloat = 0.0
         var currentBrigthness: CGFloat = 0.0
@@ -159,7 +159,7 @@ public extension NSMutableAttributedString {
     /// - Parameters:
     ///   - color: color to set the substring to
     ///   - stringValue: substring to change
-    public func setColor(color: UIColor, forText stringValue: String) {
+    func setColor(color: UIColor, forText stringValue: String) {
         let range: NSRange = self.mutableString.range(of: stringValue, options: .caseInsensitive)
         self.addAttribute(.foregroundColor, value: color, range: range)
     }
@@ -174,7 +174,7 @@ public extension UILabel {
     ///   - text: new text for the label
     ///   - color: color for the substring
     ///   - substring: substring to colorize
-    public func setText(to text: String, with color: UIColor, for substring: String) {
+    func setText(to text: String, with color: UIColor, for substring: String) {
         let attString = NSMutableAttributedString(string: text)
         attString.setColor(color: color, forText: substring)
         
@@ -357,7 +357,7 @@ public extension UIView {
         self.layer.insertSublayer(gradient, at: 0)
     }
     
-    public func addBorder(gradient: Gradient, in direction: GradientOrientation, thickness: CGFloat, reverse: Bool = false) {
+    func addBorder(gradient: Gradient, in direction: GradientOrientation, thickness: CGFloat, reverse: Bool = false) {
         let grad = CAGradientLayer()
         grad.frame =  CGRect(origin: .zero, size: self.frame.size)
         grad.colors = gradient.colors.map { $0.cgColor }
@@ -374,7 +374,7 @@ public extension UIView {
         self.layer.addSublayer(grad)
     }
     
-    public func addFill(gradient: Gradient, in direction: GradientOrientation, reverse: Bool = false) {
+    func addFill(gradient: Gradient, in direction: GradientOrientation, reverse: Bool = false) {
         var colors: [UIColor]! = [gradient.color1, gradient.color2]
         if reverse {
             colors.reverse()
@@ -382,7 +382,7 @@ public extension UIView {
         self.applyGradient(with: colors, gradient: direction)
     }
     
-    public func addBorder(colored color: UIColor, thickness: CGFloat) {
+    func addBorder(colored color: UIColor, thickness: CGFloat) {
         self.layer.borderWidth = thickness
         self.layer.borderColor = color.cgColor
     }
