@@ -178,6 +178,7 @@ extension ARMCalendar: UICollectionViewDataSource {
         cell.disabledColor = self.disabledDateColor
         cell.normalColor = self.normalDateColor
         cell.animatedSelect = self.animatedSelection
+        cell.circleColor = self.selectedCircleColor
         
         cell.awakeFromNib()
         cell.createViews()
