@@ -9,65 +9,7 @@
 import Foundation
 import UIKit
 
-@available(iOS 9.0, *)
-protocol ARMCalendarDelegate {
-    var headersForDaysOfWeek: [String] {get}
-    
-    
-    func calendar(_ calendar: ARMCalendar, formatterFor month: Date) -> DateFormatter
-    
-    func calendar(_ calendar: ARMCalendar, additionalStylingForMonth header: UILabel)
-    func calendar(_ calendar: ARMCalendar, additionalStylingForDay header: UILabel)
-    func calendar(_ calendar: ARMCalendar, additionalStylingForDate label: UILabel)
-    func calendar(_ calendar: ARMCalendar, viewForHeaderFor month: Date, in contentView: UIView) -> UIView?
-    
-    func calendar(_ calendar: ARMCalendar, shouldDisableCellAt date: Date) -> Bool
-    func calendar(_ calendar: ARMCalendar, didSelect date: Date)
-    func calendar(_ calendar: ARMCalendar, didDeselect date: Date)
-    
-    
-}
-@available(iOS 9.0, *)
-extension ARMCalendarDelegate {
-    func calendar(_ calendar: ARMCalendar, formatterFor month: Date) -> DateFormatter {
-        let ret = DateFormatter()
-        ret.dateFormat = "MMMM YYYY"
-        return ret
-    }
-    func calendar(_ calendar: ARMCalendar, additionalStylingForMonth header: UILabel) {
-        header.font = calendar.defaultFont.withSize(20)
-        header.textColor = .red
-    }
-    func calendar(_ calendar: ARMCalendar, additionalStylingForDay header: UILabel) {
-        header.font = calendar.defaultFont.withSize(10)
-        header.textColor = .gray
-    }
-    func calendar(_ calendar: ARMCalendar, additionalStylingForDate label: UILabel) {
-        label.font = calendar.defaultFont.withSize(14)
-    }
-    
-    func calendar(_ calendar: ARMCalendar, viewForHeaderFor month: Date, in contentView: UIView) -> UIView? {
-        return nil
-    }
-    
-    var headersForDaysOfWeek: [String] {
-        get {
-            return ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-        }
-    }
-    
-    
-    func calendar(_ calendar: ARMCalendar, shouldDisableCellAt date: Date) -> Bool {
-        return false
-    }
-    func calendar(_ calendar: ARMCalendar, didSelect date: Date) {}
-    func calendar(_ calendar: ARMCalendar, didDeselect date: Date) {}
-    
-    
-}
-
-
-class ARMCalendar: UICollectionView, ARMCalendarDelegate {
+public class ARMCalendar: UICollectionView, ARMCalendarDelegate {
     // public variables
     public var calendarDelegate: ARMCalendarDelegate!
     // Calendar Data
@@ -156,7 +98,7 @@ class ARMCalendar: UICollectionView, ARMCalendarDelegate {
 }
 
 
-extension ARMCalendar {
+public extension ARMCalendar {
     private static func createFlowLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 1
@@ -171,7 +113,7 @@ extension ARMCalendar {
 
 
 extension ARMCalendar: UICollectionViewDelegateFlowLayout {
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
             let residual = self.frame.width.truncatingRemainder(dividingBy: 7).rounded()
@@ -183,7 +125,7 @@ extension ARMCalendar: UICollectionViewDelegateFlowLayout {
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var trueWidth = collectionView.frame.width.rounded()
         
         if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
@@ -197,30 +139,30 @@ extension ARMCalendar: UICollectionViewDelegateFlowLayout {
         return CGSize(width: trueWidth/7 - 1, height: trueWidth/7 - 1)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: sectionHeaderHeight)
     }
 }
 
 @available(iOS 9.0, *)
 extension ARMCalendar: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return numMonths
     }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return monthConfigs[section].numCells
     }
     
     
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as! ARMCalendarCell
         
         for view in cell.contentView.subviews {
@@ -249,7 +191,7 @@ extension ARMCalendar: UICollectionViewDataSource {
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = self.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as! ARMCalendarHeader
         
         let monthRepr = monthConfigs[indexPath.section].firstOfMonth
@@ -285,19 +227,19 @@ extension ARMCalendar: UICollectionViewDataSource {
 
 @available(iOS 9.0, *)
 extension ARMCalendar: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let date = translateToDate(indexPath) else { return }
         calendarDelegate.calendar(self, didSelect: date)
     }
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let date = translateToDate(indexPath) else { return }
         calendarDelegate.calendar(self, didDeselect: date)
     }
-    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+    public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         guard let date = translateToDate(indexPath) else { return false }
         return !self.calendarDelegate.calendar(self, shouldDisableCellAt: date)
     }
-    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+    public func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
         guard let date = translateToDate(indexPath) else { return false }
         return !self.calendarDelegate.calendar(self, shouldDisableCellAt: date)
     }

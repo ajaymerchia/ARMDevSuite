@@ -282,6 +282,7 @@
 		B6C6BAF57403A753CC9E616C79B13324 /* DKPhotoGalleryTransitionPresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF4AD7582AC77E8B42ED25E5A0E4101 /* DKPhotoGalleryTransitionPresent.swift */; };
 		B7476C6D5D1F4FD1B7A14AACA719C4C4 /* DKCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0A4F65D634FF724EE1778641DD2B095 /* DKCamera.framework */; };
 		B760B77F2E4DBFD2450E28D4AC59499D /* DKPhotoGallery.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E93579C54FA6F2F1E584D70BD12196BF /* DKPhotoGallery.bundle */; };
+		B7CD0CE722519E870096F9C7 /* ARMCalendarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CD0CE622519E870096F9C7 /* ARMCalendarDelegate.swift */; };
 		B8EE88E1C37AA8C45942C32365EED615 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 91ABB2D68BDF91CC0CF2CC48FC35EF1B /* en.lproj */; };
 		B8F5DDC5AF94453D2530CFB16CA6FAF0 /* FLAnimatedImage-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E8AC70082FC32D9BF11E6E566A6606DC /* FLAnimatedImage-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B977C691E43E44CEAB2053918A1AFA23 /* JGProgressHUDErrorIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B28BD3150A0C93A3BB66D9442DFED06 /* JGProgressHUDErrorIndicatorView.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -909,6 +910,7 @@
 		B59C7DF2633FA774DADC6464B3E4E00A /* JGProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JGProgressHUD-dummy.m"; sourceTree = "<group>"; };
 		B6122E2FCFC77CF2CB8FD373711A6B4B /* SkyFloatingLabelTextField.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SkyFloatingLabelTextField.xcconfig; sourceTree = "<group>"; };
 		B6D231FF21F9EC124A75487B79639773 /* NSImage+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSImage+WebCache.h"; path = "SDWebImage/NSImage+WebCache.h"; sourceTree = "<group>"; };
+		B7CD0CE622519E870096F9C7 /* ARMCalendarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ARMCalendarDelegate.swift; path = ARMDevSuite/Classes/Calendar/ARMCalendarDelegate.swift; sourceTree = "<group>"; };
 		B851658ADC690307F770779584146112 /* Slide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Slide.swift; path = ARMDevSuite/Classes/SlideView/Slide.swift; sourceTree = "<group>"; };
 		B9FE693C8DD06D96AAA09AFA98045188 /* BlockModeOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlockModeOptions.swift; path = Sources/CryptoSwift/BlockMode/BlockModeOptions.swift; sourceTree = "<group>"; };
 		BA13F0E44EE9DB0EDBFB00FBFCC2BAE4 /* StreamDecryptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StreamDecryptor.swift; path = Sources/CryptoSwift/StreamDecryptor.swift; sourceTree = "<group>"; };
@@ -1460,6 +1462,7 @@
 			isa = PBXGroup;
 			children = (
 				203FCDDD98ED6238DCDD0A06AA7ABAF1 /* ARMCalendar.swift */,
+				B7CD0CE622519E870096F9C7 /* ARMCalendarDelegate.swift */,
 				75C19F769D1384286526C809017B3283 /* ARMCalendarCell.swift */,
 				0ACA424406FD8AECB68ADF8B9B46F108 /* ARMCalendarDataStructures.swift */,
 				30386A82424EE2D83291E1BE18996478 /* ARMCalendarHeader.swift */,
@@ -2909,6 +2912,7 @@
 				9E958B83C02794C6A8E62E68E04EA860 /* ARMDevSuite-dummy.m in Sources */,
 				7F414BEADDA9505DDA944B03CD66FDEF /* ARMPhotoPicker-inputs.swift in Sources */,
 				4346769720B5E6A543A84C10D23F19F3 /* ARMPhotoPicker.swift in Sources */,
+				B7CD0CE722519E870096F9C7 /* ARMCalendarDelegate.swift in Sources */,
 				E42E3E753CEC81D4CFDDB3A849C066C4 /* ARMPhotoPickerDelegate.swift in Sources */,
 				71F51D3B9A46857E205EDDC1162EBCB0 /* ARMSegmentedControl.swift in Sources */,
 				ACB384B8CDA8DEEAE4429E4A3608A43F /* ARMSegmentedControlDelegate.swift in Sources */,
