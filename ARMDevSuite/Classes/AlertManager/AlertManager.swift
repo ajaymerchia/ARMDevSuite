@@ -44,6 +44,7 @@ public class AlertManager {
     ///   - defaultHandler: callback triggered after every call to displayAlert
     public init(vc: UIViewController, defaultHandler: @escaping (() -> ()) ) {
         self.vc = vc
+        hud = ARMBubbleProgressHud(for: vc.view)
         callback = defaultHandler
     }
     
