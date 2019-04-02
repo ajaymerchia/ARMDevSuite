@@ -166,6 +166,7 @@ public class AlertManager {
     
     /// Dismisses the ARMBubbleProgressHud
     public func dismissHUD() {
+        self.callback?()
         hud.dismiss()
     }
     
@@ -176,6 +177,7 @@ public class AlertManager {
     public func triggerHudFailure(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
         hud.showResult(success: false, title: withHeader, detail: andDetail)
         Timer.scheduledTimer(withTimeInterval: hud.fadeDelay + hud.fadeDuration, repeats: false) { (_) in
+            self.callback?()
             onComplete()
         }
     }
@@ -187,6 +189,7 @@ public class AlertManager {
     public func triggerHudSuccess(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
         hud.showResult(success: true, title: withHeader, detail: andDetail)
         Timer.scheduledTimer(withTimeInterval: hud.fadeDelay + hud.fadeDuration, repeats: false) { (_) in
+            self.callback?()
             onComplete()
         }
     }
