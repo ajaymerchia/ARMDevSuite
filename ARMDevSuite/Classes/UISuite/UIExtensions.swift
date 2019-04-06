@@ -29,7 +29,7 @@ public extension UIButton {
     ///
     /// - Parameters:
     ///   - color: background color
-    ///   - forState: state for which the color should show.s
+    ///   - forState: state for which the color should show
     func setBackgroundColor(color: UIColor, forState: UIControl.State) {
         UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
         UIGraphicsGetCurrentContext()!.setFillColor(color.cgColor)
@@ -38,6 +38,43 @@ public extension UIButton {
         UIGraphicsEndImageContext()
         
         self.setBackgroundImage(colorImage, for: forState)
+    }
+    
+    /// Sets the background gradient of the button for a UIControl.State, can not be used with backgroundColor or backgroundImagee
+    ///
+    /// - Parameters:
+    ///   - gradient: Colors that compose this gradient
+    ///   - direction: direction in which the gradient should flow
+    ///   - forState: state for which this gradient should show
+    ///   - reverseDirection: Reverse the direction of the gradient
+    func setBackgroundGradient(gradient: Gradient, in direction: GradientOrientation, forState: UIControl.State, reverseDirection: Bool = false) {
+        
+        var colors: [UIColor]! = [gradient.color1, gradient.color2]
+        if reverseDirection {
+            colors.reverse()
+        }
+        
+        
+        let resolution: CGFloat = 20
+        let contextSize = CGSize(width: resolution, height: resolution)
+        let contextFrame = CGRect(origin: .zero, size: contextSize)
+        
+        UIGraphicsBeginImageContext(contextSize)
+        UIGraphicsGetCurrentContext()!.fill(contextFrame)
+        let gradLayer = CAGradientLayer()
+        gradLayer.frame = contextFrame
+        gradLayer.colors = colors.map { $0.cgColor }
+        gradLayer.startPoint = direction.startPoint
+        gradLayer.endPoint = direction.endPoint
+        gradLayer.type = .axial
+        gradLayer.setNeedsDisplay()
+        gradLayer.render(in: UIGraphicsGetCurrentContext()!)
+        
+        let gradientImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        self.setBackgroundImage(gradientImage, for: forState)
     }
 }
 
@@ -374,6 +411,8 @@ public extension UIView {
         self.layer.addSublayer(grad)
     }
     
+    
+    /// DEPRECATED -- DO NOT USE
     func addFill(gradient: Gradient, in direction: GradientOrientation, reverse: Bool = false) {
         var colors: [UIColor]! = [gradient.color1, gradient.color2]
         if reverse {
