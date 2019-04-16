@@ -19,6 +19,23 @@ public class ARMCalendar: UICollectionView, ARMCalendarDelegate {
             updateMonths()
         }
     }
+    public var preselected: [Date] = [] {
+        didSet {
+            setPreselected()
+        }
+    }
+    public var selectedDates: [Date]? {
+        guard let paths = self.indexPathsForSelectedItems else { return nil}
+        let dates = paths.map({ (path) -> Date? in
+            return self.translateToDate(path)
+        }).filter { (date) -> Bool in
+            return date != nil
+        }
+        
+        return (dates as? [Date])?.sorted()
+        
+    }
+    
     
     // Calendar Layout
     public var sectionHeaderHeight: CGFloat = 70
@@ -36,7 +53,6 @@ public class ARMCalendar: UICollectionView, ARMCalendarDelegate {
     public var defaultFont: UIFont = UIFont.systemFont(ofSize: 12)
     
     // initializers
-    
     
     init() {
         super.init(frame: .zero, collectionViewLayout: ARMCalendar.createFlowLayout())
@@ -60,7 +76,7 @@ public class ARMCalendar: UICollectionView, ARMCalendarDelegate {
         self.backgroundColor = .clear
         self.register(ARMCalendarCell.self, forCellWithReuseIdentifier: "dateCell")
         self.register(ARMCalendarHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
-
+        
         self.calendarDelegate = self
         self.delegate = self
         self.dataSource = self
@@ -79,10 +95,32 @@ public class ARMCalendar: UICollectionView, ARMCalendarDelegate {
             refDate = Calendar.current.date(byAdding: .advanceOneMonth, to: refDate)!
             
         }
-        
+        setPreselected()
     }
     
-    private func translateToDate(_ indexPath: IndexPath) -> Date? {
+    private func setPreselected() {
+        for date in self.preselected {
+            if let indPath = translateToIndexPath(date) {
+                self.selectItem(at: indPath, animated: false, scrollPosition: [])
+                self.cellForItem(at: indPath)?.isSelected = true
+            }
+        }
+    }
+    
+    public func translateToIndexPath(_ date: Date) -> IndexPath? {
+        guard let section = Calendar.current.dateComponents([.month], from: monthConfigs.first?.firstOfMonth ?? startDate, to: date).month else {
+            return nil
+        }
+        guard numMonths > section && section >= 0 else { return nil}
+        guard let day = Calendar.current.dateComponents([.day], from: date).day else { return nil}
+        
+        let information = monthConfigs[section]
+        let row = information.firstWeekdayIndex + day - 1
+        
+        return IndexPath(row: row, section: section)
+    }
+    
+    public func translateToDate(_ indexPath: IndexPath) -> Date? {
         let information = monthConfigs[indexPath.section]
         let dateIndex = indexPath.row - information.firstWeekdayIndex
         guard dateIndex >= 0 else {
@@ -169,7 +207,7 @@ extension ARMCalendar: UICollectionViewDataSource {
             view.removeFromSuperview()
         }
         
-      
+        
         guard let date = translateToDate(indexPath) else {
             return cell
         }
@@ -183,6 +221,11 @@ extension ARMCalendar: UICollectionViewDataSource {
         cell.awakeFromNib()
         cell.createViews()
         cell.initializeCellWith(date: date)
+        
+        cell.animatedSelect = false
+        cell.isSelected = (preselected.contains(date))
+        cell.animatedSelect = true
+        
         self.calendarDelegate.calendar(self, additionalStylingForDate: cell.dateLabel)
         
         cell.isEnabled = !self.calendarDelegate.calendar(self, shouldDisableCellAt: date)
@@ -230,10 +273,14 @@ extension ARMCalendar: UICollectionViewDataSource {
 extension ARMCalendar: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let date = translateToDate(indexPath) else { return }
+        
         calendarDelegate.calendar(self, didSelect: date)
     }
     public func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let date = translateToDate(indexPath) else { return }
+        preselected.removeAll { (d) -> Bool in
+            return d.timeIntervalSince1970 == date.timeIntervalSince1970
+        }
         calendarDelegate.calendar(self, didDeselect: date)
     }
     public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {

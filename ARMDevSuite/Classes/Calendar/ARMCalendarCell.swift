@@ -14,6 +14,7 @@ class ARMCalendarCell: UICollectionViewCell {
     var dateLabel: UILabel!
     var circleView: UIView!
     var animatedSelect: Bool = true
+    var initialized = false
     
     var selectedColor: UIColor = .white
     var disabledColor: UIColor = .gray
@@ -22,25 +23,27 @@ class ARMCalendarCell: UICollectionViewCell {
     var circleColor: UIColor = .red
     
     func createViews() {
-
+        
         dateLabel = UILabel(); self.contentView.addSubview(dateLabel)
-            dateLabel.translatesAutoresizingMaskIntoConstraints = false
-            dateLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
-            dateLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        dateLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
         dateLabel.adjustsFontSizeToFitWidth = true
-
+        
         dateLabel.textAlignment = .center
         
         circleView = UIView(); self.contentView.insertSubview(circleView, belowSubview: dateLabel)
-            circleView.translatesAutoresizingMaskIntoConstraints = false
-            circleView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
-            circleView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
-            circleView.widthAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.7).isActive = true
-            circleView.heightAnchor.constraint(equalTo: circleView.widthAnchor).isActive = true
+        circleView.translatesAutoresizingMaskIntoConstraints = false
+        circleView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
+        circleView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        circleView.widthAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.7).isActive = true
+        circleView.heightAnchor.constraint(equalTo: circleView.widthAnchor).isActive = true
         circleView.alpha = 0
         circleView.backgroundColor = circleColor
         circleView.clipsToBounds = true
-     
+        
+        initialized = true
+        
     }
     
     func initializeCellWith(date: Date) {
@@ -48,6 +51,11 @@ class ARMCalendarCell: UICollectionViewCell {
         formatter.dateFormat = "d"
         
         dateLabel.text = formatter.string(from: date)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        performSelect()
     }
     
     override var isSelected: Bool {
@@ -65,9 +73,12 @@ class ARMCalendarCell: UICollectionViewCell {
     }
     
     private func performSelect() {
-        self.dateLabel.textColor = self.isSelected ? self.selectedColor : self.normalColor
-        self.circleView.alpha = self.isSelected ? 1 : 0
-        self.circleView.layer.cornerRadius = self.isSelected ? self.circleView.frame.height/2 : 0 
+        if initialized {
+            self.dateLabel.textColor = self.isSelected ? self.selectedColor : self.normalColor
+            self.circleView.alpha = self.isSelected ? 1 : 0
+            self.circleView.layer.cornerRadius = self.isSelected ? self.circleView.frame.height/2 : 0
+        }
+        
     }
     
     var isEnabled: Bool = true {

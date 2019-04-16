@@ -142,8 +142,8 @@ public class ARMPhotoPickerButton: UIButton {
             self.setBackgroundColor(color: ARMPhotoPickerButton.skyBlue, forState: .normal)
             self.layer.cornerRadius = self.frame.height/2
             self.clipsToBounds = true
-            self.setTitle("Get Images", for: .normal)
-            self.setTitleColor(.white, for: .normal)
+            //            self.setTitle("Get Images", for: .normal)
+        //            self.setTitleColor(.white, for: .normal)
         case .profile:
             resetButton()
             self.userSetImage = self.maximumImages
@@ -226,6 +226,12 @@ public class ARMPhotoPickerButton: UIButton {
         }
         
         origin.present(pickerController, animated: true)
+    }
+    
+    public func setProfilePhoto(to img: UIImage) {
+        self.profileImage = img
+        self.reshape()
+        self.delegate?.photoPicker(self, received: [img])
     }
     
     @objc private func editPhoto() {
