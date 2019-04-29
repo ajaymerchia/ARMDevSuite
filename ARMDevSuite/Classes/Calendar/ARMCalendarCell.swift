@@ -9,7 +9,7 @@
 import UIKit
 
 @available(iOS 9.0, *)
-class ARMCalendarCell: UICollectionViewCell {
+public class ARMCalendarCell: UICollectionViewCell {
     
     var dateLabel: UILabel!
     var circleView: UIView!
@@ -53,12 +53,12 @@ class ARMCalendarCell: UICollectionViewCell {
         dateLabel.text = formatter.string(from: date)
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         performSelect()
     }
     
-    override var isSelected: Bool {
+    override public var isSelected: Bool {
         didSet {
             guard dateLabel != nil else { return }
             
@@ -81,7 +81,7 @@ class ARMCalendarCell: UICollectionViewCell {
         
     }
     
-    var isEnabled: Bool = true {
+    public var isEnabled: Bool = true {
         didSet {
             guard dateLabel != nil else { return }
             isUserInteractionEnabled = isEnabled

@@ -333,6 +333,8 @@ extension CGFloat {
 
 // Gradients
 public class Gradient {
+    public static var layerName = "kGradientLayer"
+    
     var color1: UIColor!
     var color2: UIColor!
     
@@ -394,7 +396,7 @@ public extension UIView {
         self.layer.insertSublayer(gradient, at: 0)
     }
     
-    func addBorder(gradient: Gradient, in direction: GradientOrientation, thickness: CGFloat, reverse: Bool = false) {
+    func addBorder(gradient: Gradient, in direction: GradientOrientation, thickness: CGFloat, reverse: Bool = false,  name: String = Gradient.layerName) {
         let grad = CAGradientLayer()
         grad.frame =  CGRect(origin: .zero, size: self.frame.size)
         grad.colors = gradient.colors.map { $0.cgColor }
@@ -407,6 +409,7 @@ public extension UIView {
         shape.strokeColor = UIColor.black.cgColor
         shape.fillColor = UIColor.clear.cgColor
         grad.mask = shape
+        grad.name = name
         
         self.layer.addSublayer(grad)
     }

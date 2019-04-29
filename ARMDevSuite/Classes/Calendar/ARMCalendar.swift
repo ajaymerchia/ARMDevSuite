@@ -231,6 +231,7 @@ extension ARMCalendar: UICollectionViewDataSource {
         cell.isEnabled = !self.calendarDelegate.calendar(self, shouldDisableCellAt: date)
         
         
+        
         return cell
         
     }
@@ -271,8 +272,17 @@ extension ARMCalendar: UICollectionViewDataSource {
 
 @available(iOS 9.0, *)
 extension ARMCalendar: UICollectionViewDelegate {
+    
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let date = translateToDate(indexPath) else { return }
+        if !self.allowsMultipleSelection {
+            self.indexPathsForSelectedItems?.forEach({ (ind) in
+                if ind != indexPath {
+                    self.deselectItem(at: ind, animated: true)
+                }
+            })
+            preselected.removeAll()
+        }
         
         calendarDelegate.calendar(self, didSelect: date)
     }
