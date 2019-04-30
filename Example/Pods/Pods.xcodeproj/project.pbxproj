@@ -283,6 +283,7 @@
 		B7476C6D5D1F4FD1B7A14AACA719C4C4 /* DKCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0A4F65D634FF724EE1778641DD2B095 /* DKCamera.framework */; };
 		B760B77F2E4DBFD2450E28D4AC59499D /* DKPhotoGallery.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E93579C54FA6F2F1E584D70BD12196BF /* DKPhotoGallery.bundle */; };
 		B7CD0CE722519E870096F9C7 /* ARMCalendarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CD0CE622519E870096F9C7 /* ARMCalendarDelegate.swift */; };
+		B7F3368C227916C100555B70 /* ARMMultipleImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F3368B227916C100555B70 /* ARMMultipleImagePicker.swift */; };
 		B8EE88E1C37AA8C45942C32365EED615 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 91ABB2D68BDF91CC0CF2CC48FC35EF1B /* en.lproj */; };
 		B8F5DDC5AF94453D2530CFB16CA6FAF0 /* FLAnimatedImage-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E8AC70082FC32D9BF11E6E566A6606DC /* FLAnimatedImage-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B977C691E43E44CEAB2053918A1AFA23 /* JGProgressHUDErrorIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B28BD3150A0C93A3BB66D9442DFED06 /* JGProgressHUDErrorIndicatorView.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -911,6 +912,7 @@
 		B6122E2FCFC77CF2CB8FD373711A6B4B /* SkyFloatingLabelTextField.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SkyFloatingLabelTextField.xcconfig; sourceTree = "<group>"; };
 		B6D231FF21F9EC124A75487B79639773 /* NSImage+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSImage+WebCache.h"; path = "SDWebImage/NSImage+WebCache.h"; sourceTree = "<group>"; };
 		B7CD0CE622519E870096F9C7 /* ARMCalendarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ARMCalendarDelegate.swift; path = ARMDevSuite/Classes/Calendar/ARMCalendarDelegate.swift; sourceTree = "<group>"; };
+		B7F3368B227916C100555B70 /* ARMMultipleImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARMMultipleImagePicker.swift; sourceTree = "<group>"; };
 		B851658ADC690307F770779584146112 /* Slide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Slide.swift; path = ARMDevSuite/Classes/SlideView/Slide.swift; sourceTree = "<group>"; };
 		B9FE693C8DD06D96AAA09AFA98045188 /* BlockModeOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlockModeOptions.swift; path = Sources/CryptoSwift/BlockMode/BlockModeOptions.swift; sourceTree = "<group>"; };
 		BA13F0E44EE9DB0EDBFB00FBFCC2BAE4 /* StreamDecryptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StreamDecryptor.swift; path = Sources/CryptoSwift/StreamDecryptor.swift; sourceTree = "<group>"; };
@@ -1678,6 +1680,7 @@
 		6FF8B82363E4A9502676E352DB7F75C2 /* ARMDevSuite */ = {
 			isa = PBXGroup;
 			children = (
+				B7F3368A227916C100555B70 /* MultipleImagePicker */,
 				0963ACDC12C2FDCC2291661C6DFE9299 /* Alerts */,
 				36198D82310984672D00AAFA9D9A6A36 /* Calendar */,
 				C7C12D9F208EBD299ED5F193F0FFBAAB /* Layouts */,
@@ -1993,6 +1996,15 @@
 				08777AF41077FBFDE09B1245409AD341 /* LocalDataManager.swift */,
 			);
 			name = LocalData;
+			sourceTree = "<group>";
+		};
+		B7F3368A227916C100555B70 /* MultipleImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				B7F3368B227916C100555B70 /* ARMMultipleImagePicker.swift */,
+			);
+			name = MultipleImagePicker;
+			path = ARMDevSuite/Classes/MultipleImagePicker;
 			sourceTree = "<group>";
 		};
 		C1744F83EBF7CA2D6AEBE88C1E32F0B5 /* Logic */ = {
@@ -2908,6 +2920,7 @@
 				EA109B86EDDFD5F89137187F75F446A0 /* ARMCalendar.swift in Sources */,
 				D75FF7EAFF11E2E730FF8C4654FD85E3 /* ARMCalendarCell.swift in Sources */,
 				30D21E7653E812BD5E155EBB692E2F19 /* ARMCalendarDataStructures.swift in Sources */,
+				B7F3368C227916C100555B70 /* ARMMultipleImagePicker.swift in Sources */,
 				01448AEF35371D8BC10530C0A7D3FC2F /* ARMCalendarHeader.swift in Sources */,
 				9E958B83C02794C6A8E62E68E04EA860 /* ARMDevSuite-dummy.m in Sources */,
 				7F414BEADDA9505DDA944B03CD66FDEF /* ARMPhotoPicker-inputs.swift in Sources */,

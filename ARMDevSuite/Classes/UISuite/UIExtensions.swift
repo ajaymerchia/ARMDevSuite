@@ -379,6 +379,23 @@ public enum GradientOrientation {
 }
 
 public extension UIView {
+    public func pinTo(_ other: UIView) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.centerXAnchor.constraint(equalTo: other.centerXAnchor).isActive = true
+        self.centerYAnchor.constraint(equalTo: other.centerYAnchor).isActive = true
+        self.widthAnchor.constraint(equalTo: other.widthAnchor).isActive = true
+        self.heightAnchor.constraint(equalTo: other.heightAnchor).isActive = true
+        
+    }
+    
+    public func center(in other: UIView) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.centerXAnchor.constraint(equalTo: other.centerXAnchor).isActive = true
+        self.centerYAnchor.constraint(equalTo: other.centerYAnchor).isActive = true
+    }
+}
+
+public extension UIView {
     func applyGradient(with colors: [UIColor], locations: [NSNumber]? = nil) {
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds
