@@ -89,7 +89,7 @@ public class ARMCalendar: UICollectionView, ARMCalendarDelegate {
     private func updateMonths() {
         self.monthConfigs = []
         
-        var refDate = Date().firstOfMonth
+        var refDate = startDate.firstOfMonth
         for _ in 0..<numMonths {
             self.monthConfigs.append(MonthConfig(first: refDate))
             refDate = Calendar.current.date(byAdding: .advanceOneMonth, to: refDate)!
