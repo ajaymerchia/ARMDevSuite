@@ -207,7 +207,7 @@ extension ARMMultipleImagePicker: ARMPhotoCellDelegate {
             })
             
             let indices = newImagesToAdd.map({ (pair) -> IndexPath in
-                return IndexPath(row: self.imageOrder.firstIndex(of: pair.0)!, section: 0)
+                return IndexPath(row: self.imageOrder.firstIndex(of: pair.0)! + 1, section: 0)
             })
             
             self.insertItems(at: indices)
