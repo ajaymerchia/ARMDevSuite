@@ -17,7 +17,7 @@ public class ARMMultipleImagePicker: UICollectionView {
     
     public var contentPadding: UIEdgeInsets = ARMMultipleImagePicker.contentPadding
     
-    private static let frameworkBundle = Bundle(for: ARMPhotoPickerButton.self)
+    private static let frameworkBundle = Bundle(for: ARMMultipleImagePicker.self)
     private static let bundleURL = frameworkBundle.resourceURL?.appendingPathComponent("MultipleImagePickerBundle.bundle")
     private static let resourceBundle = Bundle(url: bundleURL!)
     
@@ -76,14 +76,12 @@ extension ARMMultipleImagePicker: UICollectionViewDelegate, UICollectionViewData
             headerView.frame.size.width = self.contentPadding.left
             
             return headerView
-        } else if kind == UICollectionView.elementKindSectionFooter {
+        } else {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SpacingCell.kID, for: indexPath)
             
             headerView.frame.size.width = self.contentPadding.right
             
             return headerView
-        } else {
-            assert(false, "Unexpected element kind")
         }
         
     }
@@ -190,7 +188,7 @@ extension ARMMultipleImagePicker {
 
 extension ARMMultipleImagePicker: ARMPhotoCellDelegate {
     func armPhotoCell(_ armPhotoCell: ARMPhotoCell, didRemoveImageWith key: String) {
-        if let ind = self.imageOrder.index(of: key) {
+        if let ind = self.imageOrder.firstIndex(of: key) {
             let index = IndexPath(row: ind + 1, section: 0)
             self.imageMap.removeValue(forKey: key)
             self.deleteItems(at: [index])
@@ -209,7 +207,7 @@ extension ARMMultipleImagePicker: ARMPhotoCellDelegate {
             })
             
             let indices = newImagesToAdd.map({ (pair) -> IndexPath in
-                return IndexPath(row: self.imageOrder.index(of: pair.0)!, section: 0)
+                return IndexPath(row: self.imageOrder.firstIndex(of: pair.0)!, section: 0)
             })
             
             self.insertItems(at: indices)

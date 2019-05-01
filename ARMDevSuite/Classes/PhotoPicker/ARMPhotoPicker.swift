@@ -9,21 +9,6 @@ import Foundation
 import UIKit
 import DKImagePickerController
 
-extension UIView {
-    var parentViewController: UIViewController? {
-        var parentResponder: UIResponder? = self
-        while parentResponder != nil {
-            parentResponder = parentResponder!.next
-            if let viewController = parentResponder as? UIViewController {
-                return viewController
-            }
-        }
-        return nil
-    }
-}
-
-
-
 @available(iOS 9.0, *)
 public class ARMPhotoPickerButton: UIButton {
     override public init(frame: CGRect) {

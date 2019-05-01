@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ARMDevSuite'
-  s.version          = '0.1.60'
+  s.version          = '0.1.61'
   s.summary          = 'UI & Logic Pod containing many useful helpers and UI elements.'
 
 # This description is used to generate tags and improve search results.
@@ -76,13 +76,13 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
   end
   
   s.subspec 'MultipleImagePicker' do |multipicker|
-    photopicker.source_files = 'ARMDevSuite/Classes/MultipleImagePicker/*.swift'
-    photopicker.resource_bundles = {
+    multipicker.source_files = 'ARMDevSuite/Classes/MultipleImagePicker/*.swift'
+    multipicker.resource_bundles = {
       'MultipleImagePickerBundle' => ['ARMDevSuite/Assets/MultipleImagePicker/*.png']
     }
-    photopicker.dependency 'DKImagePickerController'
-    photopicker.dependency 'ARMDevSuite/UISuite'
-    photopicker.dependency 'ARMDevSuite/LogicSuite'
+    multipicker.dependency 'DKImagePickerController'
+    multipicker.dependency 'ARMDevSuite/UISuite'
+    multipicker.dependency 'ARMDevSuite/Logic'
   end
   
   s.subspec 'PhotoPicker' do |photopicker|
