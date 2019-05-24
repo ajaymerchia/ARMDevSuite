@@ -85,6 +85,22 @@ public class LogicSuite {
         }
     }
     
+    /// ReverseGeocodes a coordinate into a properly formatted address string
+    ///
+    /// - Parameters:
+    ///   - coordinate: coordinate to reverse geocode
+    ///   - completion: passed nil if address not identified, otherwise, address of the location
+    public func reverseGeocode(coordinate: CLLocationCoordinate2D, completion: @escaping ((String?)->()))  {
+        
+        let geoCoder = CLGeocoder()
+        geoCoder.reverseGeocodeLocation(CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)) { (placemark, error) in
+            guard let placemark = placemark, error == nil else {
+                completion(nil)
+                return
+            }
+            completion(placemark.first?.name)
+        }
+    }
     
     
     
