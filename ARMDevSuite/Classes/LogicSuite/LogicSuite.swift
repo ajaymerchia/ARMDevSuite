@@ -63,6 +63,17 @@ public class LogicSuite {
     }
     
     
+    
+    public struct ARMAddress {
+        public var street: String?
+        public var city: String?
+        public var state: String?
+        public var zip: String?
+        public var postalString: String {
+            return [[self.street, self.city, self.state].compactMap({$0}).joined(separator: ", "), (self.zip ?? "")].joined(separator: " ")
+        }
+    }
+    
     /// Geocodes an address string into a CLLocation
     ///
     /// - Parameters:
@@ -89,16 +100,20 @@ public class LogicSuite {
     ///
     /// - Parameters:
     ///   - coordinate: coordinate to reverse geocode
-    ///   - completion: passed nil if address not identified, otherwise, address of the location
-    public static func reverseGeocode(coordinate: CLLocationCoordinate2D, completion: @escaping ((String?)->()))  {
-        
+    ///   - completion: passed address and error if any
+    public static func reverseGeocode(coordinate: CLLocationCoordinate2D, completion: @escaping (ARMAddress?, String?)->()) {
         let geoCoder = CLGeocoder()
         geoCoder.reverseGeocodeLocation(CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)) { (placemark, error) in
-            guard let placemark = placemark, error == nil else {
-                completion(nil)
+            guard let placemark = placemark?.first, error == nil else {
+                completion(nil, error?.localizedDescription)
                 return
             }
-            completion(placemark.first?.name)
+            let street = placemark.name
+            let city = placemark.locality
+            let state = placemark.administrativeArea
+            let zip = placemark.postalCode
+            
+            completion(ARMAddress(street: street, city: city, state: state, zip: zip), nil)
         }
     }
     
