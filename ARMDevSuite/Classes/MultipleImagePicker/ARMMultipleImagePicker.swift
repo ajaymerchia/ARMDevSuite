@@ -9,8 +9,19 @@ import Foundation
 import UIKit
 import DKImagePickerController
 
+public protocol ARMMultipleImagePickerDelegate {
+    func multiplePicker(_ multiplePicker: ARMMultipleImagePicker, didAdd images: [(String, UIImage)])
+    func multiplePicker(_ multiplePicker: ARMMultipleImagePicker, didRemoveImageWith key: String)
+}
+public extension ARMMultipleImagePickerDelegate {
+    func multiplePicker(_ multiplePicker: ARMMultipleImagePicker, didAdd images: [(String, UIImage)]){}
+    func multiplePicker(_ multiplePicker: ARMMultipleImagePicker, didRemoveImageWith key: String){}
+}
+
 public class ARMMultipleImagePicker: UICollectionView {
     public var imageMap: [String: UIImage] = [:]
+    public var multiplePickerDelegate: ARMMultipleImagePickerDelegate?
+    
     private var imageOrder: [String] {
         return imageMap.keys.sorted(by: {$0<$1})
     }
@@ -192,6 +203,8 @@ extension ARMMultipleImagePicker: ARMPhotoCellDelegate {
             let index = IndexPath(row: ind + 1, section: 0)
             self.imageMap.removeValue(forKey: key)
             self.deleteItems(at: [index])
+            
+            self.multiplePickerDelegate?.multiplePicker(self, didRemoveImageWith: key)
         }
     }
     
@@ -211,6 +224,7 @@ extension ARMMultipleImagePicker: ARMPhotoCellDelegate {
             })
             
             self.insertItems(at: indices)
+            self.multiplePickerDelegate?.multiplePicker(self, didAdd: newImagesToAdd)
         }
     }
     
