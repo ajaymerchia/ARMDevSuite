@@ -108,7 +108,8 @@ public class ARMCalendar: UICollectionView, ARMCalendarDelegate {
     }
     
     public func translateToIndexPath(_ date: Date) -> IndexPath? {
-        guard let section = Calendar.current.dateComponents([.month], from: monthConfigs.first?.firstOfMonth ?? startDate, to: date).month else {
+        let refDate = monthConfigs.first?.firstOfMonth ?? startDate
+        guard date > refDate, let section = Calendar.current.dateComponents([.month], from: refDate, to: date).month else {
             return nil
         }
         guard numMonths > section && section >= 0 else { return nil}

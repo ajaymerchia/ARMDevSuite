@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 import SkyFloatingLabelTextField
 
-public class ARMTextField: SkyFloatingLabelTextField {
+open class ARMTextField: SkyFloatingLabelTextField {
     
     var additionalDistance: CGFloat = 5
     
@@ -31,7 +31,7 @@ public class ARMTextField: SkyFloatingLabelTextField {
         }
     }
     
-    override public func lineViewRectForBounds(_ bounds: CGRect, editing: Bool) -> CGRect {
+    override open func lineViewRectForBounds(_ bounds: CGRect, editing: Bool) -> CGRect {
         let height = editing ? selectedLineHeight : lineHeight
         return CGRect(x: 0, y: bounds.size.height - height + additionalDistance, width: bounds.size.width, height: height)
     }

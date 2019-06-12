@@ -11,7 +11,7 @@ import JGProgressHUD
 
 @available(iOS 9.0, *)
 public class AlertManager {
-    private var vc: UIViewController!
+    public var vc: UIViewController!
     private(set) public var callback: (() -> ())?
     public var jghud: JGProgressHUD?
     public var hud: ARMBubbleProgressHud!
