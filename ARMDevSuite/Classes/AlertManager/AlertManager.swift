@@ -259,7 +259,6 @@ public class AlertManager {
             }))
         }
         
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         actionSheet.popoverPresentationController?.sourceView = vc.view
         
         vc.present(actionSheet, animated: true)

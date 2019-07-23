@@ -94,7 +94,6 @@ extension ARMMultipleImagePicker: UICollectionViewDelegate, UICollectionViewData
             
             return headerView
         }
-        
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -237,10 +236,10 @@ extension ARMMultipleImagePicker: ARMPhotoCellDelegate {
 public class ARMPhotoCell: UICollectionViewCell {
     static let kID = "armPhotoCell"
     static let defaultBackground = UIColor.colorWithRGB(rgbValue: 0xf2f2f2)
-    static let tintColor = UIColor.colorWithRGB(rgbValue: 0x9c9c9c)
+    static var tintColor = UIColor.colorWithRGB(rgbValue: 0x9c9c9c)
     
     static let deleteBackground: UIColor = .white
-    static let deleteTint: UIColor = UIColor.colorWithRGB(rgbValue: 0x9c9c9c)
+    static var deleteTint: UIColor = UIColor.colorWithRGB(rgbValue: 0x9c9c9c)
     static let deleteSize: CGFloat = 20
     static let deletePadding: CGFloat = 5
     

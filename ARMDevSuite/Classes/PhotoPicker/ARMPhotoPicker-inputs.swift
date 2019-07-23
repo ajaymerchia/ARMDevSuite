@@ -20,6 +20,10 @@ public class ARMPhotoPickerProfileConfig {
     public var circular: Bool!
     public var selectedText: String!
     public var unselectedText: String!
+    public var borderColor = UIColor.colorWithRGB(rgbValue: 0xa8a8a8)
+    public var borderWidth: CGFloat = 1
+    
+    public var tintColor = UIColor.colorWithRGB(rgbValue: 0xa8a8a8)
     
     public init(circular: Bool = true, selectedText: String = "edit", unselectedText: String = "select") {
         self.circular = circular

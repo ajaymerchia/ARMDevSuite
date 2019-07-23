@@ -8,6 +8,42 @@
 import Foundation
 import UIKit
 
+// Constraint Manager
+extension UIView {
+    func pinTo(_ other: UIView) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.centerXAnchor.constraint(equalTo: other.centerXAnchor).isActive = true
+        self.centerYAnchor.constraint(equalTo: other.centerYAnchor).isActive = true
+        self.widthAnchor.constraint(equalTo: other.widthAnchor).isActive = true
+        self.heightAnchor.constraint(equalTo: other.heightAnchor).isActive = true
+        
+    }
+    
+    enum CenteringDirection {
+        case both
+        case vertical
+        case horizontal
+    }
+    
+    func center(in other: UIView, direction: CenteringDirection = .both) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        if direction == .both || direction == .horizontal  {
+            self.centerXAnchor.constraint(equalTo: other.centerXAnchor).isActive = true
+        }
+        if direction == .both || direction == .vertical  {
+            self.centerYAnchor.constraint(equalTo: other.centerYAnchor).isActive = true
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+
 public class LayoutManager {
     // Below
     

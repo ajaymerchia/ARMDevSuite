@@ -379,20 +379,6 @@ public enum GradientOrientation {
 }
 
 public extension UIView {
-    func pinTo(_ other: UIView) {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.centerXAnchor.constraint(equalTo: other.centerXAnchor).isActive = true
-        self.centerYAnchor.constraint(equalTo: other.centerYAnchor).isActive = true
-        self.widthAnchor.constraint(equalTo: other.widthAnchor).isActive = true
-        self.heightAnchor.constraint(equalTo: other.heightAnchor).isActive = true
-        
-    }
-    
-    func center(in other: UIView) {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.centerXAnchor.constraint(equalTo: other.centerXAnchor).isActive = true
-        self.centerYAnchor.constraint(equalTo: other.centerYAnchor).isActive = true
-    }
     var parentViewController: UIViewController? {
         var parentResponder: UIResponder? = self
         while parentResponder != nil {

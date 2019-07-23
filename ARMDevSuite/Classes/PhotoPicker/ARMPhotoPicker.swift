@@ -113,9 +113,9 @@ public class ARMPhotoPickerButton: UIButton {
         self.layer.cornerRadius = 0
         self.layer.borderColor = UIColor.clear.cgColor
         self.layer.borderWidth = 0
-        self.backgroundColor = .white
-        self.setBackgroundColor(color: .white, forState: .normal)
+        self.setBackgroundColor(color: .clear, forState: .normal)
         self.setImage(nil, for: .normal)
+
     }
     
     func reshape() {
@@ -133,13 +133,17 @@ public class ARMPhotoPickerButton: UIButton {
             resetButton()
             self.userSetImage = self.maximumImages
             self.maximumImages = 1
-            self.tintColor = ARMPhotoPickerButton.placeholder
+            self.tintColor = self.profileConfig.tintColor
             
-            self.imageView?.contentMode = .scaleAspectFill
             self.clipsToBounds = true
             
-            self.setImage(self.profileImage ?? ARMPhotoPickerButton.avatar, for: .normal)
-            
+            if let image = self.profileImage {
+                self.imageView?.contentMode = .scaleAspectFill
+                self.setImage(image, for: .normal)
+            } else {
+                self.imageView?.contentMode = .scaleAspectFit
+                self.setImage(ARMPhotoPickerButton.avatar, for: .normal)
+            }
             // if circle mode do the thing
             if self.profileConfig.circular {
                 self.layer.cornerRadius = self.frame.height/2
@@ -153,8 +157,8 @@ public class ARMPhotoPickerButton: UIButton {
                 innerLabel.text = self.profileConfig.selectedText
             }
             
-            self.layer.borderWidth = 1
-            self.layer.borderColor = ARMPhotoPickerButton.placeholder.cgColor
+            self.layer.borderWidth = self.profileConfig.borderWidth
+            self.layer.borderColor = self.profileConfig.borderColor.cgColor
             
             
             
