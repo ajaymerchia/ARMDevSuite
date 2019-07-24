@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 // Constraint Manager
-extension UIView {
+public extension UIView {
     func pinTo(_ other: UIView) {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.centerXAnchor.constraint(equalTo: other.centerXAnchor).isActive = true
@@ -36,7 +36,6 @@ extension UIView {
         
     }
 }
-
 
 
 
