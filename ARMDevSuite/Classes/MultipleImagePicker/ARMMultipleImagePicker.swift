@@ -236,10 +236,10 @@ extension ARMMultipleImagePicker: ARMPhotoCellDelegate {
 public class ARMPhotoCell: UICollectionViewCell {
     static let kID = "armPhotoCell"
     static let defaultBackground = UIColor.colorWithRGB(rgbValue: 0xf2f2f2)
-    static var tintColor = UIColor.colorWithRGB(rgbValue: 0x9c9c9c)
+    public static var tintColor = UIColor.colorWithRGB(rgbValue: 0x9c9c9c)
     
     static let deleteBackground: UIColor = .white
-    static var deleteTint: UIColor = UIColor.colorWithRGB(rgbValue: 0x9c9c9c)
+    public static var deleteTint: UIColor = UIColor.colorWithRGB(rgbValue: 0x9c9c9c)
     static let deleteSize: CGFloat = 20
     static let deletePadding: CGFloat = 5
     
