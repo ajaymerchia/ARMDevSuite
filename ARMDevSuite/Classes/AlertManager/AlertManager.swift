@@ -55,10 +55,12 @@ public class AlertManager {
     ///   - title: Title of the alert
     ///   - message: Message displayed on the alert
     ///   - dismissPrompt: Message displayed on the alert.
-    public func displayAlert(titled title: String?, withDetail message: String?, dismissPrompt: String = "Ok") {
+    public func displayAlert(titled title: String?, withDetail message: String?, dismissPrompt: String = "Ok", completion: (()->())?) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: dismissPrompt, style: .default, handler: nil)
+        let defaultAction = UIAlertAction(title: dismissPrompt, style: .default, handler: { _ in
+            completion?()
+        })
         alert.addAction(defaultAction)
         vc.present(alert, animated: true, completion: nil)
         callback?()
