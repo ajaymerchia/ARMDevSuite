@@ -555,6 +555,18 @@ public class ARMBubbleProgressHud: UIView {
             contentView.addSubview(indicatorView)
             contentView.addSubview(titleLabel)
             contentView.addSubview(detailLabel)
+            
+            titleLabel.removeConstraints(titleLabel.constraints)
+            detailLabel.removeConstraints(detailLabel.constraints)
+            titleLabel.translatesAutoresizingMaskIntoConstraints = false
+            titleLabel.topAnchor.constraint(equalTo: indicatorView.bottomAnchor).isActive = true
+            titleLabel.centerXAnchor.constraint(equalTo: indicatorView.centerXAnchor).isActive = true
+            titleLabel.widthAnchor.constraint(equalToConstant: self.frame.width - 6 * .padding).isActive = true
+            
+            detailLabel.translatesAutoresizingMaskIntoConstraints = false
+            detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
+            detailLabel.centerXAnchor.constraint(equalTo: indicatorView.centerXAnchor).isActive = true
+            detailLabel.widthAnchor.constraint(equalToConstant: self.frame.width - 6 * .padding).isActive = true
         }
         
         let numSlots = (bubbleGap ? 1 : 0) + numBubbles
@@ -660,12 +672,17 @@ public class ARMBubbleProgressHud: UIView {
             return
         }
         
+        
+        
+        
+        
         titleLabel.sizeToFit()
         titleLabel.frame.size = CGSize(width: self.frame.width, height: max(UISuite.getLineHeight(for: titleFont), titleLabel.frame.height))
         detailLabel.sizeToFit()
         detailLabel.frame.size = CGSize(width: self.frame.width, height: max(UISuite.getLineHeight(for: detailFont), detailLabel.frame.height))
         
         contentView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: indicatorView.frame.height + titleLabel.frame.height + detailLabel.frame.height + 2 * .padding)
+        contentView.clipsToBounds = false
         
         titleLabel.frame = LayoutManager.belowCentered(elementAbove: indicatorView, padding: 0, width: self.frame.width - 6 * .padding, height: titleLabel.frame.height)
         detailLabel.frame = LayoutManager.belowCentered(elementAbove: titleLabel, padding: 0, width: self.frame.width - 6 * .padding, height: detailLabel.frame.height)
