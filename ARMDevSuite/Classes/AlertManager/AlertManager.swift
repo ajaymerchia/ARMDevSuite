@@ -10,22 +10,22 @@ import UIKit
 import JGProgressHUD
 
 @available(iOS 9.0, *)
-public class AlertManager {
-    public var vc: UIViewController!
-    private(set) public var callback: (() -> ())?
-    public var jghud: JGProgressHUD?
-    public var hud: ARMBubbleProgressHud!
+open class AlertManager {
+    open var vc: UIViewController!
+    private(set) open var callback: (() -> ())?
+    open var jghud: JGProgressHUD?
+    open var hud: ARMBubbleProgressHud!
     
     // Yes or No Question Variables
     
     /// Affirmative option displayed in UIAlerts
-    public var affirmativePrompt = "Yes"
+    open var affirmativePrompt = "Yes"
     /// Negatory option displayed in UIAlerts
-    public var negatoryPrompt = "No"
+    open var negatoryPrompt = "No"
     
     
     /// How long the hud will wait before disappearing when failure or success is triggered
-    public var hudResponseWait = 1.5
+    open var hudResponseWait = 1.5
     
     
     /// Creates an AlertManager for this ViewController
@@ -55,7 +55,7 @@ public class AlertManager {
     ///   - title: Title of the alert
     ///   - message: Message displayed on the alert
     ///   - dismissPrompt: Message displayed on the alert.
-    public func displayAlert(titled title: String?, withDetail message: String?, dismissPrompt: String = "Ok", completion: (()->())?) {
+    open func displayAlert(titled title: String?, withDetail message: String?, dismissPrompt: String = "Ok", completion: (()->())?) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: dismissPrompt, style: .default, handler: { _ in
@@ -73,7 +73,7 @@ public class AlertManager {
     ///   - question: Question to be asked
     ///   - helpText: Any help text in a smaller font
     ///   - onAnswer: Returns whether if the affirmative response was selected
-    public func askYesOrNo(question: String, helpText: String?, onAnswer: @escaping (Bool) -> ()) {
+    open func askYesOrNo(question: String, helpText: String?, onAnswer: @escaping (Bool) -> ()) {
         
         let alert = UIAlertController(title: question, message: helpText, preferredStyle: .alert)
         
@@ -98,7 +98,7 @@ public class AlertManager {
     ///   - withTitle: Title displayed on the HUD
     ///   - withDetail: Details displayed on the HUD
     ///   - style: Determines the coloring of the HUD
-    public func startJGProgressHud(withTitle:String, withDetail: String? = nil, style: JGProgressHUDStyle = .light) {
+    open func startJGProgressHud(withTitle:String, withDetail: String? = nil, style: JGProgressHUDStyle = .light) {
         self.jghud = JGProgressHUD(style: style)
         self.jghud?.textLabel.text = withTitle
         self.jghud?.detailTextLabel.text = withDetail
@@ -110,7 +110,7 @@ public class AlertManager {
     /// Shows a failure message on the HUD and then fades away.
     ///
     /// - Returns: nil
-    public func triggerJGHudFailure(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
+    open func triggerJGHudFailure(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
         jghud?.indicatorView = JGProgressHUDErrorIndicatorView(contentView: vc.view)
         changeJGHUD(toTitle: withHeader, andDetail: andDetail)
         self.jghud?.dismiss(afterDelay: hudResponseWait, animated: true)
@@ -123,7 +123,7 @@ public class AlertManager {
     /// Shows a success message on the HUD and then fades away.
     ///
     /// - Returns: nil
-    public func triggerJGHudSuccess(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
+    open func triggerJGHudSuccess(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
         jghud?.indicatorView = JGProgressHUDSuccessIndicatorView(contentView: vc.view)
         changeJGHUD(toTitle: withHeader, andDetail: andDetail)
         self.jghud?.dismiss(afterDelay: hudResponseWait, animated: true)
@@ -138,7 +138,7 @@ public class AlertManager {
     /// - Parameters:
     ///   - toTitle: Title displayed on the HUD
     ///   - andDetail: Details displayed on the HUD
-    public func changeJGHUD(toTitle: String?, andDetail: String?) {
+    open func changeJGHUD(toTitle: String?, andDetail: String?) {
         if let title = toTitle {
             self.jghud?.textLabel.text = title
         }
@@ -153,7 +153,7 @@ public class AlertManager {
     ///   - withTitle: Title displayed on the HUD
     ///   - withDetail: Details displayed on the HUD
     ///   - style: Determines the coloring of the HUD
-    public func startProgressHud(withTitle:String, withDetail: String? = nil) {
+    open func startProgressHud(withTitle:String, withDetail: String? = nil) {
         self.hud.setMessage(title: withTitle, detail: withDetail)
         self.hud.show()
     }
@@ -163,12 +163,12 @@ public class AlertManager {
     /// - Parameters:
     ///   - toTitle: Title displayed on the HUD
     ///   - andDetail: Details displayed on the HUD
-    public func changeHUD(toTitle: String?, andDetail: String?) {
+    open func changeHUD(toTitle: String?, andDetail: String?) {
         self.hud.setMessage(title: toTitle, detail: andDetail)
     }
     
     /// Dismisses the ARMBubbleProgressHud
-    public func dismissHUD() {
+    open func dismissHUD() {
         self.callback?()
         hud.dismiss()
     }
@@ -177,7 +177,7 @@ public class AlertManager {
     /// Shows a failure message on the ARMBubbleProgressHud and then fades away.
     ///
     /// - Returns: nil
-    public func triggerHudFailure(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
+    open func triggerHudFailure(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
         hud.showResult(success: false, title: withHeader, detail: andDetail)
         Timer.scheduledTimer(withTimeInterval: hud.fadeDelay + hud.fadeDuration, repeats: false) { (_) in
             self.callback?()
@@ -189,7 +189,7 @@ public class AlertManager {
     /// Shows a success message on the ARMBubbleProgressHud and then fades away.
     ///
     /// - Returns: nil
-    public func triggerHudSuccess(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
+    open func triggerHudSuccess(withHeader: String?, andDetail: String?, onComplete: @escaping() -> () = {}) {
         hud.showResult(success: true, title: withHeader, detail: andDetail)
         Timer.scheduledTimer(withTimeInterval: hud.fadeDelay + hud.fadeDuration, repeats: false) { (_) in
             self.callback?()
@@ -212,7 +212,7 @@ public class AlertManager {
     ///   - placeholderAsText: Renders the placeholder as typed text instead of a placeholder
     ///   - completion: Called with the contents of the textfield on complete.
     ///   - cancellation: Called alert is dismissed
-    public func getTextInput(withTitle: String, andHelp: String?, andPlaceholder: String, placeholderAsText: Bool = false,  completion: @escaping (String) -> (), cancellation: @escaping () -> () = {}) {
+    open func getTextInput(withTitle: String, andHelp: String?, andPlaceholder: String, placeholderAsText: Bool = false,  completion: @escaping (String) -> (), cancellation: @escaping () -> () = {}) {
         let alert = UIAlertController(title: withTitle, message: andHelp, preferredStyle: .alert)
         
         alert.addTextField(configurationHandler: { textField in
@@ -248,7 +248,7 @@ public class AlertManager {
     ///   - withTitle: Title displayed on the action sheet
     ///   - andDetail: Detail displayed on the action sheet
     ///   - configs: titles, styles, and callbacks for each action item.
-    public func showActionSheet(withTitle: String?, andDetail: String?, configs: [ActionConfig]) {
+    open func showActionSheet(withTitle: String?, andDetail: String?, configs: [ActionConfig]) {
         
         let actionSheet = UIAlertController(title: withTitle, message: andDetail, preferredStyle: .actionSheet)
         
