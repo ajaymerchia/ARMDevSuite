@@ -261,6 +261,10 @@ open class AlertManager {
             }))
         }
         
+        if !configs.map({$0.style}).contains(UIAlertAction.Style.cancel) {
+            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        }
+        
         actionSheet.popoverPresentationController?.sourceView = vc.view
         
         vc.present(actionSheet, animated: true)

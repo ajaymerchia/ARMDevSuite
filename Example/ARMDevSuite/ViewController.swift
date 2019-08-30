@@ -82,7 +82,7 @@ class ViewController: UIViewController {
     @objc func displayAlert() {
         alerts.askYesOrNo(question: "Are you ready to see an alert", helpText: "help") { (ready) in
             if ready {
-                self.alerts.displayAlert(titled: "Pretty cool alert", withDetail: "Don't agree?", dismissPrompt: "I'm a dummy")
+                self.alerts.displayAlert(titled: "Pretty cool alert", withDetail: "Don't agree?", dismissPrompt: "I'm a dummy", completion: nil)
             } else {
                 return
             }
