@@ -28,34 +28,37 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
   s.source           = { :git => 'https://github.com/ajaymerchia/ARMDevSuite.git', :tag => s.version.to_s }
   s.swift_version    = '5.0'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '11.0'
 
+	
+	# Base
   s.subspec 'Layouts' do |layout|
-    layout.source_files = 'ARMDevSuite/Classes/LayoutManager/LayoutManager.swift'
+    layout.source_files = 'ARMDevSuite/Classes/LayoutManager/*.swift'
   end
   
   s.subspec 'LocalData' do |localdata|
     localdata.source_files = 'ARMDevSuite/Classes/LocalData/LocalDataManager.swift'
   end
-  
+	
+	s.subspec 'Logic' do |logic|
+    logic.source_files = 'ARMDevSuite/Classes/LogicSuite/*.swift'
+    logic.dependency 'CryptoSwift'
+  end
+	
+	s.subspec 'UISuite' do |ui|
+    ui.source_files = 'ARMDevSuite/Classes/UISuite/*.swift'
+    ui.dependency 'ARMDevSuite/Layouts'
+  end
+	
+	
+  #  Begin UI Components
+	
   
   s.subspec 'Alerts' do |alerts|
     alerts.source_files = 'ARMDevSuite/Classes/AlertManager/AlertManager.swift'
     alerts.dependency 'JGProgressHUD'
     alerts.dependency 'ARMDevSuite/ProgressHud'
   end
-  
-  s.subspec 'Logic' do |logic|
-    logic.source_files = 'ARMDevSuite/Classes/LogicSuite/LogicSuite.swift'
-    logic.dependency 'CryptoSwift'
-  end
-  
-  s.subspec 'UISuite' do |ui|
-    ui.source_files = 'ARMDevSuite/Classes/UISuite/*.swift'
-    ui.dependency 'ARMDevSuite/Layouts'
-  end
-  
-  #  Begin UI Components
 
   s.subspec 'SegControl' do |seg|
     seg.source_files = 'ARMDevSuite/Classes/SegControl/*.swift'

@@ -40,12 +40,6 @@ extension Date {
     }
 }
 
-extension TimeInterval {
-    static let minute: TimeInterval = 60
-    static let hour: TimeInterval = TimeInterval.minute * 60
-    static let day: TimeInterval = TimeInterval.hour * 24
-    static let month: TimeInterval = TimeInterval.day * 30
-}
 
 extension DateComponents {
     static var advanceOneMonth = DateComponents(calendar: Calendar.current, timeZone: TimeZone.current, era: nil, year: nil, month: 1, day: 0, hour: nil, minute: nil, second: nil, nanosecond: nil, weekday: nil, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil)

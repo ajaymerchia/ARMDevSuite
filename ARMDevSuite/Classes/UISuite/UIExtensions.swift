@@ -10,10 +10,8 @@ import UIKit
 
 public extension UIImage {
     func resizeTo(_ sizeChange:CGSize) -> UIImage {
-        
         let hasAlpha = true
         let scale: CGFloat = 0.0 // Use scale factor of main screen
-        
         UIGraphicsBeginImageContextWithOptions(sizeChange, !hasAlpha, scale)
         self.draw(in: CGRect(origin: .zero, size: sizeChange))
         

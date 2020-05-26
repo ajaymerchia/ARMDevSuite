@@ -1,6 +1,6 @@
 {
   "name": "ARMDevSuite",
-  "version": "0.1.49",
+  "version": "0.1.74",
   "summary": "UI & Logic Pod containing many useful helpers and UI elements.",
   "description": "ARMDevSuite is a pod that contains many useful UIKit elements as well as useful logic libraries.",
   "homepage": "https://github.com/ajaymerchia/ARMDevSuite",
@@ -13,16 +13,16 @@
   },
   "source": {
     "git": "https://github.com/ajaymerchia/ARMDevSuite.git",
-    "tag": "0.1.49"
+    "tag": "0.1.74"
   },
-  "swift_versions": "4.2",
+  "swift_versions": "5.0",
   "platforms": {
-    "ios": "10.0"
+    "ios": "11.0"
   },
   "subspecs": [
     {
       "name": "Layouts",
-      "source_files": "ARMDevSuite/Classes/LayoutManager/LayoutManager.swift"
+      "source_files": "ARMDevSuite/Classes/LayoutManager/*.swift"
     },
     {
       "name": "LocalData",
@@ -95,6 +95,26 @@
       }
     },
     {
+      "name": "MultipleImagePicker",
+      "source_files": "ARMDevSuite/Classes/MultipleImagePicker/*.swift",
+      "resource_bundles": {
+        "MultipleImagePickerBundle": [
+          "ARMDevSuite/Assets/MultipleImagePicker/*.png"
+        ]
+      },
+      "dependencies": {
+        "DKImagePickerController": [
+
+        ],
+        "ARMDevSuite/UISuite": [
+
+        ],
+        "ARMDevSuite/Logic": [
+
+        ]
+      }
+    },
+    {
       "name": "PhotoPicker",
       "source_files": "ARMDevSuite/Classes/PhotoPicker/*.swift",
       "resource_bundles": {
@@ -138,5 +158,6 @@
       "name": "Calendar",
       "source_files": "ARMDevSuite/Classes/Calendar/*.swift"
     }
-  ]
+  ],
+  "swift_version": "5.0"
 }
