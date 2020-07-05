@@ -6,10 +6,17 @@
 //
 
 import Foundation
+
+public protocol ARMNetworkingErrorParserDelegate {
+	func extractErrorString(from response: HTTPURLResponse) -> String?
+}
+
 public class ARMNetworkingUtils {
 	public static let shared = ARMNetworkingUtils()
 	
 	private let session = URLSession.shared
+	
+	public var errorDelegate: ARMNetworkingErrorParserDelegate?
 	
 	
 	public func put(url: String?, headers: [String: String]?, params: [String: Any]?, completion: Response<Any>?) {
@@ -49,7 +56,13 @@ public class ARMNetworkingUtils {
 						// can try to extract more info from the error here
 						if mime == "text/html", let txt = String(data: data, encoding: .utf8) {
 							completion?(nil, txt)
-						} else {
+						} else if
+							let httpResponse = resp as? HTTPURLResponse,
+							let customError = self.errorDelegate?.extractErrorString(from: httpResponse) {
+							
+							completion?(nil, customError)
+						}
+						else {
 							completion?(nil, "Invalid Response Code \((resp as? HTTPURLResponse)?.statusCode ?? 0)")
 						}
 						
@@ -108,7 +121,13 @@ public class ARMNetworkingUtils {
 						// can try to extract more info from the error here
 						if mime == "text/html", let txt = String(data: data, encoding: .utf8) {
 							completion?(nil, txt)
-						} else {
+						} else if
+							let httpResponse = resp as? HTTPURLResponse,
+							let customError = self.errorDelegate?.extractErrorString(from: httpResponse) {
+							
+							completion?(nil, customError)
+						}
+						else {
 							completion?(nil, "Invalid Response Code \((resp as? HTTPURLResponse)?.statusCode ?? 0)")
 						}
 						
@@ -159,18 +178,29 @@ public class ARMNetworkingUtils {
 					completion?(nil, err?.localizedDescription)
 					return
 				}
-				guard let httpResponse = resp as? HTTPURLResponse,
-					(200...299).contains(httpResponse.statusCode) else {
-						// can try to extract more info from the error here
-						completion?(nil, "Invalid Response Code \((resp as? HTTPURLResponse)?.statusCode ?? 0)")
-						return
-				}
-				
-				
 				guard let mime = resp.mimeType else {
 					completion?(nil, "Unable to recognize format of response")
 					return
 				}
+				
+				guard let httpResponse = resp as? HTTPURLResponse,
+					(200...299).contains(httpResponse.statusCode) else {
+						// can try to extract more info from the error here
+						if mime == "text/html", let txt = String(data: data, encoding: .utf8) {
+							completion?(nil, txt)
+						} else if
+							let httpResponse = resp as? HTTPURLResponse,
+							let customError = self.errorDelegate?.extractErrorString(from: httpResponse) {
+							
+							completion?(nil, customError)
+						}
+						else {
+							completion?(nil, "Invalid Response Code \((resp as? HTTPURLResponse)?.statusCode ?? 0)")
+						}
+						
+						return
+				}
+
 				if mime == "application/json", let json = try? JSONSerialization.jsonObject(with: data, options: []) {
 					completion?(json, nil)
 				} else if mime == "text/html", let txt = String(data: data, encoding: .utf8) {
