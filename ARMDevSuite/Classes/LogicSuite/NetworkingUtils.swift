@@ -18,6 +18,8 @@ public class ARMNetworkingUtils {
 	
 	public var errorDelegate: ARMNetworkingErrorParserDelegate?
 	
+	public init() {}
+	
 	
 	public func put(url: String?, headers: [String: String]?, params: [String: Any]?, completion: Response<Any>?) {
 		guard
