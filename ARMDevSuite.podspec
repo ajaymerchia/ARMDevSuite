@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ARMDevSuite'
-  s.version          = '0.1.81'
+  s.version          = '0.1.82'
   s.summary          = 'UI & Logic Pod containing many useful helpers and UI elements.'
 
 # This description is used to generate tags and improve search results.

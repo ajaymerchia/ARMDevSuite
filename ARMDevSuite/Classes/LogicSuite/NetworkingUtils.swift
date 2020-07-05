@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol ARMNetworkingErrorParserDelegate {
-	func extractErrorString(from response: HTTPURLResponse) -> String?
+	func extractErrorString(from response: HTTPURLResponse, data: Data) -> String?
 }
 
 public class ARMNetworkingUtils {
@@ -60,7 +60,7 @@ public class ARMNetworkingUtils {
 							completion?(nil, txt)
 						} else if
 							let httpResponse = resp as? HTTPURLResponse,
-							let customError = self.errorDelegate?.extractErrorString(from: httpResponse) {
+							let customError = self.errorDelegate?.extractErrorString(from: httpResponse, data: data) {
 							
 							completion?(nil, customError)
 						}
@@ -125,7 +125,7 @@ public class ARMNetworkingUtils {
 							completion?(nil, txt)
 						} else if
 							let httpResponse = resp as? HTTPURLResponse,
-							let customError = self.errorDelegate?.extractErrorString(from: httpResponse) {
+							let customError = self.errorDelegate?.extractErrorString(from: httpResponse, data: data) {
 							
 							completion?(nil, customError)
 						}
@@ -192,7 +192,7 @@ public class ARMNetworkingUtils {
 							completion?(nil, txt)
 						} else if
 							let httpResponse = resp as? HTTPURLResponse,
-							let customError = self.errorDelegate?.extractErrorString(from: httpResponse) {
+							let customError = self.errorDelegate?.extractErrorString(from: httpResponse, data: data) {
 							
 							completion?(nil, customError)
 						}
@@ -202,7 +202,7 @@ public class ARMNetworkingUtils {
 						
 						return
 				}
-
+				
 				if mime == "application/json", let json = try? JSONSerialization.jsonObject(with: data, options: []) {
 					completion?(json, nil)
 				} else if mime == "text/html", let txt = String(data: data, encoding: .utf8) {
