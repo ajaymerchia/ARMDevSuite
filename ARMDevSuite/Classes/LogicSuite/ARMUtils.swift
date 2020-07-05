@@ -10,7 +10,7 @@ import Foundation
 public typealias StringError = String
 public typealias BlankClosure = ()->()
 public typealias Closure<T> = (T)->()
-public typealias Response<T> = ((T?, StringError?)->())
+public typealias arm<T> = ((T?, StringError?)->())
 
 public class ARMUtils {
 	public static let urls = ARMURLUtils.shared

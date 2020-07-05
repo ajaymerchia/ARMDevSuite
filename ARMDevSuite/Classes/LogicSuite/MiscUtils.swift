@@ -9,7 +9,9 @@ import Foundation
 import CryptoSwift
 
 public class ARMMiscUtils {
-	public static shared = ARMMiscUtils()
+	public static let shared = ARMMiscUtils()
+	
+	
 	/// Produces a SHA256 Hash for the given string
 	///
 	/// - Parameter string: value to hash

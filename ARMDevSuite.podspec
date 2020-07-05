@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ARMDevSuite'
-  s.version          = '0.1.75'
+  s.version          = '0.1.76'
   s.summary          = 'UI & Logic Pod containing many useful helpers and UI elements.'
 
 # This description is used to generate tags and improve search results.
@@ -34,10 +34,12 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
 	# Base
   s.subspec 'Layouts' do |layout|
     layout.source_files = 'ARMDevSuite/Classes/LayoutManager/*.swift'
+		layout.dependency 'ARMDevSuite/Logic'
   end
   
   s.subspec 'LocalData' do |localdata|
     localdata.source_files = 'ARMDevSuite/Classes/LocalData/LocalDataManager.swift'
+		localdata.dependency 'ARMDevSuite/Logic'
   end
 	
 	s.subspec 'Logic' do |logic|
@@ -48,6 +50,7 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
 	s.subspec 'UISuite' do |ui|
     ui.source_files = 'ARMDevSuite/Classes/UISuite/*.swift'
     ui.dependency 'ARMDevSuite/Layouts'
+		ui.dependency 'ARMDevSuite/Logic'
   end
 	
 	
@@ -56,6 +59,7 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
   
   s.subspec 'Alerts' do |alerts|
     alerts.source_files = 'ARMDevSuite/Classes/AlertManager/AlertManager.swift'
+		alerts.dependency 'ARMDevSuite/Logic'
     alerts.dependency 'JGProgressHUD'
     alerts.dependency 'ARMDevSuite/ProgressHud'
   end
@@ -64,18 +68,21 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
     seg.source_files = 'ARMDevSuite/Classes/SegControl/*.swift'
     seg.dependency 'ARMDevSuite/Layouts'
     seg.dependency 'ARMDevSuite/UISuite'
+		seg.dependency 'ARMDevSuite/Logic'
   end
   
   s.subspec 'SlideView' do |slideview|
     slideview.source_files = 'ARMDevSuite/Classes/SlideView/*.swift'
     slideview.dependency 'ARMDevSuite/Layouts'
     slideview.dependency 'ARMDevSuite/UISuite'
+		slideview.dependency 'ARMDevSuite/Logic'
   end
   
   s.subspec 'TextField' do |textfield|
     textfield.source_files = 'ARMDevSuite/Classes/Textfield/*.swift'
     textfield.dependency 'SkyFloatingLabelTextField', '~> 3.0'
     textfield.dependency 'ARMDevSuite/UISuite'
+		textfield.dependency 'ARMDevSuite/Logic'
   end
   
   s.subspec 'MultipleImagePicker' do |multipicker|
@@ -97,6 +104,7 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
     photopicker.dependency 'ARMDevSuite/UISuite'
     photopicker.dependency 'ARMDevSuite/Alerts'
     photopicker.dependency 'ARMDevSuite/Layouts'
+		photopicker.dependency 'ARMDevSuite/Logic'
   end
   
   s.subspec 'ProgressHud' do |progresshud|
@@ -106,10 +114,12 @@ ARMDevSuite is a pod that contains many useful UIKit elements as well as useful 
     }
     progresshud.dependency 'ARMDevSuite/UISuite'
     progresshud.dependency 'ARMDevSuite/Layouts'
+		progresshud.dependency 'ARMDevSuite/Logic'
   end
 
   s.subspec 'Calendar' do |calendar|
     calendar.source_files = 'ARMDevSuite/Classes/Calendar/*.swift'
+		calendar.dependency 'ARMDevSuite/,'
   end
   
 
