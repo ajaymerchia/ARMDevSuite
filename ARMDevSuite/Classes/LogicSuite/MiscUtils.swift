@@ -9,11 +9,12 @@ import Foundation
 import CryptoSwift
 
 public class ARMMiscUtils {
+	public static shared = ARMMiscUtils()
 	/// Produces a SHA256 Hash for the given string
 	///
 	/// - Parameter string: value to hash
 	/// - Returns: Hashed value as hex string
-	public static func hash(_ string: String) -> String {
+	public func hash(_ string: String) -> String {
 		let bytes = Data(Array(string.utf8)).sha256()
 		return bytes.toHexString()
 	}
@@ -24,7 +25,7 @@ public class ARMMiscUtils {
 	///   - d1: Favored Dictionary
 	///   - d2: Other Dictionary
 	/// - Returns: Combined Dictionary
-	public static func mergeDictionaries<K, V>(d1: [K: V]?, d2: [K: V]?) -> [K: V] {
+	public func mergeDictionaries<K, V>(d1: [K: V]?, d2: [K: V]?) -> [K: V] {
 		let d1Unwrap: [K: V]! = d1 ?? [:]
 		let d2Unwrap: [K: V]! = d2 ?? [:]
 		let result: [K: V]! = d1Unwrap.merging(d2Unwrap) { (v1, v2) -> V in
@@ -35,10 +36,18 @@ public class ARMMiscUtils {
 	}
 	
 	/// Prints all Fonts that have been loaded into the application
-	public static func printFontFamilies() {
+	public func printFontFamilies() {
 		for family in UIFont.familyNames.sorted() {
 			let names = UIFont.fontNames(forFamilyName: family)
 			print("Family: \(family) Font names: \(names)")
+		}
+	}
+	
+	public func onMain(exec: BlankClosure?) {
+		DispatchQueue.global().async {
+			DispatchQueue.main.async {
+				exec?()
+			}
 		}
 	}
 }

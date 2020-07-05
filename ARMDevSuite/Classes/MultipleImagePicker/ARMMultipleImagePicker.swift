@@ -130,6 +130,11 @@ extension ARMMultipleImagePicker: UICollectionViewDelegate, UICollectionViewData
 	
 }
 
+private extension CGFloat {
+	static let padding: CGFloat = 20
+	static let marginalPadding: CGFloat = 8
+}
+
 extension ARMMultipleImagePicker: UICollectionViewDelegateFlowLayout {
 	/// Default Layout to be modified
 	static var contentPadding: UIEdgeInsets = UIEdgeInsets(top: 4, left: .padding, bottom: 4
@@ -211,7 +216,7 @@ extension ARMMultipleImagePicker: ARMPhotoCellDelegate {
 		self.getFromLibrary { (imgs) in
 			
 			let newImagesToAdd = imgs.map({ (img) -> (String, UIImage) in
-				return (LogicSuite.uuid(), img)
+				return (UUID().uuidString, img)
 			})
 			
 			newImagesToAdd.forEach({ (pair) in
@@ -235,11 +240,11 @@ extension ARMMultipleImagePicker: ARMPhotoCellDelegate {
 
 public class ARMPhotoCell: UICollectionViewCell {
 	static let kID = "armPhotoCell"
-	static let defaultBackground = UIColor.colorWithRGB(rgbValue: 0xf2f2f2)
-	public static var tintColor = UIColor.colorWithRGB(rgbValue: 0x9c9c9c)
+	static let defaultBackground = UIColor(hex: 0xf2f2f2)
+	public static var tintColor = UIColor(hex: 0x9c9c9c)
 	
 	static let deleteBackground: UIColor = .white
-	public static var deleteTint: UIColor = UIColor.colorWithRGB(rgbValue: 0x9c9c9c)
+	public static var deleteTint: UIColor = UIColor(hex: 0x9c9c9c)
 	static let deleteSize: CGFloat = 20
 	static let deletePadding: CGFloat = 5
 	

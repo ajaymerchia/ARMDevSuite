@@ -9,6 +9,8 @@ import Foundation
 
 public class ARMURLUtils {
 	
+	public static let shared = ARMURLUtils()
+	
 	/// Makes a string URL safe by adding percent encoding
 	///
 	/// - Parameter url: URL to encode
@@ -27,3 +29,5 @@ public class ARMURLUtils {
 		}
 	}
 }
+
+

@@ -13,11 +13,11 @@ public typealias Closure<T> = (T)->()
 public typealias Response<T> = ((T?, StringError?)->())
 
 public class ARMUtils {
-	public static let urls = ARMURLUtils()
-	public static let maps = ARMMapUtils()
-	public static let dates = ARMDateUtils()
-	public static let misc = ARMMiscUtils()
-	
+	public static let urls = ARMURLUtils.shared
+	public static let maps = ARMMapUtils.shared
+	public static let dates = ARMDateUtils.shared
+	public static let misc = ARMMiscUtils.shared
+	public static let networking = ARMNetworkingUtils.shared
 	
 	
 }

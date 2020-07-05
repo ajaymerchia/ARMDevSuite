@@ -29,20 +29,8 @@
       "source_files": "ARMDevSuite/Classes/LocalData/LocalDataManager.swift"
     },
     {
-      "name": "Alerts",
-      "source_files": "ARMDevSuite/Classes/AlertManager/AlertManager.swift",
-      "dependencies": {
-        "JGProgressHUD": [
-
-        ],
-        "ARMDevSuite/ProgressHud": [
-
-        ]
-      }
-    },
-    {
       "name": "Logic",
-      "source_files": "ARMDevSuite/Classes/LogicSuite/LogicSuite.swift",
+      "source_files": "ARMDevSuite/Classes/LogicSuite/*.swift",
       "dependencies": {
         "CryptoSwift": [
 
@@ -54,6 +42,18 @@
       "source_files": "ARMDevSuite/Classes/UISuite/*.swift",
       "dependencies": {
         "ARMDevSuite/Layouts": [
+
+        ]
+      }
+    },
+    {
+      "name": "Alerts",
+      "source_files": "ARMDevSuite/Classes/AlertManager/AlertManager.swift",
+      "dependencies": {
+        "JGProgressHUD": [
+
+        ],
+        "ARMDevSuite/ProgressHud": [
 
         ]
       }

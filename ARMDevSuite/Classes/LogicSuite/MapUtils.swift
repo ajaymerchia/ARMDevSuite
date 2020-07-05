@@ -9,6 +9,8 @@ import Foundation
 import CoreLocation
 
 public class ARMMapUtils {
+	public static let shared = ARMMapUtils()
+	
 	public struct ARMStreetAddress {
 		public var street: String?
 		public var city: String?

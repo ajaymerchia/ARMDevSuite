@@ -24,8 +24,8 @@ public class ARMPhotoPickerButton: UIButton {
     }
     
     // Coloring
-    private static var skyBlue = UIColor.colorWithRGB(rgbValue: 0x40c8e1)
-    private static var placeholder = UIColor.colorWithRGB(rgbValue: 0xa8a8a8)
+    private static var skyBlue = UIColor(hex: 0x40c8e1)
+    private static var placeholder = UIColor(hex: 0xa8a8a8)
     
     private static let frameworkBundle = Bundle(for: ARMPhotoPickerButton.self)
     private static let bundleURL = frameworkBundle.resourceURL?.appendingPathComponent("PhotoPickerBundle.bundle")

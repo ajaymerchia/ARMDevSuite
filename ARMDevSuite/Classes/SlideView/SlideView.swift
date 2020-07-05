@@ -22,20 +22,20 @@ public class ARMSlideView: UIScrollView {
     }
     
     // Coloring
-    static var skyBlue = UIColor.colorWithRGB(rgbValue: 0x40c8e1)
-    static var placeholder = UIColor.colorWithRGB(rgbValue: 0xa8a8a8)
+    static var skyBlue = UIColor(hex: 0x40c8e1)
+    static var placeholder = UIColor(hex: 0xa8a8a8)
     
     // Control the pageControl Appearance
     
     /// Offset of the Page Control from the bottom of the slide scroll view
-    public var pageControlOffset: CGFloat = .padding {
+    public var pageControlOffset: CGFloat = 20 {
         didSet {
             createSlides(from: self.slideData)
         }
     }
     
     /// Determines the height of the PageControl element
-    public var pageControlHeight: CGFloat = 40{
+    public var pageControlHeight: CGFloat = 40 {
         didSet {
             createSlides(from: self.slideData)
         }

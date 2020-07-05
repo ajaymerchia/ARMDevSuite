@@ -8,6 +8,8 @@
 import Foundation
 
 public class ARMDateUtils {
+	public static let shared = ARMDateUtils()
+	
 	/// Returns a string of date in `YYYY-MM-dd` format.
 	public func getYYYYMMDDRepr(date: Date) -> String { return date.yyyymmddRepr }
 	

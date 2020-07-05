@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+private extension CGFloat {
+	static let padding: CGFloat = 20
+	static let marginalPadding: CGFloat = 8
+}
+
 public class Slide: UIView {
     
     var size: CGSize {

@@ -126,7 +126,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ARMDevSuite: 5a322be4492e73762fb2c54700cde68a01c539dc
+  ARMDevSuite: e7a0b3543a01822e849a994cd30e80dcbb5121ad
   CropViewController: 1aac40093c5739e60d992b04724a55d12a689a4c
   CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
   DKCamera: d6fad4db4b25c00eefe6904e9c86a926034d0c62
