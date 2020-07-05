@@ -357,7 +357,7 @@
 		B5857210F6DE7D402CFBDA062C1346CB /* SDWebImageOptionsProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = 4775A5239B06D37E1B045BF648522055 /* SDWebImageOptionsProcessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B59EAC4658EB9F897EC31F12ABF25894 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E58FE0A96135B41F13BA76C20F68CE5 /* ImageIO.framework */; };
 		B727D6933BA278160FCB976F4D9AA5FF /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9035F2547A4A1B0E5BF54E8F79EB40A8 /* Slide.swift */; };
-		B7A602B724B1C8FE00447B10 /* NetworkingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A602B624B1C8FE00447B10 /* NetworkingUtils.swift */; };
+		B7A602B924B1CFBE00447B10 /* NetworkingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A602B824B1CFBD00447B10 /* NetworkingUtils.swift */; };
 		B7DDA9CB553DF9148A83708982721E0B /* DKPhotoGalleryScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D481C6FA870C15D22F244D56056941 /* DKPhotoGalleryScrollView.swift */; };
 		B8265E9078FAC2C424F57192D8094692 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CCB6B6140A76D3D2E4C1D97B4BC181 /* Operators.swift */; };
 		B867C36D87839754B716C3E7C997DBC4 /* CropViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E626A32B2B181F5D7CF9877FEDF61460 /* CropViewController-dummy.m */; };
@@ -1101,7 +1101,7 @@
 		B6EBEA3C14FEB467BF9C380C2D1B3DD7 /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = nl.lproj; path = Sources/DKImagePickerController/Resource/Resources/nl.lproj; sourceTree = "<group>"; };
 		B764A3F9347DD4B2C8FE379A4FB19571 /* ARMUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ARMUtils.swift; path = ARMDevSuite/Classes/LogicSuite/ARMUtils.swift; sourceTree = "<group>"; };
 		B783C48DC0D3DD41113A9F13B52A31A9 /* SDWebImageDownloaderDecryptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderDecryptor.h; path = SDWebImage/Core/SDWebImageDownloaderDecryptor.h; sourceTree = "<group>"; };
-		B7A602B624B1C8FE00447B10 /* NetworkingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingUtils.swift; sourceTree = "<group>"; };
+		B7A602B824B1CFBD00447B10 /* NetworkingUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkingUtils.swift; path = ARMDevSuite/Classes/LogicSuite/NetworkingUtils.swift; sourceTree = "<group>"; };
 		B8077C35F730F52FF840E7DC0675070F /* SDWebImageManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageManager.m; path = SDWebImage/Core/SDWebImageManager.m; sourceTree = "<group>"; };
 		B85D4E7E4EAEF1DAD4C541A2D2E6F27D /* DKPhotoGallery.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DKPhotoGallery.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A9205DE5319C0E0D3C920FAADBCC37 /* SDAnimatedImageView+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SDAnimatedImageView+WebCache.h"; path = "SDWebImage/Core/SDAnimatedImageView+WebCache.h"; sourceTree = "<group>"; };
@@ -1660,7 +1660,7 @@
 				98D6D247178F55D11C1D1081FB36C7B3 /* MapUtils.swift */,
 				EB9523843D61F6FC4D6E076894265A94 /* MiscUtils.swift */,
 				1168F982930781EB69406A33EC5D817A /* URLUtils.swift */,
-				B7A602B624B1C8FE00447B10 /* NetworkingUtils.swift */,
+				B7A602B824B1CFBD00447B10 /* NetworkingUtils.swift */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -3528,9 +3528,9 @@
 				57D2AFA0DF7FA0E7A2DA95A8A417568F /* ARMPhotoPickerDelegate.swift in Sources */,
 				69A35A02BB89984A14F537291314BBFA /* ARMSegmentedControl.swift in Sources */,
 				12437FA1716DA42BE77D004A7E209A3E /* ARMSegmentedControlDelegate.swift in Sources */,
-				B7A602B724B1C8FE00447B10 /* NetworkingUtils.swift in Sources */,
 				FE908CF2C5550EBEF020145F9647F4F3 /* ARMTextField.swift in Sources */,
 				FA9230A53E717E00466087EBDCFB9CF7 /* ARMUtils.swift in Sources */,
+				B7A602B924B1CFBE00447B10 /* NetworkingUtils.swift in Sources */,
 				89E68677603E6AD48D165984E0717F89 /* Colors.swift in Sources */,
 				D48B13B1EA62BE7A49E5569DEFFD0C96 /* Components.swift in Sources */,
 				DE3EB5FD48685B7AB69C4304AA9B6A8B /* ConstraintUtils.swift in Sources */,
